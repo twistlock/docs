@@ -54,7 +54,7 @@ Configure the API server to route AdmissionReview requests to Prisma Cloud.
 NOTE: The ValidatingWebhookConfiguration provided in Console is for API version v1beta.
 For Kubernetes 1.16 and later, the API version is v1.
 The v1 object is different than the v1beta object.
-For the v1 template, see the <<_api_v1,Kubernetes v1.16+ webhook template>>.
+For the v1 template, see the <<_templates,template section>>.
 
 *Prerequisites:*
 
@@ -71,7 +71,10 @@ In Console, you can verify Defenders are running and connected under *Manage > D
 
 .. Enable admission control.
 
-.. Copy the YAML.
+.. Copy the YAML template from <<_templates,here>>.
++
+The YAML template provided in the *Advanced Settings* dialog is designed for Kubernetes v1.13-1.15 only.
+For Kubernetes v1.16 or later, copy the v1.16 template from <<_templates,here>>.
 
 .. Click *Save*.
 
@@ -89,17 +92,24 @@ After creating the object, the Kubenetest API server directs AdmissionReview req
   $ kubectl apply -f webhook.yaml
 
 
-[#_api_v1]
-=== Kubernetes v1.16+ webhook template
+[#_templates]
+=== Kubernetes webhook templates
 
-The ValidatingWebhookConfiguration provided in Console is designed for version v1beta of the API.
-For Kubernetes 1.16 and later, the API is version v1, and the objects have some differences.
-The v1 object has two additional required fields:
+The ValidatingWebhookConfiguration provided in Console is designed for Kubernetes v1.13-1.15.
+Kubernetes v1.13-1.15 ships with v1beta of the admissionregistration.k8s.io API.
 
-* webhooks[0].sideEffects: Required value: must specify one of None, NoneOnDryRun
-* webhooks[0].admissionReviewVersions: Required value: must specify one of v1, v1beta1 as an array
+For Kubernetes 1.16 and later, Kubernetes ships with v1 of the admissionregistration.k8s.io API.
+The v1 and v1beta ValidatingWebhookConfiguration objects have some differences.
+Specifically, the v1 object has two additional required fields:
 
-When creating your ValidatingWebhookConfiguration object, use the one of the following templates:
+* `webhooks[0].sideEffects`: Required value.
+Must specify one of None, NoneOnDryRun
+* `webhooks[0].admissionReviewVersions`: Required value.
+Must specify one of v1, v1beta1 as an array
+
+When creating your ValidatingWebhookConfiguration object, use the right template.
+
+*Kubernetes v1.13 to v1.15:*
 
 [source]
 ----
@@ -126,7 +136,7 @@ webhooks:
         path: "/"
 ----
 
-
+*Kubernetes v1.16 or later:*
 
 [source]
 ----
