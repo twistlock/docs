@@ -60,7 +60,7 @@ For the v1 template, see the <<_api_v1,Kubernetes v1.16+ webhook template>>.
 
 * You have a running instance of Prisma Cloud Compute Console.
 * You have a Kubernetes cluster.
-Minimum supported version is v1.13. Maximum supported version is v1.15.
+Minimum supported version is v1.13.
 * Defender has been deployed to your cluster as a DaemonSet.
 In Console, you can verify Defenders are running and connected under *Manage > Defenders > Manage*.
 
@@ -71,7 +71,8 @@ In Console, you can verify Defenders are running and connected under *Manage > D
 
 .. Enable admission control.
 
-.. Copy the YAML.
+.. If you're running v1.13-1.15 of Kubernetes, copy the YAML from the *Advanced Settings* dialog.
+If you're running v1.16 or later of Kubernetes, copy the YAML from  <<_api_v1,Kubernetes v1.16+ webhook template>>.
 
 .. Click *Save*.
 
