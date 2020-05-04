@@ -103,8 +103,8 @@ When creating your ValidatingWebhookConfiguration object, use the following temp
 
 [source]
 ----
-# Deprecated in v1.16 in favor of admissionregistration.k8s.io/v1
-apiVersion: admissionregistration.k8s.io/v1
+#apiVersion: admissionregistration.k8s.io/v1       # v1.16+ 
+#apiVersion: admissionregistration.k8s.io/v1beta1  # v1.13 - 1.15
 kind: ValidatingWebhookConfiguration
 metadata:
   name: "tw-validating-webhook"
@@ -112,10 +112,8 @@ webhooks:
   - name: "validating-webhook.twistlock.com"
     # namespaceSelector
     # matchPolicy: Equivalent # v1.15+
-    # timeoutSeconds: 1 # v1.14+
+    # timeoutSeconds: 2 # v1.14+
     failurePolicy: Ignore # admissionregistration.k8s.io/v1 default failurePolicy to Fail
-    sideEffects: None
-    admissionReviewVersions: ["v1"]
     rules:
       - operations: ["CREATE", "UPDATE", "CONNECT"]
         apiGroups: ["*"]
@@ -125,8 +123,8 @@ webhooks:
       caBundle: "TW-CA-BUNDLE"
       service:
         name: defender
-        namespace: "twistlock"
-        path: "TW-WH-PATH"
+        namespace: "TW-NAMESPACE"
+        path: "/"
 ----
 
 
