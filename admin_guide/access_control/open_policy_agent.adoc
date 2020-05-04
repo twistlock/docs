@@ -99,7 +99,7 @@ The v1 object has two additional required fields:
 * webhooks[0].sideEffects: Required value: must specify one of None, NoneOnDryRun
 * webhooks[0].admissionReviewVersions: Required value: must specify one of v1, v1beta1 as an array
 
-When creating your ValidatingWebhookConfiguration object, use the following template:
+When creating your ValidatingWebhookConfiguration object, use the one of the following templates:
 
 [source]
 ----
@@ -125,6 +125,7 @@ webhooks:
         namespace: "TW-NAMESPACE"
         path: "/"
 ----
+
 
 
 [source]
