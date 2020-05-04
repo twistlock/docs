@@ -30,6 +30,10 @@ A Jenkins job runs nightly to publish the latest content.
 
 All Prisma Cloud Compute documentation is included in this repo.
 Because the entire docs source is just text files in GitHub, it's easy to work with the way you want.
+Docs are published in two places:
+
+* Official docs (updated and published periodically): https://docs.paloaltonetworks.com/prisma/prisma-cloud.html
+* Edge docs (updated and published everyday): https://docs.twistlock.com/docs/
 
 # Why?
 
