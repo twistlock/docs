@@ -222,9 +222,9 @@ For more information, see: https://github.com/kubernetes/api/blob/master/admissi
 
 === Examples
 
-The following examples should give you some ideas about how you can create your own policies by using the Rego language and syntax.
+The following examples should give you some ideas about how you can create your own policies by using the Rego language.
 
-* Do not allow to create a new namespace
+Do not allow new namespaces to be created:
 
 [source]
 ----
@@ -235,7 +235,7 @@ match[{"msg": msg}] {
 }
 ----
 
-* Do not allow a specific image (for example nginx) for a new pod
+Do not allow a specific image (for example nginx) in new pods:
 
 [source]
 ----
@@ -247,7 +247,8 @@ match[{"msg": msg}] {
 	msg := "It's not allowed to use the nginx Image!"
 }
 ----
-* Do not allow the usage of TCP port 80 for a new Pod
+
+Do not allow new pods to expose TCP port 80:
 
 [source]
 ----
