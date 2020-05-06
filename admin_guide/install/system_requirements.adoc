@@ -53,7 +53,7 @@ For example, if you have a Jenkins instance with two executors, and your largest
 [.section]
 === Host operating systems
 
-Prisma Cloud is supported on the following host operating systems:
+Prisma Cloud is supported on the following host operating systems:fdfdf
 
 [cols="25%,75%a", options="header"]
 |===
