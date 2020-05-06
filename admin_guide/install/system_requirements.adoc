@@ -97,7 +97,7 @@ The required kernel option is not enabled in the default kernel.
 NOTE: xref:../install/defender_types.adoc#_host_defender[Host Defender] isn't supported on Ubuntu 14.04.
 
 |Windows
-|Windows Server 2016, Windows Server 2019
+|Windows Server 2016, Windows Server 2019, test
 
 [NOTE]
 ====
