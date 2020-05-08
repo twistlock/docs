@@ -139,15 +139,18 @@ Changes to _kube-apiserver.yaml_ trigger the API server to restart.
 
   $ ps -ef | grep kube-apiserver
 
-[.task]
-==== Configure OpenShift v4.2+
 
-OpenShift v4.2 uses Kubernetes 1.14 dynamic audit backend to configure webhook backends through an AuditSink API object.
+[.task]
+==== Configure OpenShift 4.2+
+
+OpenShift 4.2 uses Kubernetes 1.14 dynamic audit backend to configure webhook backends through an AuditSink API object.
+
 [.procedure]
 . Authenticate to the OpenShift cluster as cluster-admin using the OC cli.
+
 . Issue the command to patch the API server to allow the creation of dynamic audit backends.
-+
-  oc patch kubeapiserver cluster --type=merge -p '{"spec":{"unsupportedConfigOverrides":{"apiServerArguments":{"audit-dynamic-configuration":["true"],"feature-gates":["DynamicAuditing=true"],"runtime-config":["auditregistration.k8s.io/v1alpha1=true"]}}}}'
+
+  $ oc patch kubeapiserver cluster --type=merge -p '{"spec":{"unsupportedConfigOverrides":{"apiServerArguments":{"audit-dynamic-configuration":["true"],"feature-gates":["DynamicAuditing=true"],"runtime-config":["auditregistration.k8s.io/v1alpha1=true"]}}}}'
 
 
 [.task]
