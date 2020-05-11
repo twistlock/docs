@@ -30,20 +30,20 @@ Follow the steps below:
 
 * A high availability set with a failed primary node and at least one secondary Console online.
 * One or more new nodes to add to bring the high availability set back to three nodes.
-* You have made a xref:../configure/disaster_recovery.adoc#making-manual-backups[manual backup] of your current configuration, and stored it in a location outside of your HA cluster.
+* You have made a https://docs.twistlock.com/docs/compute_edition/configure/disaster_recovery.html[manual backup] of your current configuration, and stored it in a location outside of your HA cluster.
 
 [discrete]
 ==== Procedure
 
-. xref:../install/install_onebox.html#uninstall[Uninstall Twistlock] from all secondary nodes.
+. https://docs.twistlock.com/docs/compute_edition/install/install_onebox.html#uninstall[Uninstall Prisma Cloud] from all secondary nodes.
 Leave the newly elected primary node alone.
 
   $ sudo ./twistlock.sh -u
 
-. Connect to the primary node and reinstall Twistlock to clear the HA state from the database.
+. Connect to the primary node and reinstall Prisma Cloud to clear the HA state from the database.
 
 .. Navigate to the directory where you originally ran the curl command to set up the node as a secondary.
-You should find a number of Twistlock files, including _twistlock.cfg_ and _twistlock.sh_.
+You should find a number of Prisma Cloud files, including _twistlock.cfg_ and _twistlock.sh_.
 
 .. Open _twistlock.cfg_ for editing.
 
@@ -56,7 +56,7 @@ You should find a number of Twistlock files, including _twistlock.cfg_ and _twis
    HIGH_AVAILABILITY_STATE=PRIMARY
    HIGH_AVAILABILITY_PORT=8086
 
-.. Reinstall Twistlock Console.
+.. Reinstall Prisma Cloud Console.
 
   $ sudo ./twistlock.sh -ys onebox
 
@@ -76,11 +76,11 @@ In your primary Console, you will the secondary host waiting to join the cluster
 +
 NOTE: This is the only step required to install Console on a secondary node.
 This script installs Console on the host, and joins the cluster.
-Do not run the procedure documented in the Install Twistlock article on any secondary cluster nodes.
+Do not run the procedure documented in the Install Prisma Cloud article on any secondary cluster nodes.
 
 .. Follow the steps a-d to install secondary Consoles on all remaining secondary nodes.
 
-. Connect to Twistlock's MongoDB database on the primary Console to update the nodes in the replica set.
+. Connect to Prisma Cloud's MongoDB database on the primary Console to update the nodes in the replica set.
 
 .. Connect to your primary node.
 
@@ -117,7 +117,7 @@ After a few moments, the state changes to *SECONDARY*.
 === Additional information
 
 
-=== Twistlock version
+=== Prisma Cloud version
 Applies to all versions.
 
 == Cautionary notes

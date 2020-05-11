@@ -12,10 +12,10 @@ toc::[]
 
 == Overview
 
-The Twistlock Intelligence Stream (IS) is a real-time feed that contains vulnerability data and threat intelligence from commercial providers, Twistlock Labs, and the open source community.
-Twistlock protects your containers by using this data to detect vulnerabilities and runtime anomalies.
+The Prisma Cloud Intelligence Stream (IS) is a real-time feed that contains vulnerability data and threat intelligence from commercial providers, Prisma Cloud Labs, and the open source community.
+Prisma Cloud protects your containers by using this data to detect vulnerabilities and runtime anomalies.
 
-When you install Twistlock, Console is automatically configured to connect to intelligence.twistlock.com to download updates.
+When you install Prisma Cloud, Console is automatically configured to connect to intelligence.twistlock.com to download updates.
 All connectivity from Console to the IS is unidirectional; Console always initiates an outbound connection to the IS.
 The IS never connects into a customer’s environment.
 
@@ -48,12 +48,11 @@ Try the same test from inside a container on this host. It can be any container 
 
 
 This step will help identify if there's any problem within Docker networking (such as a missing proxy) that needs to be added.
-If a proxy is required for outbound access, see 
-xref:../configure/tw_behind_http_proxy.adoc#[Twistlock behind an HTTP proxy]
+If a proxy is required for outbound access, see https://docs.twistlock.com/docs/compute_edition/configure/tw_behind_http_proxy.html[Prisma Cloud behind an HTTP proxy].
 
 *Step 3:*
 
-Test connectivity from within the Twistlock Console.
+Test connectivity from within the Prisma Cloud Console.
 This is the test most close to actual normal operation since it follows the same flows that the update process itself uses:
 
   $ docker exec -ti twistlock_console /bin/sh

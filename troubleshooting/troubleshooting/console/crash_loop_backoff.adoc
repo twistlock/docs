@@ -27,7 +27,7 @@ Frequent API queries and large data set processing can result in slowing down Co
 
   $ kubectl get pods -n twistlock 
 +
-Where 'twistlock' is the namespace in which Twistlock pods are deployed.
+Where 'twistlock' is the namespace in which Prisma Cloud pods are deployed.
 
 . If using UI such as in Openshift platform, a Crash Loop Back-off error message would look like this:
 +
@@ -61,7 +61,7 @@ limits:
 
 == Troubleshooting steps
 
-Remove custom limits on Console deployment. Completely **remove** the "limits" section from Twistlock Console yaml.
+Remove custom limits on Console deployment. Completely **remove** the "limits" section from Prisma Cloud Console yaml.
 
 [source,yaml]
 ----
@@ -81,7 +81,7 @@ For more information, refer to this article from Openshift:
 https://docs.openshift.com/container-platform/3.10/dev_guide/compute_resources.html
 
 
-=== Twistlock version
+=== Prisma Cloud version
 
 Applies to all versions
 
@@ -89,4 +89,4 @@ Applies to all versions
 == Cautionary notes
 
 If this is a universal setting for all containers, you may want to check with your system admin before making changes to it.
-For any questions with making above changes, please contact Twistlock Support at support@twistlock.com.
+For any questions with making above changes, please contact Prisma Cloud Support at support@twistlock.com.

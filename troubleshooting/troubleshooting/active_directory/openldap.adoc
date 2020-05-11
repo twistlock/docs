@@ -27,21 +27,21 @@ To debug the issue:
 
 == Local users versus LDAP users
 
-If you do not have a directory service, Console lets you create and manage Twistlock-specific (or local) users and groups.
-Local users and groups refer to the users and groups created before OpenLDAP was integrated with Twistlock or when OpenLDAP integration is disabled.
+If you do not have a directory service, Console lets you create and manage Prisma Cloud-specific (or local) users and groups.
+Local users and groups refer to the users and groups created before OpenLDAP was integrated with Prisma Cloud or when OpenLDAP integration is disabled.
 
 NOTE: ldap group names are case sensitive.
 
 If you have local users when you enable OpenLDAP integration, Console handles authentication using the following sequence:
 
-. Twistlock first tries to authenticate the user with the LDAP server.
+. Prisma Cloud first tries to authenticate the user with the LDAP server.
 
-. If Twistlock fails to authenticate the user with the LDAP server, it tries to authenticate the user with the local database.
+. If Prisma Cloud fails to authenticate the user with the LDAP server, it tries to authenticate the user with the local database.
 
 
 == No users can be found in a group
 
-Twistlock searches for posixGroups and its memberUid’s.
+Prisma Cloud searches for posixGroups and its memberUid’s.
 Make sure your group has the posixGroup objectClass.
 
 . Query your directory for the group name:

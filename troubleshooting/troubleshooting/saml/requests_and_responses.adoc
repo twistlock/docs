@@ -16,17 +16,17 @@ toc::[]
 == Overview
 SAML is an open standard for exchanging authentication and authorization data between parties, in particular, between an identity provider and a service provider.
 
- * ServiceProvider (SP) = Twistlock Console UI
+ * ServiceProvider (SP) = Prisma Cloud Console UI
  * IdentityProvider (IdP) = SiteMinder, ADFS, Okta, AzureAD, PING Federate, Shibboleth, etc.
 
 SAML Federation is based upon HTTP redirections.
-This is used for browser based applications such as the Twistlock Console's UI.
+This is used for browser based applications such as the Prisma Cloud Console's UI.
 
 The SAML specification can be found here: http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf
 
-In this article, we outline example SAML authentication requests and SAML responses, giving in detail explanation on what to look for in each. The aim is to help provide a guideline for troubleshooting SAML related issues with Twistlock.
+In this article, we outline example SAML authentication requests and SAML responses, giving in detail explanation on what to look for in each. The aim is to help provide a guideline for troubleshooting SAML related issues with Prisma Cloud.
 
-== Example SAML Authentication Request sent from Twistlock to ADFS IdP
+== Example SAML Authentication Request sent from Prisma Cloud to ADFS IdP
 
 ----
 <samlp:AuthnRequest
@@ -53,8 +53,13 @@ In this article, we outline example SAML authentication requests and SAML respon
 AssertionConsumerServiceURL="https://console.twistlock.com/api/v1/authenticate"
 ----
 
-This is the endpoint the IdP will use to redirect the user's browser back to Twistlock. This value can be controlled in the **Manage > Authentication > SAML** > "Console URL" settings. It is common to set this value when the Twistlock Console is behind a proxy such as 
-https://docs.twistlock.com/docs/latest/install/install_openshift.html#appendix-implementing-saml-federation-with-a-twistlock-console-inside-an-openshift-cluster[OpenShift external router] or an https://docs.twistlock.com/docs/latest/howto/configure_istio_ingress.html#implementing-saml-federation-with-a-twistlock-console-through-istio-ingress-controllers[Istio Ingress Controller] . The Twistlock code will add "/api/v1/authenticate" to the value you put in the field. If this value is not set, the Twistlock code will automatically generate this value. This value must match the IdP's Twistlock SP configurations
+This is the endpoint the IdP will use to redirect the user's browser back to Prisma Cloud.
+This value can be controlled in the *Manage > Authentication > SAML* > "Console URL" settings.
+It is common to set this value when the Prisma Cloud Console is behind a proxy such as 
+https://docs.twistlock.com/docs/compute_edition/install/install_openshift.html#appendix-implementing-saml-federation-with-a-prisma-cloud-console-inside-an-openshift-cluster[OpenShift external router] or an https://docs.twistlock.com/docs/compute_edition/howto/configure_istio_ingress.html#implementing-saml-federation-with-a-prisma-cloud-console-through-istio-ingress-controllers[Istio Ingress Controller].
+The Prisma Cloud code will add "/api/v1/authenticate" to the value you put in the field.
+If this value is not set, the Prisma Cloud code will automatically generate this value.
+This value must match the IdP's Prisma Cloud SP configurations
 
 **Issuer**
  
@@ -62,7 +67,7 @@ https://docs.twistlock.com/docs/latest/install/install_openshift.html#appendix-i
  <saml:Issuer>console-twistlock</saml:Issuer>
 ----
 
-The identifier of the Twistlock Console. Every SAML IdP must have a unique identifier for all SPs. By default Twistlock will send the *twistlock* issuer. You can change this value in the *Audience* value in the Twistlock Console's SAML settings.
+The identifier of the Prisma Cloud Console. Every SAML IdP must have a unique identifier for all SPs. By default Prisma Cloud will send the *twistlock* issuer. You can change this value in the *Audience* value in the Prisma Cloud Console's SAML settings.
 
 **AuthnContextClassRef**
 
@@ -82,7 +87,7 @@ Requests the methods of authentication to occurs at the IdP. *urn:federation:aut
 In this case you will need to configure the SiteMinder IdP to ignore the *AuthnContextClassRef* values.
 
 
-== Example SAML Response from ADFS IdP to Twistlock
+== Example SAML Response from ADFS IdP to Prisma Cloud
 
 ----
 <samlp:Response Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified"
@@ -150,7 +155,7 @@ Response Token's *Issuer* value matches the *Identity provider issuer* value in 
 **ds:Signature**
 
 The SAML Response Token must be either *Signed Response* or *Signed Response + Assertion*
-The IdP's signing certificate must be loaded into the Twistlock settings for the IdP in the *X.509 Certificate* field in Base64 format.
+The IdP's signing certificate must be loaded into the Prisma Cloud settings for the IdP in the *X.509 Certificate* field in Base64 format.
 
 **groups**
 
@@ -165,7 +170,7 @@ The IdP's signing certificate must be loaded into the Twistlock settings for the
 ----
 
 Group mapping requires that the SAML Token must contain the *groups* claim. This can contain an array of group names and they will be compared against the SAML groups defined in Manage > Authentication > groups.
-This might require a https://docs.twistlock.com/docs/latest/access_control/integrate_saml_active_directory_federation_services.html#active-directory-group-membership-within-saml-response[custom claim] .
+This might require a https://docs.twistlock.com/docs/compute_edition/access_control/integrate_saml_active_directory_federation_services.html#active-directory-group-membership-within-saml-response[custom claim].
 
 **NameID**
 
@@ -178,4 +183,4 @@ This might require a https://docs.twistlock.com/docs/latest/access_control/integ
 </Subject>
 ----
 
-The nameid attribute must be present and match a Twistlock SAML user name if group association is not used.  
+The nameid attribute must be present and match a Prisma Cloud SAML user name if group association is not used.  

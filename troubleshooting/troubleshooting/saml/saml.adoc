@@ -12,37 +12,37 @@ toc::[]
 
 == Overview
 
-Twistlock supports SAML federation with SAML 2.0 compliant Identity Providers.
-The steps in the authentication flow between Twistlock and SAML are:
+Prisma Cloud supports SAML federation with SAML 2.0 compliant Identity Providers.
+The steps in the authentication flow between Prisma Cloud and SAML are:
 
-* User browses to the Twistlock Console UI endpoint.
+* User browses to the Prisma Cloud Console UI endpoint.
 
-* Twistlock redirects the user's browser sessions to the registered IdP configured in *Manage > Authentication > SAML*
+* Prisma Cloud redirects the user's browser sessions to the registered IdP configured in *Manage > Authentication > SAML*
 This is known as the *Authentication Request*.
 
 * User authenticates at the IdP's interface.
 
-* The IdP redirects the user's browser back to the Twistlock authentication endpoint (https://tl_console:8083/api/v1/authenticate) with the *SAML Response*, which contains a token of claims.
+* The IdP redirects the user's browser back to the Prisma Cloud authentication endpoint (https://CONSOLE:8083/api/v1/authenticate) with the *SAML Response*, which contains a token of claims.
 + 
 NOTE: A claim can be attributes of the user (e.g. name, group membership)i, and how they have authenticated.
  
-* Twistlock receives the SAML Response from the IdP.
+* Prisma Cloud receives the SAML Response from the IdP.
 
-* Twistlock validates the digital signature of the SAML Response.
+* Prisma Cloud validates the digital signature of the SAML Response.
 
-* Twistlock validates that the Response Token's *Issuer* value matches the *Identity provider issuer* value in the SAML settings for the IdP.
+* Prisma Cloud validates that the Response Token's *Issuer* value matches the *Identity provider issuer* value in the SAML settings for the IdP.
 
-* Twistlock looks for the *groups* claim values and attempts to match the group name in *Manage > Authentication > Groups* that are marked as SAML.
+* Prisma Cloud looks for the *groups* claim values and attempts to match the group name in *Manage > Authentication > Groups* that are marked as SAML.
 
-* If the group assignment does not occur, Twistlock attempts to map the *nameid* claim value to SAML users in *Manage > Authentication > Users*.
+* If the group assignment does not occur, Prisma Cloud attempts to map the *nameid* claim value to SAML users in *Manage > Authentication > Users*.
 
-* If these checks pass, the user is authenticated to Twistlock.
+* If these checks pass, the user is authenticated to Prisma Cloud.
   
   
 == Integration issues
 
 The SAML Response can return a status that authentication was denied at the IdP.
-Twistlock generates different errors depending on the type of check.
+Prisma Cloud generates different errors depending on the type of check.
 
 Note that the Chrome browser has a https://chrome.google.com/webstore/detail/saml-chrome-panel/paijfdbeoenhembfhkhllainmocckace?hl=en[SAML plugin] that's useful for viewing SAML Requests and Responses.
 
@@ -61,9 +61,9 @@ In your browser, you'll get an HTTP 500 Internal Server Error.
 [discrete]
 ==== Troubleshooting steps
 
-* Look in the SAML Response token for the *Issuer* value, and update the Twistlock configuration.
+* Look in the SAML Response token for the *Issuer* value, and update the Prisma Cloud configuration.
 
-* The *Audience* value doesn't match the IdP's identifier for the Twistlock Console.
+* The *Audience* value doesn't match the IdP's identifier for the Prisma Cloud Console.
 
 
 === Error in IdP
@@ -80,7 +80,7 @@ In your browser, the IdP generates an error that says the SP was not identified.
 [discrete]
 ==== Troubleshooting steps
 
-Make sure the *Audience* that the Twistlock Console sends in the AuthenticationRequest matches the IdP's Identifier for the Twistlock SP.
+Make sure the *Audience* that the Prisma Cloud Console sends in the AuthenticationRequest matches the IdP's Identifier for the Prisma Cloud SP.
 
 
 === Incorrectly loaded SAML Signing Certificate
@@ -97,8 +97,8 @@ In your browser, you'll get an HTTP 500 Internal Server Error.
 [discrete]
 ==== Troubleshooting steps
 
-There is a problem with the certificate you uploaded to Twistlock Console.
-Reload the IdP's Base64 signing certificate into Twistlock.
+There is a problem with the certificate you uploaded to Prisma Cloud Console.
+Reload the IdP's Base64 signing certificate into Prisma Cloud.
 
 
 === Incorrectly signed SAML Response
@@ -138,15 +138,15 @@ Verify that the SAML user name value in *Manage > Authentication > Users* matche
 The attribute must be named *nameid*.
     
 NOTE: When using ADFS, Active Directory user identity names are case insensitive.
-When you use the ADFS SAML provider in Twistlock the *nameid* value will be casted to lowercase values before being compared to the Twistlock user value, which is also casted to lowercase.
-If you don't use ADFS, and use a different IdP, such SiteMinder, and it uses Active Directory as the identity authentication source, then the Twistlock user name and nameid values must match.
+When you use the ADFS SAML provider in Prisma Cloud the *nameid* value will be casted to lowercase values before being compared to the Prisma Cloud user value, which is also casted to lowercase.
+If you don't use ADFS, and use a different IdP, such SiteMinder, and it uses Active Directory as the identity authentication source, then the Prisma Cloud user name and nameid values must match.
 
 
 == Additional information
 
-Currently, there are some limitations when integrating SAML with Twistlock.
+Currently, there are some limitations when integrating SAML with Prisma Cloud.
 
-* Access to the Twistlock API via SAML authentication is not supported.
+* Access to the Prisma Cloud API via SAML authentication is not supported.
 There are no HTTP passive redirection capabilities.
 Use an API token to access the API for user accounts that have authenticated via SAML.
 
@@ -156,7 +156,7 @@ If you have additional questios, reference GitHub issue number #12215 in your co
 * We do not support SAML Response encryption.
 
  
-== Twistlock version
+== Prisma Cloud version
 
 Applies to all versions
 

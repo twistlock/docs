@@ -32,7 +32,7 @@ There are no error messages. Nothing shows up in the logs.
 * Update the registry credentials to have the storage.admin permission
 * Scan the same repository with the wildcard as before
 
-=== Twistlock version:
+=== Prisma Cloud version:
 All versions are affected.
 
 == Cautionary notes

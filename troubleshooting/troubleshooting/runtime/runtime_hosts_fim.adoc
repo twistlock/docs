@@ -10,7 +10,7 @@
 toc::[]
 
 == Overview
-Twistlock File Integrity Monitoring feature, continually watches the files and directories in your monitoring profile for changes.  Currently there are a few limitations in this feature that are pointed out below:
+Prisma Cloud File Integrity Monitoring feature, continually watches the files and directories in your monitoring profile for changes.  Currently there are a few limitations in this feature that are pointed out below:
 
 
 == Steps to confirm the issue
@@ -66,7 +66,7 @@ image::runtime_defense_hosts_fim_audits.png[width=800]
 
 * There is a 1000 object maximum for watching attribute changes.
 
-* For attribute changes, Twistlock FIM cannot report which user or process made the change.
+* For attribute changes, Prisma Cloud FIM cannot report which user or process made the change.
 
 * For short-lived processes, such as cat, process information, such as the user, might be inconsistent.
 
@@ -78,6 +78,6 @@ This procedure redeploys the watch mechanism.
 After the path is created, open the rule, and save it again.
 
 
-=== Twistlock version:
+=== Prisma Cloud version:
 
 Host FIM was added in 19.03.

@@ -104,7 +104,7 @@ Both are displayed numerically.
 +
 image::netstat-an.png[width=624]
 
-* The following example, which can be run from within the Twistlock Console or Defender containers, would provide a constantly updated display of any IPv4 TCP sockets involving port 8084.
+* The following example, which can be run from within the Prisma Cloud Console or Defender containers, would provide a constantly updated display of any IPv4 TCP sockets involving port 8084.
 The “-anp tcp” flags provide information on all IPv4 TCP connections in numeric format, while the grep command only displays those sockets in which either the source or destination port is 8084.
 The watch command will update the netstat results every couple of seconds until it is manually terminated.
 +

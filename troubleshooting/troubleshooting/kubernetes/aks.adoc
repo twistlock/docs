@@ -56,9 +56,9 @@ To make sure your kube-proxy pod is missing it you need to check the configurati
 
 === Additional information:
 
-The chances to see that Pod crash is not only due to the presence our Twistlock Defender on the worker node. The Twistlock Defender fetches iptables periodically. You can also get the same effect without a Twistlock Defender installed on the node.
+The chances to see that Pod crash is not only due to the presence our Prisma Cloud Defender on the worker node. The Prisma Cloud Defender fetches iptables periodically. You can also get the same effect without a Prisma Cloud Defender installed on the node.
 
-=== Twistlock version
+=== Prisma Cloud version
 
 Applies to all versions
 

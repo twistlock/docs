@@ -19,7 +19,7 @@ The articles in this section show how to resolve commonly encountered issues.
 == Collect debug data
 
 Debug data helps us identify the root cause of a problem, and provide a timely resolution.
-If you contact Twistlock Support with an issue, you'll be asked to collect debug data from your Twistlock setup and send it to us.
+If you contact Prisma Cloud Support with an issue, you'll be asked to collect debug data from your Prisma Cloud setup and send it to us.
 The _twistcli_ utility collects and creates an archive of debug data, including log files, and then uploads it to our file server, where our support team can access it.
 
 If the source of the issue is not clear, or if the issue occurs on multiple machines, then capture debug data from the host running Console and at least one host running Defender.
@@ -30,21 +30,21 @@ In Chrome, open *Developer Tools*, click the *Console* tab, and copy any errors 
 
 Finally, we don't collect sensitive personal information in the debug logs.
 Nonetheless, some organizations have stringent policies about how data should be handled.
-Twistlock support dumps are human-readable, so you can unpack, inspect, and sanitize them to your standards before sending them to us.
+Prisma Cloud support dumps are human-readable, so you can unpack, inspect, and sanitize them to your standards before sending them to us.
 
 
 == Collecting Console's debug logs
 
 The simplest way to collect Console's debug logs is from the UI itself.
 Go to *Manage > View Logs > Console* and click *Download debug logs*.
-To upload the logs directly to Twistlock support, click *Upload debug logs to Twistlock support*.
+To upload the logs directly to Prisma Cloud support, click *Upload debug logs to Prisma Cloud support*.
 
 
 == Collecting Defender's debug logs
 
 To collect Defender's debug logs, go to *Manage > Defenders > Manage*.
 Find the Defender of interest in the table of deployed Defenders, click *Actions > Logs*, then click *Download this log*.
-To upload the logs directly to Twistlock support, click *Upload log to Twistlock support*.
+To upload the logs directly to Prisma Cloud support, click *Upload log to Prisma Cloud support*.
 
 
 == Collecting debug logs with twistcli
@@ -57,7 +57,7 @@ When Console runs in a cluster, collect debug logs directly from the Console UI 
 
 . Copy _twistcli_ to the host where the problem is occurring.
 
-. Run _twistcli_ to collect the debug data from your Twistlock setup.
+. Run _twistcli_ to collect the debug data from your Prisma Cloud setup.
 +
   $ sudo ./twistcli support dump
   Dumping debug data
@@ -79,18 +79,18 @@ Then manually sanitize the output prior by removing IP addresses, hostnames, and
 ====
 
 
-== Sending debug data to Twistlock
+== Sending debug data to Prisma Cloud
 
-The _twistcli_ tool lets you send debug logs and other files to Twistlock.
-A common workflow is to collect debug logs, sanitize them, then share them with Twistlock.
+The _twistcli_ tool lets you send debug logs and other files to Prisma Cloud.
+A common workflow is to collect debug logs, sanitize them, then share them with Prisma Cloud.
 
-Files are sent over HTTPS to a write-only directory on Twistlock's file server.
-When the upload is completed, the Twistlock Support team is notified.
+Files are sent over HTTPS to a write-only directory on Prisma Cloud's file server.
+When the upload is completed, the Prisma Cloud Support team is notified.
 
 [discrete]
 ==== Procedure
 
-. Send a file to Twistlock Support with _twistcli_.
+. Send a file to Prisma Cloud Support with _twistcli_.
 
   $ twistcli support upload --file <FILE>
 
@@ -98,7 +98,7 @@ When the upload is completed, the Twistlock Support team is notified.
 
 . Your file is uploaded.
 
-  Uploading file to Twistlock support
+  Uploading file to Prisma Cloud support
   123.68 KiB / 11.26 MiB [>-----------------------------]   1.07% 648.45 KiB/s 0s
 
 [discrete]
@@ -107,19 +107,4 @@ When the upload is completed, the Twistlock Support team is notified.
 When the upload is complete, a confirmation message is printed:
 
   File has been uploaded as customer/twistlock_dump_1505548448_1505549527.tar.gz
-
-
-== Sending debug data to Twistlock as an attachment
-
-You can also send debug files to Twistlock by attaching them to your support case.
-Desk has a limit of 20 MB for uploaded files, so if you need to send more than 20MB of data, use _twistcli_ instead.
-
-[discrete]
-==== Procedure
-
-. Navigate to http://support.twistlock.com/.
-
-. Click *Open case*.
-
-. Attach your debug data archive.
 

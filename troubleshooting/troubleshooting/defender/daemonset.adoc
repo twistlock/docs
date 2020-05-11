@@ -35,8 +35,8 @@ The proper way to resolve this is:
 
 *Original content*
 
-// https://github.com/twistlock/twistlock/issues/11248
-Twistlock lets you monitor service accounts and the permissions granted to them for each resource in your Kubernetes or OpenShift clusters.
+// Issue #11248
+Prisma Cloud lets you monitor service accounts and the permissions granted to them for each resource in your Kubernetes or OpenShift clusters.
 When you install a Defender DaemonSet, you can enable service account monitoring.
 To do so, you must be a cluster admin.
 

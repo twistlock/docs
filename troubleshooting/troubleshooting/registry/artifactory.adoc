@@ -28,7 +28,7 @@ This most likely means that you have a self-signed certificate that the underlyi
 == Steps to confirm the issue
 
 // Anything in logs or on host that the customer would need to check to confirm if it's the same issue?
-If you go to the host that the Twistlock Defender is running on and try to pull your Artifactory images, you should receive the same error
+If you go to the host that the Prisma Cloud Defender is running on and try to pull your Artifactory images, you should receive the same error
 
 == Troubleshooting steps
 You will need to add your trusted self-signed cert to the docker daemon. Specify the URL of the insecure registry on the machine where the registry scanning Defender runs, then restart the Docker service.
@@ -38,4 +38,4 @@ For more information, see the https://docs.docker.com/registry/insecure/[Docker 
 //  (e.g. Does the troubleshooting differ in HA?)
 If you do not have a host that is able to access the underlying docker daemon, you will need to find other ways to get your host to trust the Artifactory instance. Please consult the Artifactory documentation for these steps.
 
-=== Twistlock version: Any version
+=== Prisma Cloud version: Any version

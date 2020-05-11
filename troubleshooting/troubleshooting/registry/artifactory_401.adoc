@@ -52,7 +52,7 @@ image::fixed_registry_settings.png[]
 === Additional information
 //  (e.g. Does the troubleshooting differ in HA?)
 
-=== Twistlock version:
+=== Prisma Cloud version:
 18.11 or later
 
 == Cautionary notes

@@ -18,7 +18,7 @@ If you are using the Trusted Images Compliance feature in Kubernetes you might s
 
 == Error messages
 
-Check the Twistlock Console Logs at Manage > View Logs > Console and filter for messages with "Image operation blocked by policy" to see if your image used in one your pods is blocked.
+Check the Prisma Cloud Console Logs at Manage > View Logs > Console and filter for messages with "Image operation blocked by policy" to see if your image used in one your pods is blocked.
 
 == Steps to confirm the issue
 
@@ -40,9 +40,9 @@ k8s.gcr.io/pause:*
 === Additional information
 For more background information on the Kubernetes Pause container and what it is used for we recommend the following article: https://www.ianlewis.org/en/almighty-pause-container
 
-=== Twistlock version:
+=== Prisma Cloud version:
 Applies to all versions
 
 == Cautionary notes
 If this is a universal setting for all containers, you may want to check with your system admin before making changes to it.
-For any questions with making above changes, please contact Twistlock Support at support@twistlock.com.
+For any questions with making above changes, please contact Prisma Cloud Support at support@twistlock.com.
