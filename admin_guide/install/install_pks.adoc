@@ -1,8 +1,9 @@
-== Pivotal Container Service
+== VMware Tanzu Kubernetes Service (PKS)
 
-link:https://pivotal.io/platform/pivotal-container-service#[Pivotal Container Service (PKS)] lets you deploy Kubernetes clusters on demand.
+link:https://cloud.vmware.com/vmware-enterprise-pks#[VMware Enterprise PKS] lets you deploy Kubernetes clusters on demand.
 Use our standard Kubernetes install procedure to deploy Prisma Cloud to PKS.
 The only difference between PKS and standard Kubernetes is the location of the Docker socket.
+ifdef::compute_edition[]
 A single line change in the Prisma Cloud configuration file lets you specify the path to the Docker socket in PKS.
 From there, follow the normal Kubernetes install procedure.
 
@@ -89,3 +90,94 @@ xref:../welcome/releases.adoc[Releases], and copy the link to current recommende
 ==== Install Prisma Cloud
 
 Proceed with the instructions for installing xref:../install/install_kubernetes.adoc#install-console[Prisma Cloud on Kubernetes].
+
+
+=== VMware Tanzu Kubernetes Service (PKS)
+
+
+endif::compute_edition[]
+ifdef::prisma_cloud[]
+=== Preflight checklist
+
+To ensure that your installation goes smoothly, work through the following checklist and validate that all requirements are met.
+
+[.section]
+==== General
+
+* You have access to a Prisma Cloud tenant.
+
+* You have the permissions to deploy defenders
+
+[.section]
+==== Cluster
+
+* Prisma Cloud Defender requires elevated privileges.
+Ensure that the following permissions are set in your PKS cluster:
+
+** Set Privileged Containers to true (enabled).
+
+** Set DenyEscalatingExec to false (disabled).
+After Prisma Cloud is installed, you can utilize it to deny other privileged containers from starting and deny escalation of privileges.
+
+* The nodes in your cluster can reach Prisma Cloud's cloud registry (registry-auth.twistlock.com).
+
+[.section]
+==== Permissions
+
+* You can create and delete namespaces in your cluster.
+
+* You can Run _kubectl create_ commands.
+
+[.section]
+==== Firewalls and external IP addresses
+
+Validate that the following ports are open:
+
+
+*Prisma Cloud Defenders*:
+
+* Incoming: None
+* Outgoing: 443 to Prisma Cloud
+
+=== Install Prisma Cloud Defenders DaemonSet
+
+Prepare your PKS environment, then use the standard procedure for xref:install_kubernetes.adoc#install-defender[generating a standard DaemonSet file].
+
+The DaemonSet file can be generated from the Prisma Cloud UI. Navigate to *Prisma Cloud > Compute > Defenders > Deploy > DaemonSet*.  Navigate to the bottom and choose *Download YAML directly* 
+
+
+[.task]
+==== Update DaemonSet  
+
+The DaemonSet file needs to be manually updated with the modified location of the Docker Socket.
+
+The standard location of the Docker Socket in Kubernetes is _/var/run/docker.sock_. In PKS the Docker Socket could be _/var/vcap/data/sys/run/docker/docker.sock_ or _/var/vcap/sys/run/docker/docker.sock_
+
+Below are the three lines to update in the DaemonSet file top match your environment.
+
+[.procedure]
+. In _volumeMounts_, name: docker-sock-folder
+
+  mountPath: "/var/vcap/data/sys/run/docker"
+
+. In _env_, name: _DOCKER_CLIENT_ADDRESS
+
+  value: "/var/vcap/data/sys/run/docker/docker.sock"
+
+. In _volumes_, name: docker-sock-folder, hostPath: 
+  
+  path: "/var/vcap/data/sys/run/docker"
+
+
+Once these changes are made the _defender.yaml_ is ready for deployment.
+
+[.procedure]
+. Create the Twistlock namespace 
+
+ $ kubeclt create namespace twistlock
+
+. Deploy the Defender DaemonSet.
+
+ $ kubectl create -f defender.yaml
+
+endif::prisma_cloud[]
