@@ -89,4 +89,4 @@ Applies to all versions
 == Cautionary notes
 
 If this is a universal setting for all containers, you may want to check with your system admin before making changes to it.
-For any questions with making above changes, please contact Prisma Cloud Support at support@twistlock.com.
+For any questions with making above changes, contact Prisma Cloud Support.

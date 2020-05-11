@@ -87,7 +87,7 @@ NOTE: If you're upgrading an OpenShift installation, replace _kubectl_ with _oc_
   # exit
 
 Now you can upgrade to 2.5 version.
-For upgrade instructions, see xref:../install/upgrade.adoc[Upgrade Twistlock].
+For upgrade instructions, see the upgrade instructions in the https://docs.twistlock.com/docs/historical/historical/historical.html[2.5 doc set].
 
-If you have any issues with the steps described here, or if you see a different version of MongoDB in step 3, contact support@twistlock.com for further troubleshooting.
+If you have any issues with the steps described here, or if you see a different version of MongoDB in step 3, contact Prisma Cloud Support for further troubleshooting.
 
