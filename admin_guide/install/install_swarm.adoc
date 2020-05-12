@@ -292,8 +292,9 @@ It takes a few moments for the replica count to go from 0/1 to 1/1.
 +
 Console's published ports use Swarm's routing mesh (ingress network), so the Console service is accessible at the target port on every node, not just the host it runs on.
 
-. Open Prisma Cloud Console's web interface. The Web interface is available via HTTPS (port 8083) by default although you can configure HTTP access via the configuration file.
-Go to \https://<LOAD-BALANCER>:8083 for HTTPS 
+. Open Prisma Cloud Console's web interface.
+By default, the web interface is available via HTTPS (port 8083).
+Go to \https://<LOAD-BALANCER>:8083.
 +
 If you did not configure a load balancer, Console is reachable via HTTPS at \https://<ANY-SWARM-NODE-IPADDR>:8083
 
