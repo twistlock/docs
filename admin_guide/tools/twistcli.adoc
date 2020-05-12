@@ -181,9 +181,9 @@ The following table highlights where functions are disabled, or work differently
 |`scan`
 |Yes
 |[white]#No# {set:cellbgcolor:#000}
-|[white]#No#
+|[white]#No# {set:cellbgcolor:#000}
 
-|`app-embedded`
+|`app-embedded` {set:cellbgcolor:#fff}
 |`embed`
 |Yes
 |Yes
@@ -193,15 +193,15 @@ The following table highlights where functions are disabled, or work differently
 |
 |Yes
 |[white]#No# {set:cellbgcolor:#000}
-|[white]#No#
+|[white]#No# 
 
-.2+|`serverless` {set:cellbgcolor:#fff}
+|`serverless` {set:cellbgcolor:#fff}
 |`scan`
 |Yes
 |Yes
 |Yes
 
-.2+|`iac`
+|`iac`^5^ {set:cellbgcolor:#fff}
 |`scan`
 |Yes
 |Yes
@@ -236,6 +236,9 @@ Twistcli does not support scanning Linux images on Windows hosts with https://do
 The _support dump_ function collects Console's logs when Console malfunctions.
 Copy _twistcli_ to host where Console runs, then execute _twistcli support dump_.
 Defender logs can be retrieved directly from the Console UI under *Manage > Defenders > Manage*.
+
+^5^
+IaC scanning is only available with *Prisma Cloud Enterprise*
 
 For a comprehensive list of supported options for each subcommand, run:
 
