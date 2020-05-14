@@ -179,14 +179,12 @@ We support the following versions of official mainline vendor/project releases.
 |1.15 (GKE), 1.17
 
 |OpenShift
-|3.11*, 4.1, 4.2, 4.3
+|3.11, 4.1, 4.2, 4.3
 
 |Pivotal Cloud Foundry - PCF PAS
 |v2.7, v2.8
 
 |===
-
-*Tested on Compute 20.04.169 with OpenShift v3.11.98 and Docker version 1.13.1.
 
 
 [.section]
