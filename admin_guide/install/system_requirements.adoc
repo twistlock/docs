@@ -186,7 +186,7 @@ We support the following versions of official mainline vendor/project releases.
 
 |===
 
-*Tested on Compute 20.04.169 with OpenShift - v3.11.98, Docker version 1.13.1
+*Tested on Compute 20.04.169 with OpenShift v3.11.98 and Docker version 1.13.1.
 
 
 [.section]
