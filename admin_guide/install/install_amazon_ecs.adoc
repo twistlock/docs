@@ -30,7 +30,7 @@ If you are not using the default VPC, adjust your settings accordingly.
 
 === Key identifiers
 
-There are a number of AWS resource identifiers that are used throughout the install procedure.
+There are a number of AWS resource identifiers that used throughout the install procedure.
 The important ones are highlighted here.
 
 *Cluster name*: _tw-ecs-cluster_
