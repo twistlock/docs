@@ -131,7 +131,7 @@ For debugging purposes, also open port 22 so that you can SSH to any machine in 
 
 .. Under *Source*, select *Anywhere*.
 
-. Click *Create*.
+. Click *Create security group*.
 
 
 [.task]
