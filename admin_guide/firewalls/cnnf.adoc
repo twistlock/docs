@@ -40,6 +40,8 @@ Radar shows how containers communicate.
 
 * Manually defined rules can be exported, as an entire policy, to other instances of Prisma Cloud Console.
 
+* This other cap.
+
 
 === CNNF behavioral modeling flow
 
