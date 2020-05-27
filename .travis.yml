@@ -1,6 +1,6 @@
 services:
-	- docker
+- docker
 
 script:
-	- make
+- make
 
