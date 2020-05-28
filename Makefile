@@ -3,3 +3,6 @@ RESULT := $(shell (docker run --rm -v "$(PWD):/workdir" tmaier/hunspell -u3 -d e
 
 test:
 	@echo "$(RESULT)"
+	@if [ "$(RESULT)" != "" ]; then\
+        echo "fail";\
+    fi
