@@ -5,4 +5,4 @@ test:
 	@echo "$(RESULT)"
 	@if [ "$(RESULT)" != "" ]; then\
         exit 1;\
-    fi
+	fi
