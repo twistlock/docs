@@ -1,4 +1,4 @@
-== API
+== API test
 
 The Prisma Cloud API enables automation and integration with other systems in your environment.
 Every control in the Console UI is exposed through the RESTful API.
