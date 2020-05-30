@@ -724,7 +724,7 @@ Download the template, then update the variables specific to your environment.
 Finally, load the task definition in ECS.
 
 [.procedure]
-. Download the https://cdn.twistlock.com/docs/attachments/amazon-ecs-task-tw-defender.json[Prisma Cloud Defender task definition], and open it for editing.
+. Download the https://cdn.twistlock.com/docs/attachments/amazon-ecs-task-tw-defender-20.json[Prisma Cloud Defender task definition], and open it for editing.
 
 . Update the value for `image` to point to Prisma Cloud's cloud registry.
 +
