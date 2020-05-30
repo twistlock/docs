@@ -546,40 +546,12 @@ Get the certificates Defender requires to securely connect to Console, and then 
 +
 NOTE: <CONSOLE> is the address the curl command uses to access Console.
 
-. Retrieve the certificate bundle from the Prisma Cloud API, and save it to a file.
-It's returned as a base64 string.
-+
-Depending on the Console version the API call will be different.  
-+
-For Console version 19.11.480:
-+
-  $ curl -k -s \
-    -u <USER> \
-    -H 'Content-Type: application/json' \
-    -X GET \
-    https://<CONSOLE>:8083/api/v1/defenders/install-bundle?consoleaddr=<CONSOLE_CONN>&defenderType=rasp \
-    | jq -r '.installBundle' > INSTALL_BUNDLE
-+
-For Console versions greater than or equal to 19.11.506:
-+
-  $ curl -k -s \
-    -u <USER> \
-    -H 'Content-Type: application/json' \
-    -X GET \
-    https://<CONSOLE>:8083/api/v1/defenders/install-bundle?consoleaddr=<CONSOLE_CONN>&defenderType=appEmbedded \
-    | jq -r '.installBundle' > INSTALL_BUNDLE
-+
-NOTE: <CONSOLE_CONN> is the address the Defenders use to connect to the Console.
-Use the address of your load balancer.
+. The following command will generate certificates needed for Defender connection.
 
-. Using the output from the previous command, decode the base64 string into each of the three separate files: _ca.pem_, _client-cert.pem_, and _client-key.pem_.
-This following command also replaces the _\n_ values in the output to UNIX-style line endings.
-
-  $ for file in "ca.pem" "client-cert.pem" "client-key.pem"; \
-     do cat INSTALL_BUNDLE | base64 --decode \
-     | jq --arg i "$file" -r '.secrets[$i]' \
-     | awk '{gsub(/\\n/,"\n")}1' > $file; \
-     done
+  $ curl -k \
+     -u <USER> \
+     -X GET \
+     https://<CONSOLE>:8083/api/v1/certs/server-certs.sh | sh
 
 . Copy the certs into place.
 
@@ -588,15 +560,17 @@ Use the mount command you saved when you created your EFS file system.
 
 .. Copy the following files to the EFS file system:
 +
+* ca.pem  
+* client-cert.pem  
+* client-key.pem  
+* server-cert.pem  
+* server-key.pem
 * service-parameter
-* ca.pem
-* client-cert.pem
-* client-key.pem
 
 .. Set the ownership and permissions for each file.
 
-  $ chown root:root ca.pem client-cert.pem client-key.pem service-parameter
-  $ chmod 600 ca.pem client-cert.pem client-key.pem service-parameter
+  $ chown root:root ca.pem client-cert.pem client-key.pem server-cert.pem server-cert.key service-parameter
+  $ chmod 600 ca.pem client-cert.pem client-key.pem server-cert.pem server-cert.key service-parameter
 
 .. Unmount the EFS file system.
 
