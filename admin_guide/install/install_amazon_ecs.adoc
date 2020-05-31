@@ -533,7 +533,7 @@ Our template specifies reasonable defaults.
 For more information, see xref:../install/system_requirements.adoc#[System requirements].
 
 [.procedure]
-. Download the https://cdn.twistlock.com/docs/attachments/amazon-ecs-task-tw-console.json[Prisma Cloud Console task definition], and open it for editing.
+. Download the https://cdn.twistlock.com/docs/attachments/amazon-ecs-task-pc-console.json[Prisma Cloud Console task definition], and open it for editing.
 
 . Update the value for `image` to point to Prisma Cloud's cloud registry:
 +
@@ -566,7 +566,7 @@ For example, `18_11_128`.
 
 . Click *Save*.
 
-.. (Optional) Change the task definition name before creating. The JSON will default the name to *tw-console*.
+.. (Optional) Change the task definition name before creating. The JSON will default the name to *pc-console*.
 
 . Click *Create*.
 
@@ -590,7 +590,7 @@ A single instance of Console will run on the infrastructure node.
 
 .. For *Launch type*, select *EC2*.
 
-.. For *Task Definition*, select *tw-console*.
+.. For *Task Definition*, select *pc-console*.
 
 .. In *Service Name*, enter *pc-console*.
 
@@ -913,11 +913,11 @@ Finally, load the task definition in ECS.
 [.procedure]
 
 ifdef::compute_edition[]
-. Download the https://cdn.twistlock.com/docs/attachments/amazon-ecs-task-tw-defender.json[Prisma Cloud Defender task definition], and open it for editing.
+. Download the https://cdn.twistlock.com/docs/attachments/amazon-ecs-task-pc-defender.json[Prisma Cloud Defender task definition], and open it for editing.
 endif::compute_edition[]
 
 ifdef::prisma_cloud[]
-. Download the https://cdn.twistlock.com/docs/attachments/amazon-ecs-task-tw-defender-saas.json[Prisma Cloud Defender task definition],
+. Download the https://cdn.twistlock.com/docs/attachments/amazon-ecs-task-pc-defender-saas.json[Prisma Cloud Defender task definition],
 endif::prisma_cloud[]
 
 . Update the value for `image` to point to Prisma Cloud's cloud registry:
@@ -968,7 +968,7 @@ endif::prisma_cloud[]
 
 . Click *Save*.
 
-.. (Optional) Change the task definition name before creating. The JSON will default the name to *twistlock_defender*.
+.. (Optional) Change the task definition name before creating. The JSON will default the name to *pc-defender*.
 
 . Click *Create*.
 
@@ -992,7 +992,7 @@ Using Daemon scheduling, one Defender will run per node in your cluster.
 
 .. For *Launch type*, select *EC2*.
 
-.. For *Task Definition*, select *twistlock_defender*.
+.. For *Task Definition*, select *pc-defender*.
 
 .. In *Service Name*, enter *pc-defender*.
 

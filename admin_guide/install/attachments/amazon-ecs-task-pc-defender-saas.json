@@ -44,7 +44,7 @@
         },
         {
           "name": "WS_ADDRESS",
-          "value": "wss://<cloud-console>:443"
+          "value": "wss://<cloud-console>"
         },
         {
           "name": "INSTALL_BUNDLE",
@@ -116,7 +116,7 @@
   ],
   "placementConstraints": [],
   "memory": "512",
-  "family": "twistlock-defender",
+  "family": "pc-defender",
   "requiresCompatibilities": [
     "EC2"
   ],

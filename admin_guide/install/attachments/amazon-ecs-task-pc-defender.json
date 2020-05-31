@@ -112,7 +112,7 @@
   ],
   "placementConstraints": [],
   "memory": "512",
-  "family": "twistlock-defender",
+  "family": "pc-defender",
   "requiresCompatibilities": [
     "EC2"
   ],
