@@ -121,7 +121,7 @@ Later, you will create launch configurations and auto-scaling groups to start EC
 [.procedure]
 . Log into the AWS Management Console.
 
-. Go to *Services > Containers> Elastic Container Service*.
+. Go to *Services > Containers > Elastic Container Service*.
 
 . Click *Create Cluster*.
 
