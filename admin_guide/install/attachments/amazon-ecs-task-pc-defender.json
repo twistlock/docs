@@ -16,7 +16,7 @@
         },
         {
           "name": "DEFENDER_TYPE",
-          "value": "docker"
+          "value": "daemonset"
         },
         {
           "name": "DOCKER_CLIENT_ADDRESS",
