@@ -188,7 +188,7 @@ Additional hardening can be performed as desired for the below roles. For exampl
 
 .. Under *Source*, select *Anywhere*.
 
-. Click *Create*.
+. Click *Create security group*.
 
 endif::compute_edition[]
 
@@ -488,7 +488,9 @@ Launch a single instance of the infrastructure node into your cluster.
 +
 After the auto scaling group spins up (it will take some time), validate that your cluster has one container instance, where a container instance is the ECS vernacular for an EC2 instance that has joined the cluster and is ready to accept container workloads:
 +
+
 * Go to *Services > Containers > Elastic Container Service*.
+
 The count for *Container instances* should be 1.
 +
 * Click on the cluster, then click on the *ECS Instances* tab.
@@ -885,6 +887,7 @@ Launch two worker nodes into your cluster.
 . Review the configuration and click *Create Auto Scaling Group*.
 +
 
+
 ifdef::compute_edition[]
 . After the auto scaling group spins up (it will take some time), 
 validate that your cluster has three container instances.
@@ -900,7 +903,6 @@ validate that your cluster has two container instances.
 
 .. The count for *Container instances* in your cluster should now be a total of two.
 endif::prisma_cloud[]
-
 
 
 [.task]
@@ -951,8 +953,6 @@ ifdef::prisma_cloud[]
 * `<INSTALL-BUNDLE>` — Output from the installBundle endpoint.
 
 endif::prisma_cloud[]
-
-
 
 . Go to *Services > Containers > Elastic Container Service*.
 
