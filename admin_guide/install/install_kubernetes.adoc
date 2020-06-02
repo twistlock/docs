@@ -4,6 +4,8 @@ This procedure is optimized to get Prisma Cloud installed in your Kubernetes clu
 There are many ways to install Prisma Cloud, but we recommend that you start with this procedure first.
 You can tweak the install procedure after you have validated that this install method works.
 
+My change
+
 ifdef::compute_edition[]
 Prisma Cloud is installed with a utility called _twistcli_, which is bundled along with the rest of the Prisma Cloud software.
 The _twistcli_ utility generates YAML configuration files for Console and Defender.
