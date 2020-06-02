@@ -109,7 +109,7 @@ eval "$(pyenv virtualenv-init -)"
 pyenv install 3.7.4
 ```
 
-1. Install asciibinder v0.1.15.1.
+1. Install `ascii_binder` v0.1.15.1.
 
 ```
 sudo gem install ascii_binder -v 0.1.15.1
