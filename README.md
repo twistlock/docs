@@ -115,13 +115,13 @@ pyenv install 3.7.4
 sudo gem install ascii_binder -v 0.1.15.1
 ```
 
-1. From the root of the repo, use the following command to install our custom asciibinder package. 
+1. From the root of the repo, use the following command to install our custom `ascii_binder` package. 
 
 ```
 sudo gem install -V ./ascii_binder_pan-0.0.00.1.gem
 ```
 
-1. Run the `build-site.sh` script as follows
+1. Run the `build_site.sh` script as follows
 
 ```
 ./build_site.sh ~/docs/
