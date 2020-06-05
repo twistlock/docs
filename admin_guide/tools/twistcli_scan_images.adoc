@@ -356,7 +356,7 @@ image::detailed_scan.png[width=750]
   $ curl \
     -o scan_results.json \
     -H 'Authorization: Basic YXBpOmFwaQ==' \
-    'https://<COMPUTE_CONSOLE>/api/v1/scans?search={image name}&limit=1&reverse=true&type=twistcli'
+    'https://<COMPUTE_CONSOLE>/api/v1/scans?search={image name}&limit=1&reverse=true&type=ciImage'
 
 .. Format the scan results into human-readable format.
 +
