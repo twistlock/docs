@@ -466,6 +466,8 @@ Topics:
   File: twistcli
 - Name: Scan images with twistcli
   File: twistcli_scan_images
+- Name: Scan iac with twistcli
+  File: twistcli_scan_iac
 ---
 Name: Deployment patterns
 Dir: deployment_patterns
