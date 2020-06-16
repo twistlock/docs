@@ -236,16 +236,8 @@ Dir: access_control
 Topics:
 - Name: Access control
   File: access_control
-- Name: Access keys
-  File: access_keys
-- Name: Role-based access control
+- Name: Docker Role-based access control
   File: rbac
-- Name: Prisma Cloud user roles
-  File: prisma_cloud_user_roles
-- Name: Compute user roles
-  File: user_roles
-- Name: Assign roles
-  File: assign_roles
 - Name: Open Policy Agent
   File: open_policy_agent
 ---
@@ -337,6 +329,20 @@ Topics:
     File: port_scanning
   - Name: Service violation
     File: service_violation
+---
+Name: Authentication
+Dir: authentication
+Topics:
+- Name: Authentication
+  File: authentication
+- Name: Access keys
+  File: access_keys
+- Name: Prisma Cloud user roles
+  File: prisma_cloud_user_roles
+- Name: Compute user roles
+  File: user_roles
+- Name: Assign roles
+  File: assign_roles
 ---
 Name: Continuous integration
 Dir: continuous_integration
