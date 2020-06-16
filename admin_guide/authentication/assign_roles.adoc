@@ -1,7 +1,7 @@
 == Assign roles
 
 ifdef::compute_edition[]
-After creating a user or group, you can assign a xref:../access_control/user_roles.adoc[role] to it.
+After creating a user or group, you can assign a xref:../user_roles.adoc[role] to it.
 Roles determine the level of access to Prisma Cloud’s data and settings.
 
 Prisma Cloud supports two types of users and groups:
