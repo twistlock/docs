@@ -54,12 +54,11 @@ If you list options after the image, they will be ignored.
 ifdef::prisma_cloud[]
 `--address` [.underline]#`URL`#::
 Required.
- URL for Console, including the protocol and port.
+URL for Console, including the protocol and port.
 Only the HTTPS protocol is supported.
-+
 To get the address for your Console, go to *Compute > Manage > System > Downloads*, and copy the string under *Path to Console*.
 +
-Example: --address https://us-west1.cloud.twistlock.com/us-3-123456789
+Example: --address \https://us-west1.cloud.twistlock.com/us-3-123456789
 
 `-u`, `--user` [.underline]#`Access Key ID`#::
 Access Key ID to access Prisma Cloud. 
@@ -84,7 +83,7 @@ Only the HTTPS protocol is supported.
 By default, Console listens to HTTPS on port 8083, although your administrator can configure Console to listen on a different port.
 Defaults to `https://127.0.0.1:8083`.
 +
-Example: `--address https://console.example.com:8083`
+Example: --address \https://console.example.com:8083
 
 `-u`, `--user` [.underline]#`USERNAME`#::
 Username to access Console.  If not provided, the `TWISTLOCK_USER` environment variable will be used if defined, or "admin" is used as the default.
