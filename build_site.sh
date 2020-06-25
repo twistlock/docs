@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script builds the Prisma Cloud Compute static site
+# This script builds the Prisma Cloud Compute static doc site.
 #
 
 show_help() {
@@ -15,7 +15,7 @@ OPTIONS:
 
 DOC_SOURCE:
   path                          Path to AsciiDoctor doc source from the twistlock/docs repo
-
+                                (default: current working directory)
 "
 }
 
@@ -34,34 +34,34 @@ while getopts "${optspec}" opt; do
 done
 shift "$((OPTIND-1))"
 
-readonly dst="output/"
-
+echo "Building static site..."
 if [ "$1" != "" ]; then
-  echo "Building static site..."
+  doc_dir=$(dirname "$1")
 else
-  echo "Specify path to the cloned docs repo"
-  exit 1
+  doc_dir="."
 fi
 
-# https://stackoverflow.com/questions/3643848/copy-files-from-one-directory-into-an-existing-directory
-srcAdmin="$1""/admin_guide/."
-srcRN="$1""rn/."
-srcOps="$1""ops_guide/."
-srcRefArch="$1""ref_arch/."
-srcHistorical="$1""historical/."
-srcTroubleshooting="$1""troubleshooting/."
+work_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+output_dir="$work_dir""/output"
+
+srcAdmin="$doc_dir""/admin_guide"
+srcRN="$doc_dir""/rn"
+srcOps="$doc_dir""/ops_guide"
+srcRefArch="$doc_dir""/ref_arch"
+srcHistorical="$doc_dir""/historical"
+srcTroubleshooting="$doc_dir""/troubleshooting"
 
 # Delete previous build.
-if [ -d "$dst" ]
+if [ -d "$output_dir" ]
 then
-  rm -rf "$dst"
+  rm -rf "$output_dir"
 fi
 
 # Delete Python virtualenv.
 pyenv uninstall -f build_site_env
 
 # Create output dir.
-mkdir "$dst"
+mkdir "$output_dir"
 
 # Set up Python env.
 echo "Set up Python env"
@@ -72,29 +72,32 @@ pyenv activate build_site_env
 pip install -r requirements.txt
 
 # Initialize a git repo.
-cd "$dst"
+cd "$output_dir"
 git init
 git config user.name "build"
 git config user.email "<>"
-cd ..
+cd "$work_dir"
+
+shopt -u dotglob
 
 #
 # ADMIN GUIDE (self-hosted)
 #
 
 # Copy admin guide files into place.
+# https://stackoverflow.com/questions/3643848/copy-files-from-one-directory-into-an-existing-directory
 echo "Copy admin guide files"
-cp -R "$srcAdmin" "$dst"
-cp -R "files/." "$dst"
+cp -R "$srcAdmin""/." "$output_dir"
+cp -R "$work_dir""/files/." "$output_dir"
 
 # Rename topic map file.
-mv "$dst""_topic_map_compute_edition.yml" "$dst""_topic_map.yml"
+mv "$output_dir""/_topic_map_compute_edition.yml" "$output_dir""/_topic_map.yml"
 
 # Fix up doc tree source files.
-python format_fixup.py "$dst""_topic_map.yml"
+python format_fixup.py "$output_dir""/_topic_map.yml"
 
 # Commit files.
-cd "$dst"
+cd "$output_dir"
 git add -A
 git commit -q -m "Commit admin guide (Compute Edition)"
 
@@ -122,21 +125,24 @@ git commit -q -m "Commit admin guide (SaaS)"
 # Create a branch.
 git checkout -b rn
 
+# Delete all files.
+rm -rf "$output_dir""/*"
+
 # Copy files into place.
 echo "Copy release notes files"
-cd ..
-cp -R "$srcRN" "$dst"
-mv "$dst""_topic_map_static_site.yml" "$dst""_topic_map.yml"
+cd "$work_dir"
+cp -R "$srcRN""/." "$output_dir"
+mv "$output_dir""/_topic_map_static_site.yml" "$output_dir""/_topic_map.yml"
 
 # Fix adoc source files
-python format_fixup.py "$dst""_topic_map.yml"
+python format_fixup.py "$output_dir""/_topic_map.yml"
 if [ "$publish_cdn_links" == "true" ]; then
-  python rn_details.py "$dst""_topic_map.yml" "../../release_info.yml"
+  python rn_details.py "$output_dir""/_topic_map.yml" "../../release_info.yml"
 fi
 
 # Commit files.
 echo "Commit release files"
-cd "$dst"
+cd "$output_dir"
 git add -A
 git commit -q -m "Commit release notes"
 
@@ -147,17 +153,20 @@ git commit -q -m "Commit release notes"
 # Create a branch.
 git checkout -b ops
 
+# Delete all files.
+rm -rf "$output_dir""/"
+
 # Copy files into place.
 echo "Copy Ops Guide files"
-cd ..
-cp -R "$srcOps" "$dst"
+cd "$work_dir"
+cp -R "$srcOps""/." "$output_dir"
 
 # Fix adoc source files
-python format_fixup.py "$dst""_topic_map.yml"
+python format_fixup.py "$output_dir""/_topic_map.yml"
 
 # Commit files.
 echo "Commit Ops Guide files"
-cd "$dst"
+cd "$output_dir"
 git add -A
 git commit -q -m "Commit Ops Guide"
 
@@ -168,17 +177,20 @@ git commit -q -m "Commit Ops Guide"
 # Create a branch.
 git checkout -b ref_arch
 
+# Delete all files.
+rm -rf "$output_dir""/"
+
 # Copy files into place.
 echo "Copy Ref Arch files"
-cd ..
-cp -R "$srcRefArch" "$dst"
+cd "$work_dir"
+cp -R "$srcRefArch""/." "$output_dir"
 
 # Fix adoc source files
-python format_fixup.py "$dst""_topic_map.yml"
+python format_fixup.py "$output_dir""/_topic_map.yml"
 
 # Commit files.
 echo "Commit Ref Arch files"
-cd "$dst"
+cd "$output_dir"
 git add -A
 git commit -q -m "Commit Ref Arch"
 
@@ -189,17 +201,20 @@ git commit -q -m "Commit Ref Arch"
 # Create a branch.
 git checkout -b historical
 
+# Delete all files.
+rm -rf "$output_dir""/"
+
 # Copy files into place.
 echo "Copy Historical files"
-cd ..
-cp -R "$srcHistorical" "$dst"
+cd "$work_dir"
+cp -R "$srcHistorical""/." "$output_dir"
 
 # Fix adoc source files
-python format_fixup.py "$dst""_topic_map.yml"
+python format_fixup.py "$output_dir""/_topic_map.yml"
 
 # Commit files.
 echo "Commit Historical files"
-cd "$dst"
+cd "$output_dir"
 git add -A
 git commit -q -m "Commit Historical"
 
@@ -210,17 +225,21 @@ git commit -q -m "Commit Historical"
 # Create a branch.
 git checkout -b troubleshooting
 
+# Delete all files.
+rm -rf "$output_dir""/"
+exit
+
 # Copy files into place.
 echo "Copy Troubleshooting files"
-cd ..
-cp -R "$srcTroubleshooting" "$dst"
+cd "$work_dir"
+cp -R "$srcTroubleshooting""/." "$output_dir"
 
 # Fix adoc source files
-#python format_fixup.py "$dst""_topic_map.yml"
+#python format_fixup.py "$output_dir""_topic_map.yml"
 
 # Commit files.
 echo "Commit Troubleshooting files"
-cd "$dst"
+cd "$output_dir"
 git add -A
 git commit -q -m "Commit Troubleshooting"
 
@@ -230,6 +249,6 @@ echo "Generate static site"
 git checkout master
 asciibinder_pan package
 
-cd "_package/main"
+cd "$output_dir""/_package/main"
 cp -R "../main2/enterprise_edition" "."
 

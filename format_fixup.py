@@ -40,9 +40,21 @@ def walk_segment(config, segment, directory, depth=1):
       sed_inplace(src_file, r'^==== ', '=== ')
       sed_inplace(src_file, r'^===== ', '==== ')
 
-      include_path = src_file.relative_to("output")
+      include_path = src_file.relative_to(get_output_path(src_file))
       include_path = include_path.parent
       sed_inplace(src_file, r'^include::', f'include::{include_path}/')
+
+
+def get_output_path(path):
+  '''
+  Get the path to the output dir.
+  '''
+  p = path.resolve()
+  for rel_path in path.parents:
+    if 'output' in rel_path.parts[-1]:
+      return rel_path
+
+  return ''
 
 
 def insert_header(config, title, src_file):
