@@ -673,18 +673,6 @@ ifdef::compute_edition[]
 
 endif::compute_edition[]
 
-ifdef::prisma_cloud[]
-+
-
-. Copy the service-parameter file to the Defender EFS file system under /twistlock_certificates.
-
-. Set the ownership and permissions for the service-parameter file under twistlock_certificates:
-
-  $ sudo chown root:root service-parameter
-  $ sudo chmod 600 ca.pem service-parameter
-
-endif::prisma_cloud[]
-
 [.task]
 ==== Create a launch configuration for worker nodes
 
