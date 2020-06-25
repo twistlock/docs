@@ -275,10 +275,6 @@ NOTE: The EFS file system and ECS cluster must be in the same VPC and security g
 +
 You will use this mount command to configure your launch configuration for the Console.
 
-endif::compute_edition[]
-
-ifdef::compute_edition[]
-
 === Set up a classic load balancer 
 
 Set up an AWS Classic Load Balancer, and capture the Load Balancer DNS name. 
@@ -636,8 +632,8 @@ ifdef::prisma_cloud[]
     https://<Console>/api/v1/certs/service-parameter \
     -o service-parameter
 
-  * replace <Console> with the retrieved console address.
-  * replace <token> with the retrieve API token.
+  * replace <Console> with the retrieved Console address.
+  * replace <token> with the retrieved API token.
 
   . ensure the jq package is installed.
 
@@ -649,8 +645,8 @@ ifdef::prisma_cloud[]
     -X GET \
     "https://<Console>/api/v1/defenders/install-bundle?consoleaddr=<ConsoleAddr>&defenderType=appEmbedded" | jq -r '.installBundle'
 
-  * replace <token> with the retrieve API token.
-  * replace <Console> with the retrieved console address URL from *Manage > System > Downloads* tab.
+  * replace <token> with the retrieved API token.
+  * replace <Console> with the retrieved Console address URL from *Manage > System > Downloads* tab.
   * replace <ConsoleAddr> with the first string of the URL (without the ID).
   For example, the URL may look like https://us-region1.cloud.twistlock.com/us-1-234567 , use just "us-region1.cloud.twistlock.com" for ConsoleAddr value. 
 
