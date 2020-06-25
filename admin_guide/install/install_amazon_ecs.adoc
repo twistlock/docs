@@ -864,17 +864,25 @@ For example: for version `20.04.177`, specify `20_04_177`.  The image will look 
 
 ifdef::compute_edition[]
 +
-* `<CONSOLE-DNS>` --
-The DNS name for the load balancer you created.
+* `<CONSOLE-DNS>:<PORT>` --
+The DNS name for the load balancer you created and the port the DNS is listening on.
++
+NOTE: The default port is 8084.
++
 
 endif::compute_edition[]
 
 ifdef::prisma_cloud[]
 
 +
-* `<CONSOLE-DNS>` — The URL retrieved for your Console without the HTTPS:// prefix and the ID suffix).  
+* `<CONSOLE-DNS>:<PORT>` —-
+The URL retrieved for your Console without the HTTPS:// prefix and the ID suffix).  
 For example, The URL retrieved for your Console would look similar to https://us-west1.cloud.twistlock.com/us-0-123456789. 
 Use just `us-west1.cloud.twistlock.com` for the wss address - wss://us-west1.cloud.twistlock.com
+
++
+NOTE: The default port is 443, but can be excluded.
++
 endif::prisma_cloud[]
 
 * `<INSTALL-BUNDLE>` — Output from the installBundle endpoint.
