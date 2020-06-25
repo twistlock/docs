@@ -4,3 +4,6 @@ The Live Community hosts a Knowledge Base, which has a number of component-speci
 The articles in the Knowledge Base show how to resolve commonly encountered issues.
 
 See link:++https://support.paloaltonetworks.com/search#f:@source=[Salesforce%20-%20Knowledge%20-%20Production]&f:@panproduct=[Prisma%20Cloud%20Compute%20Edition]&f:@objecttype=[KBKnowledge]++[Prisma Cloud Compute Knowledge Base]
+
+
+See link:++https://docs.twistlock.com/docs/troubleshooting/troubleshooting/collect_debug_data.html++[Prisma Cloud Troubleshooting]
