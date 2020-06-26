@@ -19,6 +19,14 @@ DOC_SOURCE:
 "
 }
 
+clear_output_dir() {
+  # Delete all files in the output dir, except the .git dir.
+  glob="$output_dir""/*"
+  glob_expansion=($glob)
+  for p in "${glob_expansion[@]}"; do
+    rm -r "$p"
+  done
+}
 
 optspec=":r"
 while getopts "${optspec}" opt; do
@@ -78,8 +86,6 @@ git config user.name "build"
 git config user.email "<>"
 cd "$work_dir"
 
-shopt -u dotglob
-
 #
 # ADMIN GUIDE (self-hosted)
 #
@@ -88,13 +94,13 @@ shopt -u dotglob
 # https://stackoverflow.com/questions/3643848/copy-files-from-one-directory-into-an-existing-directory
 echo "Copy admin guide files"
 cp -R "$srcAdmin""/." "$output_dir"
-cp -R "$work_dir""/files/." "$output_dir"
+cp -R "$work_dir""/_files/." "$output_dir"
 
 # Rename topic map file.
 mv "$output_dir""/_topic_map_compute_edition.yml" "$output_dir""/_topic_map.yml"
 
 # Fix up doc tree source files.
-python format_fixup.py "$output_dir""/_topic_map.yml"
+python "_build/format_fixup.py" "$output_dir""/_topic_map.yml"
 
 # Commit files.
 cd "$output_dir"
@@ -126,16 +132,17 @@ git commit -q -m "Commit admin guide (SaaS)"
 git checkout -b rn
 
 # Delete all files.
-rm -rf "$output_dir""/*"
+clear_output_dir
 
 # Copy files into place.
 echo "Copy release notes files"
 cd "$work_dir"
+cp -R "$work_dir""/_files/." "$output_dir"
 cp -R "$srcRN""/." "$output_dir"
 mv "$output_dir""/_topic_map_static_site.yml" "$output_dir""/_topic_map.yml"
 
 # Fix adoc source files
-python format_fixup.py "$output_dir""/_topic_map.yml"
+python "_build/format_fixup.py" "$output_dir""/_topic_map.yml"
 if [ "$publish_cdn_links" == "true" ]; then
   python rn_details.py "$output_dir""/_topic_map.yml" "../../release_info.yml"
 fi
@@ -154,15 +161,16 @@ git commit -q -m "Commit release notes"
 git checkout -b ops
 
 # Delete all files.
-rm -rf "$output_dir""/"
+clear_output_dir
 
 # Copy files into place.
 echo "Copy Ops Guide files"
 cd "$work_dir"
+cp -R "$work_dir""/_files/." "$output_dir"
 cp -R "$srcOps""/." "$output_dir"
 
 # Fix adoc source files
-python format_fixup.py "$output_dir""/_topic_map.yml"
+python "_build/format_fixup.py" "$output_dir""/_topic_map.yml"
 
 # Commit files.
 echo "Commit Ops Guide files"
@@ -178,15 +186,16 @@ git commit -q -m "Commit Ops Guide"
 git checkout -b ref_arch
 
 # Delete all files.
-rm -rf "$output_dir""/"
+clear_output_dir
 
 # Copy files into place.
 echo "Copy Ref Arch files"
 cd "$work_dir"
+cp -R "$work_dir""/_files/." "$output_dir"
 cp -R "$srcRefArch""/." "$output_dir"
 
 # Fix adoc source files
-python format_fixup.py "$output_dir""/_topic_map.yml"
+python "_build/format_fixup.py" "$output_dir""/_topic_map.yml"
 
 # Commit files.
 echo "Commit Ref Arch files"
@@ -202,15 +211,16 @@ git commit -q -m "Commit Ref Arch"
 git checkout -b historical
 
 # Delete all files.
-rm -rf "$output_dir""/"
+clear_output_dir
 
 # Copy files into place.
 echo "Copy Historical files"
 cd "$work_dir"
+cp -R "$work_dir""/_files/." "$output_dir"
 cp -R "$srcHistorical""/." "$output_dir"
 
 # Fix adoc source files
-python format_fixup.py "$output_dir""/_topic_map.yml"
+python "_build/format_fixup.py" "$output_dir""/_topic_map.yml"
 
 # Commit files.
 echo "Commit Historical files"
@@ -226,15 +236,15 @@ git commit -q -m "Commit Historical"
 git checkout -b troubleshooting
 
 # Delete all files.
-rm -rf "$output_dir""/"
-exit
+clear_output_dir
 
 # Copy files into place.
 echo "Copy Troubleshooting files"
 cd "$work_dir"
+cp -R "$work_dir""/_files/." "$output_dir"
 cp -R "$srcTroubleshooting""/." "$output_dir"
 
-# Fix adoc source files
+# Fix adoc source files (not required for the Troubleshooting content).
 #python format_fixup.py "$output_dir""_topic_map.yml"
 
 # Commit files.
