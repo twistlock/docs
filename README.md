@@ -121,15 +121,16 @@ To do so, complete the following steps.
     sudo gem install ascii_binder -v 0.1.15.1
     ```
 
-1. From the root of the repo, use the following command to install our custom `ascii_binder` package. 
+1. Navigate into the `_build` directory and use the following command to install our custom `ascii_binder` package. 
 
     ```bash
     sudo gem install -V ./ascii_binder_pan-0.0.00.1.gem
     ```
 
-1. Run the `build_site.sh` script as follows
+1. Return to the root directory and run the `build_site.sh` script as follows
 
     ```bash
+    cd ..
     ./build_site.sh
     ```
 
