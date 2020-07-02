@@ -151,7 +151,7 @@ Example host scan:
 
 
 [.section]
-===== Individual compliance issues
+===== Individual compliance
 
 Records a compliance finding.
 These messages are tagged with __log_type="compliance"__, and are generated as a byproduct of container scans, image scans, host scans, and registry scans.
