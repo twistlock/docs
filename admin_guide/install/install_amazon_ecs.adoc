@@ -778,9 +778,9 @@ ifdef::prisma_cloud[]
     -X GET \
     https://<Console>/api/v1/certs/service-parameter \
     -o service-parameter
-
-  * replace <Console> with the retrieved Console address.
-  * replace <token> with the retrieved API token.
+  
+  * Replace `<token>` with the retrieved API token from *Compute > Manage > Authentication > User Certificates*.
+ * Replace `<Console>` with the retrieved Console address URL from *Compute > Manage > System > Downloads* tab. This will be the full string, for example, the URL may look like https://us-region1.cloud.twistlock.com/us-1-234567 .
 
   . Ensure the `jq` package is installed.
 
@@ -790,12 +790,12 @@ ifdef::prisma_cloud[]
     -H 'Content-Type: application/json' \
     -H 'Authorization: Bearer <token>' \
     -X GET \
-    "https://<Console>/api/v1/defenders/install-bundle?consoleaddr=<ConsoleAddr>&defenderType=appEmbedded" | jq -r '.installBundle'
+    "https://<Console>/api/v1/defenders/install-bundle?consoleaddr=<ConsoleAddr>&defenderType=appEmbedded" | jq -r '.installBundle' > install-bundle
 
-  * replace <token> with the retrieved API token.
-  * replace <Console> with the retrieved Console address URL from *Manage > System > Downloads* tab.
-  * replace <ConsoleAddr> with the first string of the URL (without the ID).
-  For example, the URL may look like https://us-region1.cloud.twistlock.com/us-1-234567 , use just "us-region1.cloud.twistlock.com" for ConsoleAddr value. 
+  * Replace `<token>` with the retrieved API token from *Compute > Manage > Authentication > User Certificates*.
+  * Replace `<Console>` with the retrieved Console address URL from *Compute > Manage > System > Downloads* tab. This will be the full string, for example, the URL may look like https://us-region1.cloud.twistlock.com/us-1-234567 .
+  * Replace `<ConsoleAddr>` with the first string of the URL (without the ID).
+  For example, the URL may look like https://us-region1.cloud.twistlock.com/us-1-234567 , use just "us-region1.cloud.twistlock.com".
 
 endif::prisma_cloud[]
 
