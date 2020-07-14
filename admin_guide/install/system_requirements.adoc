@@ -300,6 +300,7 @@ Prisma Cloud can also scan serverless functions for vulnerabilities and complian
 
 *Serverless Vulnerability and Compliance scanning*
 
+* C# (.NET Core 2.1, .NET Core 3.1)
 * Java 8, Java 11
 * Node.js 10.x
 * Python 2.7, 3.6, 3.7 and 3.8
