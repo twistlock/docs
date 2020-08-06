@@ -617,4 +617,4 @@ curl 'https://COMPUTE_CONSOLE_URL/api/v1/authenticate' -H 'Accept: application/j
 ./twistcli images scan --address <Console> --token <token3> ubuntu:latest
 ----
 
-#endif::prisma_cloud[]
+endif::prisma_cloud[]
