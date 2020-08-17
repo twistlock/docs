@@ -1,6 +1,6 @@
 == Manage compliance policies with the API
 
-The https://cdn.twistlock.com/docs/api/twistlock_api.html[Prisma Cloud API] can be used to automate all aspects of the product.
+The https://cdn.twistlock.com/docs/api/twistlock_api.html[Prisma Cloud Compute API] can be used to automate all aspects of the product.
 In this article, we discuss using it to automate management of compliance policies.
 
 For example, you may want to create different compliances for different parts of your environment, but base them all from a common baseline.
@@ -19,15 +19,87 @@ The process of adding, editing, or removing a policy is the same:
 . Modify the JSON output according to your needs.
 . Update policies by pushing the new JSON payload.
 
+=== Container Compliance Example
+There are multiple compliance endpoints to consider between images, serverless, and CI policy.  This example explores the procedure to automate the images compliance policy under the `/policies/compliance/container` endpoint.
+
 [.procedure]
 . Get all policies
 
-  $ curl -k -u admin:admin https://127.0.0.1:8083/api/v1/policies/compliance
+  $ curl -k -u admin:admin https://<console>:<port>/api/v1/policies/compliance/container
 
-. Modify the JSON output, explanatory comments provided after //
+. Modify the JSON output, focusing on the rules field. Explanatory comments provided after //
 +
 [source,json]
 ----
+{
+  "modified": "2020-07-24T02:02:19.224Z",
+  "owner": "admin", // see 1
+  "name": "my policy", // see 2
+  "previousName": "", // see 3
+  "effect": "alert, block", // see 3
+  "resources": {
+    "hosts": ["*"],
+    "images": ["nginx:latest"],
+    "labels": ["*"],
+    "containers": ["*"],
+    "namespaces": ["*"],
+    "accountIDs": ["*"]
+  }, // see 4
+  "action": ["*"], // see 3
+  "condition": {
+    "readonly": false, // see 3
+    "device": "", // see 3
+    "vulnerabilities": [ // see 5
+      {
+        "id": 4000, // see 6
+        "block": false, // see 7
+        "minSeverity": 1 // see 3
+      },
+      {
+        "id": 4001, // see 6
+        "block": true, // see 9
+        "minSeverity": 1 // see 3
+      }
+    ]
+  },
+  "group": ["*"], // see 3
+  "verbose": true, // see 10
+  "allCompliance": true, // see 3
+  "alertThreshold": { // see 3
+    "disabled": false,
+    "value": 0
+  },
+  "blockThreshold": { // see 3
+    "enabled": false,
+    "value": 0
+  },
+  "graceDays": 0 // see 11
+}
+
+----
++
+Where:
++
+*1* -- User who created the rule.
++
+*2* -- Name of the rule.
++
+*3* -- Obsolete / Not relevant
++
+*4* -- Scope targeting for the Compliance policy
++
+*5* -- Compliance rules are called vulnerabilities as well.
++
+*6* -- Compliance rule ID.
++
+*7* -- Alert on compliance rule 4000.
++
+*8* -- Not relevant
++
+*9* -- User who created the rule.
++
+*10* -- Name of the rule.
++
  {
     "effect": "alert", // See 1
     "action": ["*"], // See 1
