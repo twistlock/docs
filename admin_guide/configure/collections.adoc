@@ -279,7 +279,7 @@ Monitor/Compliance
 
 ==== Using Collections
 
-After a collection creation or a collection update, there are some views that require a rescan in order to be affected by the change:
+After collections are created or updated, there are some views that require a rescan before you can see the change:
 
 * Deployed Images vulnerabilities and compliance views
 * Registry Images vulnerabilities and compliance views
@@ -290,8 +290,8 @@ After a collection creation or a collection update, there are some views that re
 * Vulnerability Explorer
 * Compliance Explorer
 
-After a collection creation or a collection update, there are some views that will be affected by the change only for future records.
-These views include historical records that keep their collections from their creation time:
+After collections are created or updated, there are some views that are affected by the change only for future records.
+These views include historical records that keep their collections from creation time:
 
 * Images and Functions CI results view 
 * Events views
