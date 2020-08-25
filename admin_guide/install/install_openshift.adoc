@@ -362,7 +362,7 @@ The _--cluster-address_ flag specifies the address Defender uses to connect to C
 For Defenders deployed inside the cluster, specify Prisma Cloud Console’s service name, twistlock-console or twistlock-console.twistlock.svc, or cluster IP address.
 For Defenders deployed outside the cluster, specify either Console’s external address, which is exposed by your external route.
 
-If SELinux is enabled on the OpenShift nodes, pass the _--selinux-enabled_ argument to twistcli.
+If SELinux is enabled on the OpenShift nodes, pass the _--selinux-enabled_ argument to twistcli. By default SELinux is enabled in OpenShift 4+ and runtime is always CRI-O. When installing on OpenShift 4+ add --selinux-enabled and --cri arguments.
 
 [.procedure]
 . Generate the Defender DaemonSet YAML.
