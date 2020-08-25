@@ -533,6 +533,28 @@ NAME                    DESIRED   CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE SE
 twistlock-defender-ds   4         4        4      4           4          Deploy_Prisma Cloud=true
 ----
 
+=== Deploy Defender also to master nodes in OpenShift 4+
+
+By default OpenShift 4+ prevents workload to be scheduled to master nodes using Taints. Because of this, Defender is by default only deployed to worker / compute nodes.
++
+[source]
+----
+...
+taints:
+- effect: NoSchedule
+  key: node-role.kubernetes.io/master
+...
+----
+
+Any workload that doesn't have matching Toleration, cannot be deployed to masters. Defender daemonset doesn't have that and thus not deployed to master nodes. Adding matching toleration to daemonset allows scheduling of Defender also to master nodes.
++
+[source]
+----
+oc patch daemonset twistlock-defender-ds --type=merge -p '{"spec":{"template":{"spec":{"tolerations":[{"effect":"NoSchedule","key":"node-role.kubernetes.io/master","operator":"Exists"}]}}}}'
+----
+
+
+
 
 === Install Prisma Cloud with Helm charts
 
