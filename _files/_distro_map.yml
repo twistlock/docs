@@ -27,6 +27,9 @@ compute_edition:
     saas_upgrades:
       name: 'SaaS upgrade announcements'
       dir: 'saas_upgrades'
+    government:
+      name: 'Government'
+      dir: 'government'
 prisma_cloud:
   name: Prisma Cloud Enterprise Edition
   author: Prisma Cloud community

@@ -59,6 +59,7 @@ srcRefArch="$doc_dir""/ref_arch"
 srcHistorical="$doc_dir""/historical"
 srcTroubleshooting="$doc_dir""/troubleshooting"
 srcSaaSUpgrades="$doc_dir""/saas_upgrades"
+srcGovernment="$doc_dir""/government"
 
 # Delete previous build.
 if [ -d "$output_dir" ]
@@ -282,6 +283,32 @@ echo "Commit SaaS upgrade files"
 cd "$output_dir"
 git add -A
 git commit -q -m "Commit SaaS Upgrades"
+
+
+#
+# Government
+#
+
+# Create a branch.
+git checkout -b government
+
+# Delete all files.
+clear_output_dir
+
+# Copy files into place.
+echo "Copy government files"
+cd "$work_dir"
+cp -R "$work_dir""/_files/." "$output_dir"
+cp -R "$srcGovernment""/." "$output_dir"
+
+# Fix adoc source files
+python "_build/format_fixup.py" "$output_dir""/_topic_map.yml"
+
+# Commit files.
+echo "Commit government files"
+cd "$output_dir"
+git add -A
+git commit -q -m "Commit government"
 
 
 # Generate the static site.
