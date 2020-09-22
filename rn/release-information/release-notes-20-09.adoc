@@ -165,7 +165,7 @@ If you're configuring registry or serverless scanning via the API, you'll need t
 +
 The following snippet shows the response from `GET /api/v1/settings/registry` in 20.09.
 Notice that the `credential` object now holds null values.
-The `credetialID` is what Primsa Cloud uses to scan the registry.
+The `credentialID` is what Primsa Cloud uses to scan the registry.
 +
 ----
     {
