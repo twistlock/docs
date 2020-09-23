@@ -14,7 +14,7 @@ When users from a tenant project run twistcli, they must set the `--project` opt
 
 `twistcli images scan --project "<project_name>"`
 
-[.section]
+
 === Command
 
 `twistcli images scan` --
@@ -77,7 +77,7 @@ If not specified on the command-line, the `TWISTLOCK_PASSWORD` environment varia
 Otherwise, you will be prompted for the user's password before the scan runs.
 
 Access Key ID and Secret Key are generated from the Prisma Cloud user interface.
-For more information, see xref:../access_control/access_keys.adoc[access keys]
+For more information, see xref:../authentication/access_keys.adoc[access keys]
 
 endif::prisma_cloud[]
 
@@ -87,7 +87,7 @@ ifdef::compute_edition[]
 Complete URL for Console, including the protocol and port.
 Only the HTTPS protocol is supported.
 By default, Console listens to HTTPS on port 8083, although your administrator can configure Console to listen on a different port.
-Defaults to `https://127.0.0.1:8083`.
+Defaults to \https://127.0.0.1:8083.
 +
 Example: --address \https://console.example.com:8083
 
@@ -198,7 +198,7 @@ This does not affect where the results are sent.
 To write scan results to a file in JSON format, pass the `--output-file` flag to twistcli.
 If you specify an output file, then results cannot be sent to Console.
 
-[.section, #_api]
+[#_api]
 ==== API
 
 You can retrieve scan reports in JSON format using the Prisma Cloud Compute API.
@@ -233,7 +233,7 @@ By default, twistcli is run from outside the container image.
 ==== Podman Twistcli scans
 
 Twistcli can run scans on Podman hosts.
-Use the `--podman-path _PATH_` parameter to specify the path to podman and force the twistcli scanner to use podman.
+Use `--podman-path PATH` to specify the path to podman and force the twistcli scanner to use podman.
 For additional information, see the <<_podman, Podman>> section.
 
 
@@ -262,7 +262,7 @@ When twistcli is run from outside the container, this information is retrieved f
 When running the scanner from inside a container, you need to properly orient it by passing it the `--containerized` flag.
 There are a couple of ways to run twistcli with the `--containerized` flag: build-time and run-time.
 
-For security reasons, Prisma Cloud recommends that you create a user with the _CI User_ xref:../access_control/user_roles.adoc[role] for running scans.
+For security reasons, Prisma Cloud recommends that you create a user with the _CI User_ xref:../authentication/user_roles.adoc[role] for running scans.
 
 
 ===== Build-time invocation
@@ -523,6 +523,7 @@ If your Docker socket isn't in the default location, use the `--docker-address` 
 `--docker-address` [.underline]#`PATH`#::
 Path to the Docker socket.
 By default, twistcli looks for the Docker socket `unix:///var/run/docker.sock`.
+
 ----
 $ ./twistcli images scan \
   --address <COMPUTE_CONSOLE> \
@@ -532,7 +533,8 @@ $ ./twistcli images scan \
   <IMAGE_NAME>
 ----
 
-[.section, #_podman]
+
+[#_podman]
 === Scan Podman/CRI images
 
 Podman is a daemon-less container engine for developing, managing, and running OCI containers on Linux.
@@ -583,3 +585,39 @@ stage('Scan with Twistcli') {
 ----
 
 
+ifdef::prisma_cloud[]
+
+[.task]
+=== Using twistcli with IP whitelist feature in Prisma Cloud
+
+You control which IP addresses are allowed to log into Prisma Cloud.
+If you have login allowlisting enabled in Prisma Cloud, you must perform some additional steps to run twistcli scans and access the Compute Console API.
+
+[.procedure]
+. Get a token from the `/login` endpoint.
++
+Change api to api1 for app1, api2 for app2, api3 for app3.
++
+----
+curl "https://api.prismacloud.io/login" -H "Accept: application/json" -H "Content-Type: application/json" -d '{"username":"PC_ACCESS_KEY","password":"PC_SECRET_KEY"}' >> Extract token1 here
+----
+
+. Use token1, returned from the previous curl command, in the `/config` endpoint.
++
+----
+curl 'https://api3.prismacloud.io/compute/config' -H 'accept: application/json, text/plain, */*' -H 'content-type: application/json' --compressed -H 'x-redlock-auth: <token1>' >> Extract token2 here
+----
+
+. Use token2, returned from the previous curl command, in the `/authenticate` endpoint.
++
+----
+curl 'https://COMPUTE_CONSOLE_URL/api/v1/authenticate' -H 'Accept: application/json, text/plain, */*' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"token":"token2"}' --compressed >> Extract token3 here
+----
+
+. Use token3, returned from the previous curl command, when calling twistcli or the Compute API:
++
+----
+./twistcli images scan --address <Console> --token <token3> ubuntu:latest
+----
+
+endif::prisma_cloud[]
