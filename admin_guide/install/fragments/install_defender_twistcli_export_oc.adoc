@@ -15,6 +15,9 @@ Alternatively, you can generate Defender DaemonSet install commands in the Conso
 Install scripts work on Linux hosts only.
 For macOS and Windows hosts, use twistcli to generate Defender DaemonSet YAML configuration files, and then deploy it with oc, as described in the following procedure.
 
+NOTE: Red Hat OpenShift Container Platform (OCP) 4 now defaults to CRI-O as underlying container engine.
+Use the _--cri_ flag for any _twistcli defender export openshift_ command you run.
+
 [.procedure]
 . Retrive Console's API address (PRISMA_CLOUD_COMPUTE_CONSOLE_API_ADDR).
 
