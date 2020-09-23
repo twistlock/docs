@@ -1,0 +1,9 @@
+If you are interested in moving from Prisma Cloud Compute Edition(On-Prem) to Prisma Cloud Enterprise Edition(SaaS) there is a migration method to move some of your data and configuration. We ask that you contact your Customer Success Team to discuss this further as this is a process we will assist you with.
+
+
+Items to be aware of
+
+* This is a one-time migration. 
+* The direction is Prisma Cloud Compute Edition to Prisma Cloud Enterprise Edition. You cannot migrate from Prisma Cloud Enterprise Edition to Prisma Cloud Compute Edition.
+* If you have Projects enabled with Prisma Cloud Compute Edition, you will need to break those apart and pick a single console to migrate.
+* Your Prisma Cloud Compute Edition console version must match exactly to the Prisma Cloud Enterprise Edition console, which is always the latest version of Prisma Cloud Compute that is available.
