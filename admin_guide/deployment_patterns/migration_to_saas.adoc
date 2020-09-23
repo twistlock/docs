@@ -1,4 +1,4 @@
-If you are interested in moving from Prisma Cloud Compute Edition(On-Prem) to Prisma Cloud Enterprise Edition(SaaS) there is a migration method to move some of your data and configuration. We ask that you contact your Customer Success Team to discuss this further as this is a process we will assist you with.
+If you are interested in moving from Prisma Cloud Compute Edition(On-Prem) to Prisma Cloud Enterprise Edition(SaaS) there is a migration method to move some of your data and configuration. We ask that you contact your Renewals Manager or Customer Success Team to discuss this further, as this is a process we will assist you with.
 
 
 Items to be aware of
