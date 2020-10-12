@@ -6,8 +6,9 @@ Prisma Cloud can be configured to notify the appropriate party by email when an 
 
 ifdef::prisma_cloud[]
  
-NOTE: Due to the hosting of Enterprise Edition Compute in Google Cloud Platform, port 25 is blocked outbound from Console.  All other ports are available for use, including 587 and 465.  
-For more information, see:  https://cloud.google.com/compute/docs/tutorials/sending-mail
+NOTE: Because Prisma Cloud Enterprise Edition Compute Console is hosted on Google Cloud Platform, outbound connections on port 25 from Console are blocked.
+All other ports are available, including ports 587 and 465.
+For more information, see https://cloud.google.com/compute/docs/tutorials/sending-mail[here].
 
 endif::prisma_cloud[]
 
