@@ -4,6 +4,12 @@ Prisma Cloud can send email alerts when your policies are violated.
 Audits in *Monitor > Events* are the result of a policy violation.
 Prisma Cloud can be configured to notify the appropriate party by email when an entire policy, or even specific rules, are violated.
 
+ifdef::prisma_cloud[]
+ 
+NOTE: Due to the hosting of Enterprise Edition Compute in Google Cloud Platform, port 25 is blocked outbound from Console.  All other ports are available for use, including 587 and 465.  
+For more information, see:  https://cloud.google.com/compute/docs/tutorials/sending-mail
+
+endif::prisma_cloud[]
 
 // == Configuring alerts
 //
