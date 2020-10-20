@@ -8,7 +8,7 @@ During scheduled maintenances, customers may experience intermittent failures ac
 
 **Date of Maintenance:** Sunday, October 25, 2020 
 
-**Time Window:** 11AM to 5AM PST
+**Time Window:** 11PM to 5AM PST
 
 **Details:**
 // GH fix: https://github.com/twistlock/twistlock/issues/23159
