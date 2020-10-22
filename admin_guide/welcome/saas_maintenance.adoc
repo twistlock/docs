@@ -17,5 +17,6 @@ Currently Compute Consoles have dynamic public ips associated with them for egre
 Features such as Cloud Discovery that require Compute Console to connect to user's environment for API calls, need whitelisting of the Compute Console IP address in order for the scans to work.
 With this maintenance, we will be migrating all Compute Consoles behind NAT gateways so that users can have static IP addresses to whitelist as documented here: xref:/admin_guide/welcome/nat_gateway_ip_addresses.adoc[NAT gateway IP addresses for Compute]
 
-**Action Item for Customers:**
+**Action Items:**
+
 Please ensure you have whitelisted the new IPs for Egress and Ingress connections. The old IPs will be deleted after the migration. 
