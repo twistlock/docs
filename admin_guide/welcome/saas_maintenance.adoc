@@ -20,4 +20,4 @@ With this maintenance, we will be migrating all Compute Consoles behind NAT gate
 **Action Items:**
 
 Please ensure you have whitelisted the new Compute Console IPs for Egress and Ingress connections. 
-The old IPs will be deleted after the migration, hence failure to whitelist the new IPs can result in disconnects from Defenders / twistcli etc. 
+The **old IPs will be deleted after the migration**, hence failure to whitelist the new IPs can result in disconnects from Defenders / twistcli etc. 
