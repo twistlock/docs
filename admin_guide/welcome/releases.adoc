@@ -25,7 +25,7 @@ All releases available for download are displayed.
 image::releases_csp.png[width=800]
 
 
-=== Downloading the software programmatically
+=== Downloading the software programmatically [[download-link]]
 
 Besides hosting the download on the Customer Support Portal, we also support programmatic download (e.g., curl, wget) of the release directly from our CDN.
 The link to the tarball is published in the release notes.
