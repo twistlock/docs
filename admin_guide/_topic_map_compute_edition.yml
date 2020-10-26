@@ -26,12 +26,12 @@ Dir: welcome
 Topics:
 - Name: Welcome
   File: welcome
+- Name: Releases
+  File: releases
 - Name: Getting started
   File: getting_started
 - Name: Product architecture
   File: product_architecture
-- Name: Releases
-  File: releases
 - Name: Support lifecycle
   File: support_lifecycle
 - Name: Licensing
