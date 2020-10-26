@@ -10,7 +10,7 @@ To prepare for upcoming upgrades, please carefully review the breaking changes h
 
 All Compute Consoles in Prisma Cloud Enterprise Edition are scheduled to be automatically upgraded on Sunday, November 1st between 12-3am PST. You may experience intermittent service interruptions during this time, due to the upgrade.
 
-Release notes are available here: 
+Release notes are available here: https://docs.twistlock.com/docs/releases/release-information/latest.html
 
 
 === Upgrade plan for 20.09
