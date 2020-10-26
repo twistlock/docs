@@ -29,7 +29,7 @@ endif::prisma_cloud[]
 ==== Cluster
 
 ifdef::compute_edition[]
-* You have provisioned a PKS cluster that meets the minimum xref:../install/system_requirements.adoc#[system requirements].
+* You have provisioned a PKS cluster that meets the minimum xref:../install/system_requirements.adoc[system requirements].
 endif::compute_edition[]
 
 * Prisma Cloud Defender requires elevated privileges.
