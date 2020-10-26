@@ -10,7 +10,7 @@ image::update_bell.png[width=800]
 
 
 [.task]
-=== Downloading the software
+=== Downloading the software [[download]]
 
 Download the software from the Palo Alto Networks https://support.paloaltonetworks.com/[Customer Support portal].
 
