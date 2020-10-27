@@ -91,7 +91,6 @@ Designate Prisma Cloud's cloud registry by omitting the _--image-name_ flag.
     --address <PRISMA_CLOUD_COMPUTE_CONSOLE_API_ADDR> \
     --user <ADMIN_USER> \
     --cluster-address <PRISMA_CLOUD_COMPUTE_SVC_ADDR> \
-    --selinux-enabled \
     --helm
 +
 *Openshift 4: Outside the OpenShift cluster + pull the Defender image from the  Prisma Cloud cloud registry.*
@@ -102,7 +101,6 @@ Designate Prisma Cloud's cloud registry by omitting the _--image-name_ flag. Def
     --address <PRISMA_CLOUD_COMPUTE_CONSOLE_API_ADDR> \
     --user <ADMIN_USER> \
     --cluster-address <PRISMA_CLOUD_COMPUTE_SVC_ADDR> \
-    --selinux-enabled \
     --helm \
     --cri
 +
@@ -113,7 +111,6 @@ Use the _--image-name_ flag to designate an image from the OpenShift internal re
     --address <PRISMA_CLOUD_COMPUTE_CONSOLE_API_ADDR> \
     --user <ADMIN_USER> \
     --cluster-address <PRISMA_CLOUD_COMPUTE_SVC_ADDR> \
-    --selinux-enabled \
     --image-name 172.30.163.181:5000/twistlock/private:defender_<VERSION> \
     --helm
 +
@@ -124,7 +121,6 @@ Use the _--image-name_ flag to designate an image from the OpenShift internal re
     --address <PRISMA_CLOUD_COMPUTE_CONSOLE_API_ADDR> \
     --user <ADMIN_USER> \
     --cluster-address <PRISMA_CLOUD_COMPUTE_SVC_ADDR> \
-    --selinux-enabled \
     --image-name 172.30.163.181:5000/twistlock/private:defender_<VERSION> \
     --helm \
     --cri
@@ -137,7 +133,6 @@ This flag specifies the endpoint for the Prisma Cloud Compute API and must inclu
     --address <PRISMA_CLOUD_COMPUTE_CONSOLE_API_ADDR> \
     --user <ADMIN_USER> \
     --cluster-address <PRISMA_CLOUD_COMPUTE_SVC_ADDR> \
-    --selinux-enabled \
     --helm
 +
 *Openshift 4: Inside the OpenShift cluster + pull the Defender image from the Prisma Cloud cloud registry.*
@@ -148,7 +143,6 @@ This flag specifies the endpoint for the Prisma Cloud Compute API and must inclu
     --address <PRISMA_CLOUD_COMPUTE_CONSOLE_API_ADDR> \
     --user <ADMIN_USER> \
     --cluster-address <PRISMA_CLOUD_COMPUTE_SVC_ADDR> \
-    --selinux-enabled \
     --helm \
     --cri
 +
@@ -159,7 +153,6 @@ Use the _--image-name_ flag to designate an image in the OpenShift internal regi
     --address <PRISMA_CLOUD_COMPUTE_CONSOLE_API_ADDR> \
     --user <ADMIN_USER> \
     --cluster-address <PRISMA_CLOUD_COMPUTE_SVC_ADDR> \
-    --selinux-enabled \
     --image-name 172.30.163.181:5000/twistlock/private:defender_<VERSION> \
     --helm
 +
@@ -170,7 +163,6 @@ Use the _--image-name_ flag to designate an image in the OpenShift internal regi
     --address <PRISMA_CLOUD_COMPUTE_CONSOLE_API_ADDR> \
     --user <ADMIN_USER> \
     --cluster-address <PRISMA_CLOUD_COMPUTE_SVC_ADDR> \
-    --selinux-enabled \
     --image-name 172.30.163.181:5000/twistlock/private:defender_<VERSION> \
     --helm \
     --cri
