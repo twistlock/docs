@@ -1,4 +1,4 @@
-=== Execution Flow Hijack Attempt
+== Execution Flow Hijack Attempt
 
 === Investigation
 
