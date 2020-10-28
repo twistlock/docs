@@ -1,0 +1,5 @@
+== Altered Binary
+
+=== Investigation
+
+=== Mitigation
