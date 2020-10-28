@@ -87,238 +87,17 @@ The custom string serves as a marker that lets you correlate specific events to 
 . For *Identifier*, click *Edit*, and enter a string.
 
 
-=== Events
+=== Console events
 
 Both Console and Defender emit messages.
-The data emitted to syslog and stdout is exactly the same.
-
-
-==== Console events
-
 Console syslog messages are tagged as _Twistlock-Console_ in the logs.
 
+The data emitted to syslog and stdout is exactly the same.
 
 [.section]
-===== Image scan
+==== Console syslog event types
 
-Records when Prisma Cloud scans an image.
-
-Example image scan message:
-
-  Jul 30 18:51:32 aqsa-root Twistlock-Console[1]: 
-    time="2019-07-30T18:51:32.214136319Z" 
-    type="scan_summary" 
-    log_type="image" 
-    image_id="sha256:cd14cecfdb3a657ba7d05bea026e7ac8b9abafc6e5c66253ab327c7211fa6281" 
-    image_name="aqsa/internal:tag5" 
-    vulnerabilities="297" 
-    compliance="1"
-
-
-[.section]
-===== Container scan
-
-Records when Prisma Cloud scans a container.
-
-Example container scan message:
-
-  Jul 30 22:06:15 aqsa-root Twistlock-Console[1]: 
-    time="2019-07-30T22:06:15.804842461Z" 
-    type="container_scan" 
-    log_type="container" 
-    container_id="d29ac3222f430ccf6a7d730db5cec3363d4c608680de881e26e13f9011e36d13" 
-    container_name="twistlock_console" 
-    image_name="twistlock/private:console_19_07_353" 
-    compliance="6"
-
-
-[.section]
-===== Host scan
-
-Records when Prisma Cloud scans a host.
-Defenders scan the hosts they run on.
-
-Example host scan:
-
-  Jul 30 22:09:53 aqsa-root Twistlock-Console[1]: 
-    time="2019-07-30T22:09:53.390680962Z" 
-     type="scan_summary" 
-     log_type="host" 
-     hostname="aqsa-root.c.cto-sandbox.internal" 
-     vulnerabilities="89" 
-     compliance="17"
-
-
-[.section]
-===== Code repository scan
-
-Records when Prisma Cloud scans a code repository.
-
-Example scan:
-
-  Jul  7 23:34:09 ip-172-31-55-106 Twistlock-Console[1]:
-    time="2020-07-07T23:34:09.25109843Z"
-    type="scan_summary"
-    last_update_time="2020-07-07 23:21:00.203 +0000 UTC"
-    log_type="code_repository_scan"
-    source="github"
-    repository_name="jerryso/apper"
-    vulnerable_files="1"
-    vulnerabilities="25"
-    collections="All"
-
-
-[.section]
-===== Individual compliance issues
-
-Records a compliance finding.
-These messages are tagged with __log_type="compliance"__, and are generated as a byproduct of container scans, image scans, host scans, and registry scans.
-
-Compliance issues are only recorded when *Detailed output for vulnerabilities and compliance* is enabled in *Manage > Alerts > Logging* (to see this option, syslog must be enabled).
-
-A syslog entry is generated for each compliance issue.
-This can result in a significant amount of data, which is why verbose output is disabled by default.
-
-You must have a rule that alerts on compliance issues for an entry to be written to syslog.
-It might just be the __Default - alert all components__ rule, or another custom rule.
-This option does not simply log all compliance issues irrespective of the rules that are in place.
-
-Example image compliance issue:
-
-  Jul 30 22:18:53 aqsa-root Twistlock-Console[1]: 
-    time="2019-07-30T22:18:53.23838464Z" 
-    type="image_scan" 
-    log_type="containerCompliance" 
-    compliance_id="41" 
-    severity="high" 
-    description="(CIS_Docker_CE_v1.1.0 - 4.1) Image should be created with a non-root user" 
-    rule="Default - ignore Prisma Cloud components" 
-    host="aqsa-root.c.cto-sandbox.internal"
-    image_id="sha256:a92d9a54137dccb6f78161d4468b21ae4bebe4fc3c772845253a2f8d80a5df08" 
-    image_name="twistlock/private:defender_19_03_311"
-  
-
-Example container compliance issue:
-
- Jul 30 22:22:56 aqsa-root Twistlock-Console[1]: 
-  time="2019-07-30T22:22:56.871490132Z" 
-  type="container_scan" 
-  log_type="containerCompliance" 
-  compliance_id="526" 
-  severity="medium" 
-  description="(CIS_Docker_CE_v1.1.0 - 5.26) Check container health at runtime" 
-  rule="Default - alert on critical and high" 
-  host="aqsa-root.c.cto-sandbox.internal" 
-  container_id="22b745b2220f3f128a1cf57d2ffff328a02ba380930ebf83fca9f26d4d2b8aa4" 
-  container_name="serene_cray"
- 
-
-Example host compliance issue:
-
- Jul 30 22:09:53 aqsa-root Twistlock-Console[1]: 
-  time="2019-07-30T22:09:53.390585517Z" 
-  type="host_scan" 
-  log_type="containerCompliance" 
-  compliance_id="6518" 
-  severity="high" 
-  description="(CIS_Linux_1.1.0 - 5.1.8) Ensure at/cron is restricted to authorized users" 
-  rule="Default - alert on critical and high" 
-  host="aqsa-root.c.cto-sandbox.internal"
-
-
-[.section]
-===== Individual vulnerability issues
-
-Records a vulnerability finding.
-These messages are tagged with __log_type="vulnerability"__, and are generated as a byproduct of image scans, host scans, and registry scans.
-
-Vulnerability issues are only recorded when *Detailed output for vulnerabilities and compliance* is enabled in *Manage > Alerts > Logging*.
-
-A syslog entry is generated for each vulnerability for each package.
-This can result in a significant amount of data, which is why verbose output is disabled by default.
-
-For example, consider a rule that raises an alert when vulnerabilities of medium severity or higher are found in an image.
-If there are eleven packages that violate this rule, there will be eleven syslog entries, one for each package.
-
-You must have a rule that alerts on vulnerabilities for an entry to be written to syslog.
-It might just be the __Default - alert all components__ rule, or another custom rule.
-This option does not simply log all vulnerability data irrespective of the rules that are in place.
-
-Example image vulnerability issue:
-
-  Jul 30 22:19:11 aqsa-root Twistlock-Console[1]: 
-    time="2019-07-30T22:19:11.264627256Z" 
-    type="image_scan" 
-    log_type="vulnerability" 
-    vulnerability_id="410" 
-    description="Image contains vulnerable Python components" 
-    cve="CVE-2019-11236" 
-    severity="medium" 
-    package="urllib3" 
-    package_version="1.24.1" 
-    vendor_status="fixed in 1.24.3" 
-    rule="test" 
-    host="aqsa-root.c.cto-sandbox.internal" 
-    image_id="sha256:196601f91030425db810fa57104b041e414b9b963923ad574e74700c3ea8213e" 
-    image_name="weaveworksdemos/user-db:0.4.0"
-
-Example registry image vulnerability issue:
-
-  Jul 30 22:03:56 aqsa-root Twistlock-Console[1]: 
-    time="2019-07-30T22:03:56.930640366Z" 
-    type="registry_scan" 
-    log_type="vulnerability" 
-    vulnerability_id="410" 
-    description="Image contains vulnerable Python components" 
-    cve="CVE-2019-11236" 
-    severity="medium" 
-    package="urllib3" 
-    package_version="1.24.1" 
-    vendor_status="fixed in 1.24.3" 
-    rule="test" 
-    host="aqsa-root.c.cto-sandbox.internal" 
-    image_id="sha256:11cd0b38bc3ceb958ffb2f9bd70be3fb317ce7d255c8a4c3f4af30e298aa1aab" 
-    image_name="aqsa/internal:tag7"
-  
-
-Example host vulnerability issue:
-
-  Jul 30 22:09:53 aqsa-root Twistlock-Console[1]: 
-    time="2019-07-30T22:09:53.390181271Z" 
-    type="host_scan" 
-    log_type="vulnerability" 
-    vulnerability_id="46" 
-    description="Image contains vulnerable OS packages" 
-    cve="CVE-2017-8845" 
-    severity="low" 
-    package="lzo2" 
-    package_version="2.08-1.2" 
-    vendor_status="deferred" 
-    rule="Default - alert all components" host="aqsa-root.c.cto-sandbox.internal"
-
-
-[.section]
-===== Admin activity
-
-Changes to any settings (including previous and new values), changes to any rules (create, modify, or delete), and all logon activity (success and failure) are logged.
-For every event, both the user name and source IP are captured.
-
-Example admin acitivty audit:
-
-  
-  Jul 30 21:58:16 aqsa-root Twistlock-Console[1]: 
-    time="2019-07-30T21:58:16.80522678Z" 
-    type="management_audit" 
-    log_type="login" 
-    username="aqsa" 
-    source_ip="137.83.195.96" 
-    api="/api/v1/authenticate" 
-    status="successful login attempt"
-
-[.section]
-===== Console Syslog Output Types
-
-The below table describes each output type as well as the sub-types associated with each parent syslog typing.
+The following table describes each message type and sub-type.
 
 [cols="15%,25%,60%", options="header"]
 |===
@@ -466,13 +245,296 @@ The below table describes each output type as well as the sub-types associated w
 
 |===
 
-==== Defender events
+[.section]
+==== Image scan
 
-Defender syslog messages are tagged as _Twistlock-Defender_ in logs.
+Records when Prisma Cloud scans an image.
+
+Example image scan message:
+
+  Jul 30 18:51:32 aqsa-root Twistlock-Console[1]: 
+    time="2019-07-30T18:51:32.214136319Z" 
+    type="scan_summary" 
+    log_type="image" 
+    image_id="sha256:cd14cecfdb3a657ba7d05bea026e7ac8b9abafc6e5c66253ab327c7211fa6281" 
+    image_name="aqsa/internal:tag5" 
+    vulnerabilities="297" 
+    compliance="1"
 
 
 [.section]
-===== Container runtime audit
+==== Container scan
+
+Records when Prisma Cloud scans a container.
+
+Example container scan message:
+
+  Jul 30 22:06:15 aqsa-root Twistlock-Console[1]: 
+    time="2019-07-30T22:06:15.804842461Z" 
+    type="container_scan" 
+    log_type="container" 
+    container_id="d29ac3222f430ccf6a7d730db5cec3363d4c608680de881e26e13f9011e36d13" 
+    container_name="twistlock_console" 
+    image_name="twistlock/private:console_19_07_353" 
+    compliance="6"
+
+
+[.section]
+==== Host scan
+
+Records when Prisma Cloud scans a host.
+Defenders scan the hosts they run on.
+
+Example host scan:
+
+  Jul 30 22:09:53 aqsa-root Twistlock-Console[1]: 
+    time="2019-07-30T22:09:53.390680962Z" 
+     type="scan_summary" 
+     log_type="host" 
+     hostname="aqsa-root.c.cto-sandbox.internal" 
+     vulnerabilities="89" 
+     compliance="17"
+
+
+[.section]
+==== Code repository scan
+
+Records when Prisma Cloud scans a code repository.
+
+Example scan:
+
+  Jul  7 23:34:09 ip-172-31-55-106 Twistlock-Console[1]:
+    time="2020-07-07T23:34:09.25109843Z"
+    type="scan_summary"
+    last_update_time="2020-07-07 23:21:00.203 +0000 UTC"
+    log_type="code_repository_scan"
+    source="github"
+    repository_name="jerryso/apper"
+    vulnerable_files="1"
+    vulnerabilities="25"
+    collections="All"
+
+
+[.section]
+==== Individual compliance issues
+
+Records a compliance finding.
+These messages are tagged with __log_type="compliance"__, and are generated as a byproduct of container scans, image scans, host scans, and registry scans.
+
+Compliance issues are only recorded when *Detailed output for vulnerabilities and compliance* is enabled in *Manage > Alerts > Logging* (to see this option, syslog must be enabled).
+
+A syslog entry is generated for each compliance issue.
+This can result in a significant amount of data, which is why verbose output is disabled by default.
+
+You must have a rule that alerts on compliance issues for an entry to be written to syslog.
+It might just be the __Default - alert all components__ rule, or another custom rule.
+This option does not simply log all compliance issues irrespective of the rules that are in place.
+
+Example image compliance issue:
+
+  Jul 30 22:18:53 aqsa-root Twistlock-Console[1]: 
+    time="2019-07-30T22:18:53.23838464Z" 
+    type="image_scan" 
+    log_type="containerCompliance" 
+    compliance_id="41" 
+    severity="high" 
+    description="(CIS_Docker_CE_v1.1.0 - 4.1) Image should be created with a non-root user" 
+    rule="Default - ignore Prisma Cloud components" 
+    host="aqsa-root.c.cto-sandbox.internal"
+    image_id="sha256:a92d9a54137dccb6f78161d4468b21ae4bebe4fc3c772845253a2f8d80a5df08" 
+    image_name="twistlock/private:defender_19_03_311"
+  
+
+Example container compliance issue:
+
+ Jul 30 22:22:56 aqsa-root Twistlock-Console[1]: 
+  time="2019-07-30T22:22:56.871490132Z" 
+  type="container_scan" 
+  log_type="containerCompliance" 
+  compliance_id="526" 
+  severity="medium" 
+  description="(CIS_Docker_CE_v1.1.0 - 5.26) Check container health at runtime" 
+  rule="Default - alert on critical and high" 
+  host="aqsa-root.c.cto-sandbox.internal" 
+  container_id="22b745b2220f3f128a1cf57d2ffff328a02ba380930ebf83fca9f26d4d2b8aa4" 
+  container_name="serene_cray"
+ 
+
+Example host compliance issue:
+
+ Jul 30 22:09:53 aqsa-root Twistlock-Console[1]: 
+  time="2019-07-30T22:09:53.390585517Z" 
+  type="host_scan" 
+  log_type="containerCompliance" 
+  compliance_id="6518" 
+  severity="high" 
+  description="(CIS_Linux_1.1.0 - 5.1.8) Ensure at/cron is restricted to authorized users" 
+  rule="Default - alert on critical and high" 
+  host="aqsa-root.c.cto-sandbox.internal"
+
+
+[.section]
+==== Individual vulnerability issues
+
+Records a vulnerability finding.
+These messages are tagged with __log_type="vulnerability"__, and are generated as a byproduct of image scans, host scans, and registry scans.
+
+Vulnerability issues are only recorded when *Detailed output for vulnerabilities and compliance* is enabled in *Manage > Alerts > Logging*.
+
+A syslog entry is generated for each vulnerability for each package.
+This can result in a significant amount of data, which is why verbose output is disabled by default.
+
+For example, consider a rule that raises an alert when vulnerabilities of medium severity or higher are found in an image.
+If there are eleven packages that violate this rule, there will be eleven syslog entries, one for each package.
+
+You must have a rule that alerts on vulnerabilities for an entry to be written to syslog.
+It might just be the __Default - alert all components__ rule, or another custom rule.
+This option does not simply log all vulnerability data irrespective of the rules that are in place.
+
+Example image vulnerability issue:
+
+  Jul 30 22:19:11 aqsa-root Twistlock-Console[1]: 
+    time="2019-07-30T22:19:11.264627256Z" 
+    type="image_scan" 
+    log_type="vulnerability" 
+    vulnerability_id="410" 
+    description="Image contains vulnerable Python components" 
+    cve="CVE-2019-11236" 
+    severity="medium" 
+    package="urllib3" 
+    package_version="1.24.1" 
+    vendor_status="fixed in 1.24.3" 
+    rule="test" 
+    host="aqsa-root.c.cto-sandbox.internal" 
+    image_id="sha256:196601f91030425db810fa57104b041e414b9b963923ad574e74700c3ea8213e" 
+    image_name="weaveworksdemos/user-db:0.4.0"
+
+Example registry image vulnerability issue:
+
+  Jul 30 22:03:56 aqsa-root Twistlock-Console[1]: 
+    time="2019-07-30T22:03:56.930640366Z" 
+    type="registry_scan" 
+    log_type="vulnerability" 
+    vulnerability_id="410" 
+    description="Image contains vulnerable Python components" 
+    cve="CVE-2019-11236" 
+    severity="medium" 
+    package="urllib3" 
+    package_version="1.24.1" 
+    vendor_status="fixed in 1.24.3" 
+    rule="test" 
+    host="aqsa-root.c.cto-sandbox.internal" 
+    image_id="sha256:11cd0b38bc3ceb958ffb2f9bd70be3fb317ce7d255c8a4c3f4af30e298aa1aab" 
+    image_name="aqsa/internal:tag7"
+  
+
+Example host vulnerability issue:
+
+  Jul 30 22:09:53 aqsa-root Twistlock-Console[1]: 
+    time="2019-07-30T22:09:53.390181271Z" 
+    type="host_scan" 
+    log_type="vulnerability" 
+    vulnerability_id="46" 
+    description="Image contains vulnerable OS packages" 
+    cve="CVE-2017-8845" 
+    severity="low" 
+    package="lzo2" 
+    package_version="2.08-1.2" 
+    vendor_status="deferred" 
+    rule="Default - alert all components" host="aqsa-root.c.cto-sandbox.internal"
+
+
+[.section]
+==== Admin activity
+
+Changes to any settings (including previous and new values), changes to any rules (create, modify, or delete), and all logon activity (success and failure) are logged.
+For every event, both the user name and source IP are captured.
+
+Example admin acitivty audit:
+
+  
+  Jul 30 21:58:16 aqsa-root Twistlock-Console[1]: 
+    time="2019-07-30T21:58:16.80522678Z" 
+    type="management_audit" 
+    log_type="login" 
+    username="aqsa" 
+    source_ip="137.83.195.96" 
+    api="/api/v1/authenticate" 
+    status="successful login attempt"
+
+
+=== Defender events
+
+Both Console and Defender emit messages.
+Defender syslog messages are tagged as _Twistlock-Defender_ in logs.
+
+The data emitted to syslog and stdout is exactly the same.
+
+[.section]
+==== Defender syslog event types
+
+The following table describes each event type and sub-type.
+
+[cols="15%,25%,60%", options="header"]
+|===
+|Syslog Type |Sub Type |Description
+
+|container_runtime_audit
+|--
+|This represents a Container Runtime Audit. Details of Audit type is listed as subtype below.
+
+|--
+|processes
+|This represents a Container process runtime audit.
+
+|--
+|network
+|This represents a Container network runtime audit.
+
+|--
+|filesystem
+|This represents a Container filesystem runtime audit.
+
+|host_activity_audit
+|--
+|This represents a Host activity audit.
+
+|host_network_firewall_audit
+|--
+|This represents a Host WAAS audit.
+
+|container_app_firewall_audit
+|
+|This represents a Container WAAS audit.
+
+|host_runtime_audit
+|--
+|This represents a Host Runtime Audit. Each audit type is listed as subtype below.
+
+|--
+|processes
+|This represents a Host process runtime audit.
+
+|--
+|network
+|This represents a Host network runtime audit.
+
+|--
+|kubernetes
+|This represents a Host Kubernetes runtime audit.
+
+|--
+|filesystem
+|This represents a Host filesystem runtime audit.
+
+|incident
+|--
+|This represents an Incident. Host and Container incidents are differentiated by "host" or "container_id".
+
+|===
+
+[.section]
+==== Container runtime audit
 
 Activity that breaches your runtime rules or the automatically generated allow lists in your models generates audits.
 The _log_type_ field specifies the runtime sensor that detected the anomaly (filesystem, processes. syscalls, or network).
@@ -493,7 +555,7 @@ Example container runtime audit: The following process audit shows that busybox 
 
 
 [.section]
-===== Host runtime audit
+==== Host runtime audit
 
 Activity that breaches your runtime rules or the automatically generated allow lists in your host services models generates audits.
 
@@ -509,7 +571,7 @@ Example host runtime audit:
   
 
 [.section]
-===== Access audit
+==== Access audit
 
 Docker commands run on hosts protected by Defender.
 
@@ -555,7 +617,7 @@ Example:
     rule="Default - allow all"
 
 [.section]
-===== App firewall audit (WAAS)
+==== App firewall audit (WAAS)
 
 All events associated with WAAS (Web-Application and API Security) rules for container, hosts and app-embedded generate audits.
 
@@ -632,7 +694,7 @@ Example:
 
 
 [.section]
-===== Process activity audit
+==== Process activity audit
 
 Records all processes spawned in a container.
 
@@ -663,7 +725,7 @@ Example: This audit shows that busybox was spawned in the container with ID 8c5b
   
  
 [.section]
-===== Incidents
+==== Incidents
 
 Incidents are logical groupings of events, related by context, that reveal known attack patterns.
 
@@ -688,68 +750,6 @@ Example host incident:
     incident_category="serviceViolation"
     audit_ids="5a9c72a223d020590de74db5"
 
-[.section]
-===== Defender Syslog Output Types
-
-The below table describes each output type as well as the sub-types associated with each parent syslog typing.
-
-[cols="15%,25%,60%", options="header"]
-|===
-|Syslog Type |Sub Type |Description
-
-|container_runtime_audit
-|--
-|This represents a Container Runtime Audit. Details of Audit type is listed as subtype below.
-
-|--
-|processes
-|This represents a Container process runtime audit.
-
-|--
-|network
-|This represents a Container network runtime audit.
-
-|--
-|filesystem
-|This represents a Container filesystem runtime audit.
-
-|host_activity_audit
-|--
-|This represents a Host activity audit.
-
-|host_network_firewall_audit
-|--
-|This represents a Host WAAS audit.
-
-|container_app_firewall_audit
-|
-|This represents a Container WAAS audit.
-
-|host_runtime_audit
-|--
-|This represents a Host Runtime Audit. Each audit type is listed as subtype below.
-
-|--
-|processes
-|This represents a Host process runtime audit.
-
-|--
-|network
-|This represents a Host network runtime audit.
-
-|--
-|kubernetes
-|This represents a Host Kubernetes runtime audit.
-
-|--
-|filesystem
-|This represents a Host filesystem runtime audit.
-
-|incident
-|--
-|This represents an Incident. Host and Container incidents are differentiated by "host" or "container_id".
-
-|===
 
 === Rate limiters
 
