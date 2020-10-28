@@ -1,0 +1,5 @@
+== Suspicious Binary
+
+=== Investigation
+
+=== Mitigation
