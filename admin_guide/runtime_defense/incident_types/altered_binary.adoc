@@ -1,5 +1,11 @@
 == Altered Binary
 
+An altered binary incident indicates that an altered or corrupted package binary was spawned during entry point or later after container started.
+
 === Investigation
+
+The following incident shows that process python2.7 was launched, but it seems to be altered or corrupted. This is decidedly unexpected behavior. 
+
+image::altered_binary_incident.png[width=800]
 
 === Mitigation
