@@ -1,11 +1,21 @@
 == Altered Binary
 
-An altered binary incident indicates that an altered or corrupted package binary was spawned during entry point or later after container started.
+An altered binary incident indicates that a binary with metadata that's different than what's specified by its package was detected. This binary might have been maliciously replaced or altered.
 
 === Investigation
 
-The following incident shows that process python2.7 was launched, but it seems to be altered or corrupted. This is decidedly unexpected behavior. 
+The following incident shows that process python2.7 was launched, but it seems to be altered or corrupted. 
 
 image::altered_binary_incident.png[width=800]
 
+Your investigation should focus on:
+
+* Determining how the binary in the alert, such as python2.7, was altered. Review additional entries in Incident Explorer and other audits from the source, looking for unusual process execution, hijacked processes, and explicit execution of commands.
+
 === Mitigation
+
+After determining the cause for the corrupted binary, resolve the problem, whether it be an exposed vulnerability, a configuration issue, or something else.
+
+For additional protection, enable the _prevent_ or _block_ actions in the applicable compliance check to take action when altered binaries are found in an image.
+
+image::altered_binary_compliance_check.png[width=800]
