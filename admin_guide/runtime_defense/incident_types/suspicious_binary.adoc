@@ -1,5 +1,11 @@
 == Suspicious Binary
 
+A suspicious binary incident indicates that a suspicious binary was written to the file system. The binary is either incompatible with the system architecture or the ELF header was manipulated to hinder analysis. These indicators are common signs of malware.
+
 === Investigation
+
+The following incident shows that the process curl downloaded the ELF file /dropbear-arm-32, which is incompatible with the system architecture. This is decidedly unexpected behavior. 
+
+image::suspicious_binary_incident.png[width=800]
 
 === Mitigation
