@@ -50,8 +50,10 @@ Topics:
   File: twistlock_container_images
 - Name: Kubernetes
   File: install_kubernetes
-- Name: OpenShift
-  File: install_openshift
+- Name: OpenShift 4
+  File: install_openshift_4
+- Name: OpenShift 3.11
+  File: install_openshift_3_11
 - Name: VMware Tanzu Enterprise PKS
   File: install_pks
 - Name: Amazon ECS
