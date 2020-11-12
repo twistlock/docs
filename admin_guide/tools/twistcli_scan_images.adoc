@@ -233,7 +233,7 @@ By default, twistcli is run from outside the container image.
 ==== Podman Twistcli scans
 
 Twistcli can run scans on Podman hosts.
-Use the `--podman-path PATH` parameter to specify the path to podman and force the twistcli scanner to use podman.
+Use `--podman-path PATH` to specify the path to podman and force the twistcli scanner to use podman.
 For additional information, see the <<_podman, Podman>> section.
 
 
@@ -523,6 +523,7 @@ If your Docker socket isn't in the default location, use the `--docker-address` 
 `--docker-address` [.underline]#`PATH`#::
 Path to the Docker socket.
 By default, twistcli looks for the Docker socket `unix:///var/run/docker.sock`.
+
 ----
 $ ./twistcli images scan \
   --address <COMPUTE_CONSOLE> \
@@ -531,6 +532,7 @@ $ ./twistcli images scan \
   --docker-address unix:///<PATH/TO>/docker.sock \
   <IMAGE_NAME>
 ----
+
 
 [#_podman]
 === Scan Podman/CRI images
@@ -583,3 +585,25 @@ stage('Scan with Twistcli') {
 ----
 
 
+ifdef::prisma_cloud[]
+
+[.task]
+=== Using twistcli with Prisma Cloud Compute in Enterprise Edition
+
+The following procedure is true even if IP whitelisting feature is enabled in Prisma Cloud.
+You can use your username:password from PC or Access Key / Secret Key created by a user as username:password in twistcli calls.
+
+[.procedure]
+. Go to Settings > Access Keys page under Prisma Cloud
+
+. Create an Access Key with desired expiration time. Make sure you keep this secure by downloading or copying for future use.   
+
+. Get Compute Console URL from Compute tab - Manage > System > Downloads. 
+
+. Use Access Key as username and Secret key as password for your twistcli calls
++
+----
+./twistcli images scan --address <Console> --username <ACCESS_KEY> --password <SECRET_KEY> ubuntu:latest
+----
+
+endif::prisma_cloud[]

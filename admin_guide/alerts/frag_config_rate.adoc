@@ -14,4 +14,4 @@ All subsequent alerts are sent once per period.
 +
 You can specify *Second*, *Minute*, *Hour*, *Day*.
 +
-image::frag_configure_alerts.png[width=800]
+image::frag_configure_alerts.png[width=700]

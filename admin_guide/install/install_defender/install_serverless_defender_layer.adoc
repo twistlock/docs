@@ -27,7 +27,7 @@ To secure an AWS Lambda function with the Serverless Defender layer:
 
 . Define a serverless protection runtime policy.
 
-. Define a serverless CNAF policy.
+. Define a serverless WAAS policy.
 
 . Add the layer to your function, update the handler, and set an environment variable.
 After completing this integration, Serverless Defender runs when your function is invoked.
@@ -125,11 +125,11 @@ Use xref:../../configure/rule_ordering_pattern_matching.adoc[pattern matching] t
 . Click *Save*.
 
 [.task, #_defining_cnaf_policy]
-=== Defining your serverless CNAF policy
+=== Defining your serverless WAAS policy
 
-Prisma Cloud lets you protect your serverless functions against application layer attacks by utlizing the serverless xref:../../firewalls/cnaf.adoc[Cloud Native Application Firewall (CNAF)].
+Prisma Cloud lets you protect your serverless functions against application layer attacks by utlizing the serverless xref:../../firewalls/waas.adoc[Web Application and API Security (WAAS)].
 
-By default, the serverless CNAF is disabled. To enable it, add a new serverless CNAF rule.
+By default, the serverless WAAS is disabled. To enable it, add a new serverless WAAS rule.
 
 [.procedure]
 . Log into Prisma Cloud Console.
@@ -189,7 +189,6 @@ image::serverless_layer_function_designer_layers2.png[width=250]
 +
 image::lambda_handler.png[width=700]
 
-
 . Set the _TW_POLICY_ and _ORIGINAL_HANDLER_ environment variable, which specifies how your function connects to Compute Console to retrieve policy and send audits.
 
 .. In Compute Console, go to *Manage > Defenders > Deploy > Single Defender*.
@@ -211,6 +210,4 @@ image::lambda_handler.png[width=700]
 . Click *Save* to preserve all your changes.
 +
 image::lambda_env_variables.png[width=700]
-
-
 

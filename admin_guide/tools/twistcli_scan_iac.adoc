@@ -97,8 +97,8 @@ The twistcli tool can output scan results to several places:
 
 * stdout.
 * File.
-Scan results are saved in JSON format.
 
+Scan results are saved in JSON format.
 
 You can simultaneously output scan results to a file and to Console by passing the appropriate flags to twistcli.
 By default, twistcli writes scan results to stdout.
@@ -111,7 +111,6 @@ To write scan results to a file in JSON format, pass the `--output-file` flag to
 ==== Usage
 
 For security reasons, Prisma Cloud recommends that you create a user with the _Build and Deploy Security_ for running scans.
-
 
 [.task]
 === Simple scan
@@ -129,7 +128,7 @@ Scan a file with _twistcli_ and print the summary report to stdout.
 +
 Command output:
 +
-```
+----
 File : s3.json
 +--------------------------------------+---------------------------------------------------+----------+
 |              POLICY ID               |                       NAME                        | SEVERITY |
@@ -137,7 +136,7 @@ File : s3.json
 | 7913fcbf-b679-5aac-d979-1b6817becb22 | AWS S3 buckets do not have server side encryption | medium   |
 +--------------------------------------+---------------------------------------------------+----------+
 Compliance threshold check results: PASS
-```
+----
 
 . Check the return code.
 Since it passed, it should be 0.
@@ -149,9 +148,8 @@ Since it passed, it should be 0.
 
 Another scan example.
 
-[.procedure]
-. Scan an image named myimage/latest.
-+
+. Scan another file named s3.json, but set the compliance threshold to medium.
+
   $ twistcli iac scan \
     -u <access_toke> \
     -p <access_toke_key> \
@@ -161,7 +159,7 @@ Another scan example.
 +
 Command output:
 +
-```
+----
 File : s3.json
 +--------------------------------------+---------------------------------------------------+----------+
 |              POLICY ID               |                       NAME                        | SEVERITY |
@@ -169,7 +167,7 @@ File : s3.json
 | 7913fcbf-b679-5aac-d979-1b6817becb22 | AWS S3 buckets do not have server side encryption | medium   |
 +--------------------------------------+---------------------------------------------------+----------+
 Compliance threshold check results: FAIL
-```
+----
 
 . Check the return code.
 +

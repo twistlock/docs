@@ -74,8 +74,8 @@ To create a Prisma Cloud group and add users to it:
 [.task]
 === Assigning roles to AD/OpenLDAP/SAML users
 
-By default, AD/OpenLDAP/SAML users have user-level access to Console.
-You can grant a user a different access level by assigning him a role.
+By default, AD/OpenLDAP/SAML users have the very basic Access User role.
+You can grant users a different level of access to Console by assigning them roles.
 
 NOTE: If a user is a part of an AD, OpenLDAP, or SAML group, and you have assigned a role to the group, the user inherits the group's role.
 

@@ -42,6 +42,11 @@ Prisma Cloud Defenders are deployed as a DeamonSet, which guarantees that an ins
 endif::prisma_cloud[]
 
 
+// Include reusable content fragment.
+// === Cluster context
+include::fragments/cluster_context.adoc[leveloffset=+1]
+
+
 === Preflight checklist
 
 To ensure that your installation goes smoothly, work through the following checklist and validate that all requirements are met.
@@ -91,9 +96,15 @@ endif::compute_edition[]
 
 *Prisma Cloud Defenders*:
 
+ifdef::compute_edition[]
 * Incoming: None
 * Outgoing: 8084
+endif::compute_edition[]
 
+ifdef::prisma_cloud[]
+* Incoming: None
+* Outgoing: 443
+endif::prisma_cloud[]
 
 [#_install_twistlock]
 === Install Prisma Cloud
@@ -103,7 +114,7 @@ Use xref:../tools/twistcli.adoc[_twistcli_] to install the Prisma Cloud Console 
 The _twistcli_ utility is included with every release.
 After completing this procedure, both Prisma Cloud Console and Prisma Cloud Defenders will be running in your Kubernetes cluster.
 
-If you're installing Prisma Cloud on Amazon Elastic Container Service for Kubernetes (EKS), Azure Kubernetes Service (AKS), or Azure Container Service with Kubernetes, a number of tweaks are required to the installation procedure.
+If you're installing Prisma Cloud on Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), or Azure Container Service with Kubernetes, a number of tweaks are required to the installation procedure.
 For more details, see the relevant sections in this article.
 endif::compute_edition[]
 
@@ -112,7 +123,7 @@ Use xref:../tools/twistcli.adoc[_twistcli_] to install the Prisma Cloud Defender
 The _twistcli_ utility is included with every release.
 
 The main criteria for installing Defender is that it can connect to the Prisma Cloud Compute Console SaaS service.
-Defender connects to Console via websocket over port 8084 to retrieve policies and send data
+Defender connects to Console via websocket over port 443 to retrieve policies and send data
 endif::prisma_cloud[]
 
 
@@ -123,16 +134,12 @@ ifdef::compute_edition[]
 Download the Prisma Cloud software to any system where you run _kubectl_ to administer your cluster.
 
 [.procedure]
-. Go to xref:../welcome/releases.adoc[Releases], and copy the link to current recommended release.
-
-. Download the release tarball to your cluster controller.
-
-  $ wget <LINK_TO_CURRENT_RECOMMENDED_RELEASE_LINK>
+. xref:../welcome/releases.adoc#download[Download] the current recommended release.
 
 . Unpack the release tarball.
 
-  $ mkdir twistlock
-  $ tar xvzf twistlock_<VERSION>.tar.gz -C twistlock/
+  $ mkdir prisma_cloud
+  $ tar xvzf prisma_cloud_compute_edition_<VERSION>.tar.gz -C prisma_cloud/
 
 endif::compute_edition[]
 
@@ -371,9 +378,9 @@ endif::compute_edition[]
 
 ifdef::compute_edition[]
 [.task]
-=== Amazon Elastic Container Service for Kubernetes (EKS)
+=== Amazon Elastic Kubernetes Service (EKS)
 
-link:https://aws.amazon.com/eks/#[Amazon Container Service for Kubernetes (EKS)] lets you deploy Kubernetes clusters on demand.
+link:https://aws.amazon.com/eks/#[Amazon Kubernetes Service (EKS)] lets you deploy Kubernetes clusters on demand.
 Use our standard Kubernetes install method to deploy Prisma Cloud to EKS.
 The only difference between the EKS and standard Kubernetes install methods is:
 

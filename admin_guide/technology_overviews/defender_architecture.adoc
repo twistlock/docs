@@ -5,7 +5,7 @@ Customers often ask how Prisma Cloud Defender really works under the covers. Pri
 
 === Defender design
 
-Because we’ve built Prisma Cloud expressly for cloud native stacks, the architecture of our agent (what we call Defender) is quite different.  Rather than having to install a kernel module, or modify the host OS at all, Defender instead runs as a Docker container and takes only those specific system privileges required for it to perform it’s job.  It does not run as --privileged and instead takes the specific system capabilities of net_admin, sys_admin, sys_ptrace, audit_control, mknod, and setfcap that it needs to run in the host namespace and interact with both it and other containers running on the system.  You can see this clearly by inspecting the Defender container:
+Because we’ve built Prisma Cloud expressly for cloud native stacks, the architecture of our agent (what we call Defender) is quite different.  Rather than having to install a kernel module, or modify the host OS at all, Defender instead runs as a Docker container and takes only those specific system privileges required for it to perform its job.  It does not run as --privileged and instead takes the specific system capabilities of net_admin, sys_admin, sys_ptrace, audit_control, mknod, and setfcap that it needs to run in the host namespace and interact with both it and other containers running on the system.  You can see this clearly by inspecting the Defender container:
 
 [source,bash]
 ----
@@ -73,6 +73,6 @@ Even if the Defender process terminates, becomes unresponsive, or cannot be rest
 
 === Firewalls
 
-Defender enforces both CNNF and CNAF firewall policies.
+Defender enforces WAF policies (WAAS) and monitors layer 4 traffic (CNNF).
 In both cases, Defender creates iptables rules on the host so it can observe network traffic.
-For more information, see xref:../firewalls/cnnf.adoc#_architecture[CNNF architecture] and xref:../firewalls/cnaf.adoc#_architecture[CNAF architecture].
+For more information, see xref:../firewalls/cnnf.adoc#_architecture[CNNF architecture] and xref:../firewalls/waas.adoc[WAAS architecture].

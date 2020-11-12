@@ -26,12 +26,12 @@ Dir: welcome
 Topics:
 - Name: Welcome
   File: welcome
+- Name: Releases
+  File: releases
 - Name: Getting started
   File: getting_started
 - Name: Product architecture
   File: product_architecture
-- Name: Releases
-  File: releases
 - Name: Support lifecycle
   File: support_lifecycle
 - Name: Licensing
@@ -60,8 +60,8 @@ Topics:
   File: install_openshift_4
 - Name: OpenShift 3.11
   File: install_openshift_3_11
-- Name: VMware Tanzu Enterprise PKS
-  File: install_pks
+- Name: VMware Tanzu Kubernetes Grid
+  File: install_vmware_tkg
 - Name: Docker Swarm
   File: install_swarm
 - Name: Amazon ECS
@@ -82,17 +82,21 @@ Topics:
   - Name: Cluster Container Defender
     File: install_cluster_container_defender
   - Name: App Embedded Defender
-    File: install_app_embedded_defender
+    File: install_rasp_defender
   - Name: App Embedded Defender for Fargate
     File: install_app_embedded_defender_fargate
-  - Name: App Embedded Defender for Pivotal PAS
-    File: install_app_embedded_defender_pivotal_pas
+  - Name: Defender for VMWare Tanzu TAS
+    File: install_tas_defender
   - Name: Serverless Defender (auto-protect)
     File: install_serverless_defender_autoprotect
   - Name: Serverless Defender
     File: install_serverless_defender
   - Name: Serverless Defender (Lambda layer)
     File: install_serverless_defender_layer
+  - Name: Host Defender
+    File: install_host_defender
+  - Name: Deploy Defender from GCP Marketplace
+    File: install_defender_gcp_marketplace
   - Name: Decommission single Container Defender
     File: decommission_defender
 ---
@@ -165,8 +169,6 @@ Topics:
   File: configure_scan_intervals
 - Name: User certificate validity period
   File: user_cert_validity_period
-- Name: Manage Prisma Cloud with systemd
-  File: manage_tw_systemd
 - Name: Enable HTTP access to Console
   File: enable_http_access_console
 - Name: Set different paths for Console and Defender (with daemon sets)
@@ -179,8 +181,6 @@ Topics:
   File: collections
 - Name: Tags
   File: tags
-- Name: High availability
-  File: high_availability
 - Name: Logon Settings
   File: long_lived_tokens
 - Name: Reconfigure Prisma Cloud
@@ -195,20 +195,28 @@ Dir: authentication
 Topics:
 - Name: Authentication
   File: authentication
-- Name: Integrate with Active Directory
-  File: integrate_active_directory
-- Name: Integrate with OpenLDAP
-  File: integrate_openldap
-- Name: Integrate with SAML
-  File: integrate_saml
-- Name: Integrate Google G Suite (SAML)
-  File: integrate_saml_google_g_suite
-- Name: Integrate with Azure Active Directory via SAML 2.0 Federation
-  File: integrate_saml_azure_active_directory
-- Name: Integrate with PingFederate via SAML 2.0 Federation
-  File: integrate_saml_ping_federate
-- Name: Integrate with Active Directory Federation Services (ADFS) via SAML 2.0 Federation
-  File: integrate_saml_active_directory_federation_services
+- Name: Log into Console
+  File: login
+- Name: Active Directory
+  File: active_directory
+- Name: OpenLDAP
+  File: openldap
+- Name: OpenID Connect
+  File: oidc
+- Name: Okta (SAML 2.0)
+  File: saml
+- Name: Google G Suite (SAML 2.0)
+  File: saml_google_g_suite
+- Name: Azure Active Directory (SAML 2.0)
+  File: saml_azure_active_directory
+- Name: PingFederate (SAML 2.0)
+  File: saml_ping_federate
+- Name: Active Directory Federation Services (SAML 2.0)
+  File: saml_active_directory_federation_services
+- Name: GitHub (OAuth 2.0)
+  File: oauth2_github
+- Name: OpenShift (OAuth 2.0)
+  File: oauth2_openshift
 - Name: Active Directory Non-default UPN suffixes
   File: non_default_upn_suffixes
 - Name: Compute user roles
@@ -217,6 +225,8 @@ Topics:
   File: assign_roles
 - Name: Use custom certificates for authorization
   File: use_custom_certs_for_auth
+- Name: Credentials store
+  File: credentials_store
 ---
 Name: Vulnerability management
 Dir: vulnerability_management
@@ -261,11 +271,11 @@ Topics:
   - Name: Webhooks
     File: webhooks
 - Name: VM image scanning
-  File: vm_image_scanning
+  File: vm_images_scanning
+- Name: Code repository scanning
+  File: code_repo_scanning
 - Name: Malware scanning
   File: malware_scanning
-- Name: Zero-day vulnerabilities
-  File: zero_day_vulns
 - Name: Risk trees
   File: risk_tree
 - Name: Detect vulnerabilities in unpackaged software
@@ -278,8 +288,8 @@ Topics:
   File: windows_image_scanning
 - Name: Serverless function scanning
   File: serverless_functions
-- Name: PCF blobstore scanning
-  File: pcf_blobstore
+- Name: VMWare Tanzu blobstore scanning
+  File: vmware_tanzu_blobstore
 ---
 Name: Compliance
 Dir: compliance
@@ -307,7 +317,7 @@ Topics:
 - Name: Host scanning
   File: host_scanning
 - Name: VM image scanning
-  File: vm_image_scanning
+  File: vm_images_scanning
 - Name: Detect secrets
   File: detect_secrets
 - Name: Cloud discovery
@@ -407,14 +417,12 @@ Dir: firewalls
 Topics:
 - Name: Firewalls
   File: firewalls
-- Name: Cloud Native Application Firewall (CNAF)
-  File: cnaf
-- Name: Deploy CNAF
-  File: deploy_cnaf
+- Name: Web-Application and API Security (WAAS)
+  File: waas
+- Name: Deployment Guide for Web-Application and API Security (WAAS)
+  File: deploy_waas
 - Name: Cloud Native Network Firewall (CNNF)
   File: cnnf
-- Name: CNNF for hosts
-  File: cnnf_hosts
 ---
 Name: Secrets
 Dir: secrets
@@ -468,6 +476,10 @@ Topics:
   File: jira
 - Name: PagerDuty
   File: pagerduty
+- Name: ServiceNow Security Incident Response
+  File: servicenow_sir
+- Name: ServiceNow Vulnerability Response
+  File: servicenow_vr
 - Name: Slack
   File: slack
 - Name: Webhook
@@ -499,28 +511,6 @@ Topics:
 - Name: Kubernetes auditing
   File: kubernetes_auditing
 ---
-Name: Continuous integration
-Dir: continuous_integration
-Topics:
-- Name: Continuous integration
-  File: continuous_integration
-- Name: Jenkins plugin
-  File: jenkins_plugin
-- Name: Jenkins Freestyle project
-  File: jenkins_freestyle_project
-- Name: Jenkins Maven project
-  File: jenkins_maven_project
-- Name: Jenkins Pipeline project
-  File: jenkins_pipeline_project
-- Name: Run Jenkins in a container
-  File: run_jenkins_container
-- Name: Jenkins pipeline on K8S
-  File: jenkins_pipeline_k8s
-- Name: CloudBees Core pipeline on K8S
-  File: cloudbees_core_pipeline_k8s
-- Name: Set policy in the CI plugins
-  File: set_policy_ci_plugins
----
 Name: Tools
 Dir: tools
 Topics:
@@ -542,8 +532,14 @@ Topics:
   File: deployment_patterns
 - Name: Projects
   File: projects
+- Name: Migration options for scale projects
+  File: migration_options_for_scale_projects
 - Name: DNS and certificate management
   File: best_practices_dns_cert_mgmt
+- Name: Caps
+  File: caps
+- Name: Migrate to SaaS Console 
+  File: migrate_to_saas
 - Name: Performance planning
   File: performance_planning
 ---
@@ -552,6 +548,8 @@ Dir: api
 Topics:
 - Name: API
   File: api
+- Name: Stability guide
+  File: stable_api
 - Name: Access the API
   File: access_api
 - Name: Set up fresh Console
@@ -560,6 +558,8 @@ Topics:
   File: automate_defender_install
 - Name: Manage compliance policies
   File: manage_compliance_api
+- Name: 20.09 porting guide
+  File: porting_guide
 ---
 Name: How-to guides
 Dir: howto
@@ -582,9 +582,9 @@ Topics:
   File: openshift_provision_tenant_projects
 - Name: Setting up Istio
   File: configure_istio_ingress
-- Name: Multi-AZ HA
-  File: multi_az_high_availability
 - Name: Disable automatic learning
   File: disable_automatic_learning
 - Name: Rolling Defender upgrades
   File: rolling_upgrade
+- Name: Review debug logs
+  File: review_debug_logs

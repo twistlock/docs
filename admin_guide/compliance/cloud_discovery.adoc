@@ -30,6 +30,11 @@ Cloud Platforms discovery offers coverage for the following services.
 * Azure Container Instances (ACI)
 * Google Kubernetes Engine (GKE)
 
+^1^ *Virtual machines:*
+
+* AWS EC2
+
+
 ^1^One-click protection is currently not yet available for these services.
 One-click protection lets you deploy Prisma Cloud to protect a resource directly from the scan results page.
 
@@ -72,7 +77,10 @@ Then configure Prisma Cloud to protect them with a single click.
                 "ecs:ListContainerInstances",
                 "eks:ListClusters",
                 "ecs:DescribeClusters",
-                "ecs:ListClusters"
+                "ecs:ListClusters",
+                "ec2:DescribeInstances",
+                "ec2:DescribeTags",
+                "ec2:DescribeImages"
             ],
             "Resource": "*"
         }
@@ -81,6 +89,9 @@ Then configure Prisma Cloud to protect them with a single click.
 ----
 
 * For Azure, you've xref:../configure/credentials_store.adoc#_azure_service_principal[created a service principal with the reader role].
+
+* For GCP, you've xref:../configure/credentials_store.adoc#google-cloud-platform-gcp[created a service account with viewer role].  To be more specific you can also create a service account with Storage Object Viewer, Kubernetes Engine Cluster Viewer, and Cloud Functions Viewer.
+
 
 [.procedure]
 . Open Console.

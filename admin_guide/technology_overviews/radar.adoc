@@ -21,6 +21,24 @@ Radar refreshes its view every 24 hours.
 The Refresh button has a red marker when new data is available to be displayed.
 In order to get full visibility into your environment, Defender should be installed on every host in your environment.
 
+
+=== Cluster pivot
+
+Radar segments your environment by cluster.
+The main view lists all clusters in your environment.
+Clicking a card open the image pivot, which shows you all the namespaces and containers in the cluster.
+
+image::cluster_pivot.png[width=800]
+
+Defenders report which resources belong to which cluster.
+For managed clusters, Prisma Cloud automatically retrieves the name from the cloud provider.
+As a fallback, Prisma Cloud can retrieve the name from your kubeconfig file.
+Finally, you can manually specify the cluster name.
+
+The cluster pivot is currently supported for Kubernetes and OpenShift clusters only.
+All other running containers in your environment are collected in the *Non-Cluster Containers* view.
+
+
 === Image pivot
 
 Radar lays out nodes on the canvas to promote easy analysis of your containerized apps.
@@ -28,7 +46,7 @@ Interconnected nodes are laid out so network traffic flows from left to right.
 Traffic sources are weighted to the left, while destinations are weighted to the right.
 Single, unconnected nodes are arranged in rows at the bottom of the canvas.
 
-Nodes are color coded based on the highest severity vulnerability or compliance issue they contain, and reflect the currently defined vulnerability and compliance policies.
+Nodes are color-coded based on the highest severity vulnerability or compliance issue they contain, and reflect the currently defined vulnerability and compliance policies.
 Color coding lets you quickly spot trouble areas in your deployment.
 
 * Dark Red -- High risk.
@@ -65,19 +83,23 @@ image::radar_zoomed_in.png[width=800]
 
 === Host pivot
 
-Each node in the host pivot represents a host app (systemd service).
-Radar shows all apps discovered by all Defenders in the environment.
-The mesh shows the host-to-host communication between apps.
+Radar shows the hosts in your environment, how they communicate with each other over the network, and their security posture.
 
-The color of a node represents the max severity of vulnerabilities found in the app.
+Each node in the host pivot represents a host machine.
+The mesh shows host-to-host communication.
+
+The color of a node represents the most severe issue detected.
 
 * Dark Red -- High risk.
-One or more critical severity vulnerabilities detected.
-* Red -- High severity vulnerabilities detected.
-* Orange -- Medium vulnerabilities detected.
-* Green -- Denotes no vulnerabilities detected.
+One or more critical severity issues detected.
+* Red -- High severity issues detected.
+* Orange -- Medium issues detected.
+* Green -- No issues detected.
 
-When you click on an node, the overlay shows the top most vulnerable hosts where the app runs, as well as runtime events and connectivity information specific to the app.
+When you click on an node, an overlay shows a summary of all information Prisma Cloud knows about the host.
+Use the links to drill down into scan reports, audits, and other data.
+
+image::radar_host_pivot.png[width=800]
 
 
 === Cloud pivot
