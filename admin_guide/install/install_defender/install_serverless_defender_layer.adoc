@@ -186,7 +186,7 @@ When you return to the function designer, you'll see that your function now uses
 image::serverless_layer_function_designer_layers2.png[width=250]
 
 . Update the handler for your function to be _twistlock.handler_. 
-
++
 image::lambda_handler.png[width=700]
 
 

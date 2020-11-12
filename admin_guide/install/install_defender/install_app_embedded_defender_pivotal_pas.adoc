@@ -57,11 +57,11 @@ A set of instructions for embedding App Embedded Defender into your droplet is p
 . Download the App Embedded Defender binaries into your working directory.
 ifdef::compute_edition[]
     $ curl -u <username> \ 
-        https://<CONSOLE>:8083/api/v1/images/twistlock_defender_app_embedded.tar.gz -O
+        \https://<CONSOLE>:8083/api/v1/images/twistlock_defender_app_embedded.tar.gz -O
 endif::compute_edition[]
 ifdef::prisma_cloud[]
     $ curl -u <prisma_cloud_access_token> \
-        https://<us-west1.cloud.twistlock.com/us-1-123456789>/api/v1/images/twistlock_defender_app_embedded.tar.gz -O
+        \https://<us-west1.cloud.twistlock.com/us-1-123456789>/api/v1/images/twistlock_defender_app_embedded.tar.gz -O
 endif::prisma_cloud[]
 . Extract the files from the tarball, update the file permissions, and delete the tarball.  These files should be in the app working directory.
 
@@ -77,12 +77,12 @@ This will be the value set in the INSTALL_BUNDLE environment variable.
 ifdef::compute_edition[]
      $ curl -k \
        -u <CONSOLE_ADMIN_USER> \
-       https://<CONSOLE>:8083/api/v1/defenders/install-bundle?consoleaddr=<CONSOLE>
+       \https://<CONSOLE>:8083/api/v1/defenders/install-bundle?consoleaddr=<CONSOLE>
 endif::compute_edition[]
 ifdef::prisma_cloud[]
      $ curl -k \
        -u <prisma_cloud_access_token> \
-       https://<us-west1.cloud.twistlock.com/us-1-123456789>/api/v1/defenders/install-bundle?consoleaddr=<us-west1.cloud.twistlock.com>
+       \https://<us-west1.cloud.twistlock.com/us-1-123456789>/api/v1/defenders/install-bundle?consoleaddr=<us-west1.cloud.twistlock.com>
 endif::prisma_cloud[]
 
 +
@@ -97,13 +97,12 @@ For example:
 
 . Open your app's _manifest.yml_ for editing.
 
+ifdef::compute_edition[]
 .. Add the following environment variables to your application.
 Replace the values for <DEFENDER-ID> and <INSTALL-BUNDLE>.
 <DEFENDER-ID> is a user-defined value to uniquely identify the App Embedded Defender in your environment.
 <INSTALL-BUNDLE> was the value retrieved in the last step.
 The value for <WEB-SOCKET-ADDRESS> should already be correctly set.
-
-ifdef::compute_edition[]
 +
 [source,yml]
 ----
@@ -117,8 +116,20 @@ ifdef::compute_edition[]
       DATA_FOLDER: /tmp 
       INSTALL_BUNDLE: <INSTALL-BUNDLE>
 ----
++
+IMPORTANT: Do not use quotation marks around environment variable values.
++
+IMPORTANT: The value for DATA_FOLDER must be /tmp.
+
 endif::compute_edition[]
+
+
 ifdef::prisma_cloud[]
+.. Add the following environment variables to your application.
+Replace the values for <DEFENDER-ID> and <INSTALL-BUNDLE>.
+<DEFENDER-ID> is a user-defined value to uniquely identify the App Embedded Defender in your environment.
+<INSTALL-BUNDLE> was the value retrieved in the last step.
+The value for <WEB-SOCKET-ADDRESS> should already be correctly set.
 +
 [source,yml]
 ----
@@ -132,13 +143,13 @@ ifdef::prisma_cloud[]
       DATA_FOLDER: /tmp 
       INSTALL_BUNDLE: <INSTALL-BUNDLE>
 ----
-endif::prisma_cloud[]
-
-
 +
 IMPORTANT: Do not use quotation marks around environment variable values.
 +
 IMPORTANT: The value for DATA_FOLDER must be /tmp.
+
+endif::prisma_cloud[]
+
 
 .. Override the app's default start command to run the App Embedded Defender instead.
 Pass the original command to App Embedded Defender as an argument.
@@ -155,7 +166,7 @@ applications:
 
 .. Log into Pivotal Web Services.
 
-  cf login -a https://api.run.pivotal.io
+  cf login -a \https://api.run.pivotal.io
 
 .. Set the target organization and space.
 

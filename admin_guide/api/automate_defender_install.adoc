@@ -13,7 +13,7 @@ To steps to deploy Defender using the Prisma Cloud API are:
 . Validate that Defender has been installed and it is running.
 
 You should create a service account for the system that will install Defender.
-The service account should have the role of xref:../access_control/user_roles.adoc#defender-manager[Defender Manager], or higher, and you should use a long, random string for the password.
+The service account should have the role of xref:../authentication/user_roles.adoc#defender-manager[Defender Manager], or higher, and you should use a long, random string for the password.
 
 This procedure shows you how to access the API using an auth token, which is retrieved from the _/api/v1/authenticate_ endpoint.
 ifdef::compute_edition[]
@@ -23,7 +23,7 @@ If these validity periods are too short, then access the Prisma Cloud API using 
 endif::compute_edition[]
 
 [NOTE]
-When you're installing Defender into a xref:../install/install_kubernetes.adoc#install-defender[Kubernetes], xref:../install/install_openshift.adoc#install-defender[OpenShift], or xref:../install/install_swarm.adoc[Docker Swarm] cluster, use the deployment method documented in each respective install guide as a reference.
+When you're installing Defender into a xref:../install/install_kubernetes.adoc#install-defender[Kubernetes], xref:../install/install_openshift_3_11.adoc#install-defender[OpenShift 3], xref:../install/install_openshift_4.adoc#install-defender[OpenShift 4], or xref:../install/install_swarm.adoc[Docker Swarm] cluster, use the deployment method documented in each respective install guide as a reference.
 Prisma Cloud supports these setups using orchestrator-native constructs, such as DaemonSet (for Kubernetes and OpenShift) and global services (for Docker Swarm), to automate Defender deployment.
 Deployment files can be generated from the Console web interface, the xref:../tools/twistcli.adoc[twistcli utility], and the Prisma Cloud API.
 

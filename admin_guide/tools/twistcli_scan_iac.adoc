@@ -16,11 +16,11 @@ Use the `twistcli iac scan` subcommand to invoke the scanner.
 Scan an IaC file for compliance issues.  The file must reside on the system where twistcli runs.
 
 
-
 [.section]
 ==== SYNOPSIS
 
 `twistcli iac scan [OPTIONS] [FILE]`
+
 
 [.section]
 ==== DESCRIPTION
@@ -56,8 +56,7 @@ If not specified on the command-line, the `TWISTLOCK_PASSWORD` environment varia
 Otherwise, you will be prompted for the user's password before the scan runs.
 
 _Access Key ID_ and _Secret Key_ are generated from the Prisma Cloud user interface.
-For more information, see xref:../access_control/access_keys.adoc[access keys]
-
+For more information, see xref:../authentication/access_keys.adoc[access keys]
 
 `--output-file` [.underline]#`FILENAME`#::
 Write the results of the scan to a file in JSON format.
@@ -80,7 +79,6 @@ Otherwise, the exit code is 1.
 
 The criteria for passing or failing a scan is determined by the compliance policies set in the command line.
 
-
 [NOTE]
 ====
 There are two reasons why `twistcli` might return an exit code of 1.
@@ -91,7 +89,6 @@ There are two reasons why `twistcli` might return an exit code of 1.
 Although the return value is ambiguous -- you cannot determine the exact reason for the failure by just examining the return value -- this setup supports automation.
 From an automation process perspective, you expect that the entire flow will work.
 ====
-
 
 
 ==== Output
@@ -113,11 +110,8 @@ To write scan results to a file in JSON format, pass the `--output-file` flag to
 
 ==== Usage
 
-
 For security reasons, Prisma Cloud recommends that you create a user with the _Build and Deploy Security_ for running scans.
 
-
-=
 
 [.task]
 === Simple scan
@@ -125,7 +119,7 @@ For security reasons, Prisma Cloud recommends that you create a user with the _B
 Scan a file with _twistcli_ and print the summary report to stdout.
 
 [.procedure]
-. Scan a file names s3.json
+. Scan a file named _s3.json_.
 +
   $ twistcli iac scan \
     -u <access_toke> \
@@ -145,14 +139,15 @@ File : s3.json
 Compliance threshold check results: PASS
 ```
 
-The return code is 0, as this is passing
-```
-echo $?
+. Check the return code.
+Since it passed, it should be 0.
+
+  echo $?
 
 [.task]
-. Scan a file names s3.json
+=== Simple scan 2
 
-Scan a file with _twistcli_ and print the summary report to stdout.
+Another scan example.
 
 [.procedure]
 . Scan an image named myimage/latest.
@@ -176,12 +171,8 @@ File : s3.json
 Compliance threshold check results: FAIL
 ```
 
+. Check the return code.
++
 The return code is 1, as this is failing
-```
-echo $?
-`````
-
-
-
-
-
++
+  echo $?
