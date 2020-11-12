@@ -345,6 +345,8 @@ endif::compute_edition[]
 ifdef::compute_edition[]
 [.task]
 ==== Install Defender
+NOTE: Red Hat OpenShift Container Platform (OCP) 4 now defaults to CRI-O as underlying container engine.
+Use the _--cri_ flag for any _twistcli defender export openshift_ command you run.
 
 Prisma Cloud Defenders run as containers on the nodes in your OpenShift cluster.
 They are deployed as a DaemonSet.
@@ -445,11 +447,13 @@ endif::prisma_cloud[]
 
 
 [.task]
-=== Control Defender deployments with NodeSelector
+=== Control Defender deployments with NodeSelector (OCP 3.x) and Tolerations (OCP 4.x)
 
 You can deploy Defenders to all nodes in an OpenShift cluster (master, infra, compute).
-Depending upon the nodeSelector configuration, Prisma Cloud Defenders may not get deployed to all nodes.
+Depending upon the nodeSelector (OCP 3.x) or tolerations (OCP 4.x) configuration, Prisma Cloud Defenders may not get deployed to all nodes.
 Adjust the guidance in the following procedure according to your organization's deployment strategy.
+
+For OCP 3.x environments, where nodeSelector is used to determine where the DaemonSet can be deployed, follow:
 
 [.procedure]
 . Review the following OpenShift configuration settings.
@@ -484,16 +488,16 @@ In this example the Prisma Cloud project default nodeSelector instructs OpenShif
 
   $ oc annotate namespace twistlock openshift.io/node-selector=""
 
-. Add a _Deploy_Prisma Cloud : true_ label to all nodes to which Defender should be deployed.
+. Add a _Deploy_PrismaCloud : true_ label to all nodes to which Defender should be deployed.
 +
 [source]
 ----
-  $ oc label node ip-172-31-0-55.ec2.internal Deploy_Prisma Cloud=true
+  $ oc label node ip-172-31-0-55.ec2.internal Deploy_PrismaCloud=true
 
   $ oc describe node ip-172-31-0-55.ec2.internal
   Name:               ip-172-31-0-55.ec2.internal
   Roles:              compute
-  Labels:             Deploy_Prisma Cloud=true
+  Labels:             Deploy_PrismaCloud=true
                       beta.kubernetes.io/arch=amd64
                       beta.kubernetes.io/os=linux
                       kubernetes.io/hostname=ip-172-31-0-55.ec2.internal
@@ -521,7 +525,7 @@ spec:
     spec:
       serviceAccountName: twistlock-service
       nodeSelector:
-        Deploy_Prisma Cloud: "true"
+        Deploy_PrismaCloud: "true"
       restartPolicy: Always
       containers:
       - name: twistlock-defender-2-5-127
@@ -535,9 +539,42 @@ spec:
 $ oc get ds -n twistlock
 
 NAME                    DESIRED   CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE SELECTOR
-twistlock-defender-ds   4         4        4      4           4          Deploy_Prisma Cloud=true
+twistlock-defender-ds   4         4        4      4           4          Deploy_PrismaCloud=true
 ----
 
+
+OpenShift 4.x+ uses Taints to prevent workload to be scheduled to masters.
+i.e. :
+[source,yaml]
+----
+...
+taints:
+- effect: NoSchedule
+  key: node-role.kubernetes.io/master
+...
+----
+
+For OCP 4.x environments, where Tolerations are used to determine where the DaemonSet can be deployed, follow either one of the following two:
+
+[.procedure]
+. If the Defender yaml file is not deployed/applied yet, then add the following example under spec > template > spec:
++
+[source,yaml]
+----
+...      
+tolerations:
+- effect: NoSchedule
+   key: node-role.kubernetes.io/master
+   operator: Exists
+...
+----
+
+. If the Defender DaemonSet is already deployed, patch it with this cli:
++
+[source]
+----
+ oc patch daemonset twistlock-defender-ds --type=merge -p '{"spec":{"template":{"spec":{"tolerations":[{"effect":"NoSchedule","key":"node-role.kubernetes.io/master","operator":"Exists"}]}}}}'
+----
 
 === Install Prisma Cloud with Helm charts
 
