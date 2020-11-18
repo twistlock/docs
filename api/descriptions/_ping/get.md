@@ -1,7 +1,8 @@
-Checks if Console is reachable over the network from the host where you call the endpoint.
-If you get a response code of 200, the request succeeded, and Console is both alive and reachable.
+Checks if the Console is reachable from your network host.
 
-The following curl command pings Console and prints the HTTP response code.
+### cURL Request
+
+The following cURL command pings the Console and prints the HTTP response code:
 
 ```bash
 $ curl -k \
@@ -11,3 +12,9 @@ $ curl -k \
   -X GET \
   https://<CONSOLE>:8083/api/v1/_ping
 ```
+
+### Response
+
+Code|Description
+---|---
+`200`|Indicates the request was successful, and the Console is both alive and reachable.
