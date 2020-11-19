@@ -10,7 +10,7 @@ $ curl -k \
   -o /dev/null \
   -w "%{http_code}\n" \
   -X GET \
-  https://<CONSOLE>:8083/api/v1/_ping
+  https://<CONSOLE>/api/v1/_ping
 ```
 
 ### Response
