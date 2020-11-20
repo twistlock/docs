@@ -12,9 +12,3 @@ $ curl -k \
   -X GET \
   https://<CONSOLE>/api/v1/_ping
 ```
-
-### Response
-
-Code|Description
----|---
-`200`|Indicates the request was successful, and the Console is both alive and reachable.
