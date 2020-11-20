@@ -15,3 +15,13 @@ $ curl -k \
 }' \
   https://<CONSOLE>/api/v1/authenticate
 ```
+
+**Note:** The username and password values are case-sensitive.
+
+### Response
+
+A successful response will return the following response containing the access token which can be used for the rest of the API endpoints.
+
+```bash
+{"token", "ACCESS_TOKEN_VALUE"}
+```

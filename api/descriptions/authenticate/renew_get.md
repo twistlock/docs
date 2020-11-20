@@ -6,6 +6,14 @@ The following curl command retrieves a new access token using an old access toke
 
 ```bash
 $ curl -k \
-  -H "Authorization: Bearer <OLD_ACCESS_TOKEN> \
+  -H "Authorization: Bearer <OLD_ACCESS_TOKEN>" \
    https://<CONSOLE>/api/v1/authenticate/renew
+```
+
+### Response
+
+A successful response will return the following response containing the new access token. This access token replaces the old access token.
+
+```bash
+{"token", "ACCESS_TOKEN_VALUE"}
 ```
