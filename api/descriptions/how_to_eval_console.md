@@ -1,5 +1,3 @@
-### How to Evaluate `<CONSOLE>`
-
 All the example API commands is these documents specify a `<CONSOLE>` variable, which represents the address for your Console. The Console address will depend on how your Console was installed.
 
 #### For SaaS Installations
@@ -33,14 +31,3 @@ For self-hosted environments, the Prisma Cloud API is exposed on port 8083 (HTTP
 	```
 	https://<IP_ADDRESS>:8083
 	```
-
-
-### API Restrictions
-
-Paginated API requests are capped to a max of 50 returned objects because very large responses could DoS your Console.
-
-If the response contains more than 50 objects, cycle through the collection with the `offset` query parameter to retrieve more objects. For example:
-
-```
-https://<CONSOLE>/api/v1/images?limit=50&offset=X
-```
