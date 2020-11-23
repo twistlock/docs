@@ -205,7 +205,7 @@ Be sure that there is no conflict between your custom rules and other settings i
 
 . Specify an effect for each rule.
 +
-image::custom_runtime_rules_effect.png[width=600]
+image::custom_rules_effect.png[width=600]
 
 . Specify how to log the event for each rule.
 +
