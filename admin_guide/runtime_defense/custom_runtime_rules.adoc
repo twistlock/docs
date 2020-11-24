@@ -47,22 +47,22 @@ Expressions have the following grammar:
 `expression: term (op term | in )*`
 
 term::
-integer | string | keyword | event | '(' expression ')' | unaryOp term
-
-in::
-'(' integer | string (',' integer | string)*)?
+integer | string | keyword | event | '(' expression ')' | unaryOp
 
 op::
 and | or | > | < | >= | <= | = | !=
 
+in::
+'(' integer | string (',' integer | string)*)?
+
 unaryOp::
 not
 
-keyword::
+keyword (similar to wildcards)::
 startswith | contains
 
 string::
-Strings must be enclosed in double quotes
+strings must be enclosed in double quotes
 
 integer::
 int
@@ -70,6 +70,13 @@ int
 event::
 process, file system, or network
 
+==== Expressions examples:
+
+   net.outgoing_ip = "169.254.169.254" or net.outgoing_ip = "169.254.170.2"
+      
+   proc.pname in ("mysql", "sqlplus", "postgres") and proc.pname != proc.name
+   
+   file.path startswith "/etc"
 
 ==== Process events
 
