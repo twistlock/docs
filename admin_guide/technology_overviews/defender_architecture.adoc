@@ -2,7 +2,6 @@
 
 Customers often ask how Prisma Cloud Defender really works under the covers. Prisma Cloud leverages Docker's ability to grant advanced kernel capabilities to enable Defender to protect your whole stack, while being completely containerized and utilizing a least privilege security design.
 
-
 === Defender design
 
 Because we’ve built Prisma Cloud expressly for cloud native stacks, the architecture of our agent (what we call Defender) is quite different.  Rather than having to install a kernel module, or modify the host OS at all, Defender instead runs as a Docker container and takes only those specific system privileges required for it to perform its job.  It does not run as --privileged and instead takes the specific system capabilities of net_admin, sys_admin, sys_ptrace, audit_control, mknod, and setfcap that it needs to run in the host namespace and interact with both it and other containers running on the system.  You can see this clearly by inspecting the Defender container:
@@ -36,7 +35,6 @@ Critically, though, Defender runs as a user mode process.  If Defender were to f
 
 In the event of a communications failure with Console, Defender continues running and enforcing the active policy that was last pushed by the management point. Events that would be pushed back to Console are cached locally until it is once again reachable.
 
-
 === Why not a kernel module?
 
 Given the broad range of security protection Prisma Cloud provides, not just for containers, but also for the hosts they run on, you might assume that we use a kernel module - with all the associated baggage that goes along with that.  However, that’s not actually how Prisma Cloud works.
@@ -45,6 +43,15 @@ Kernel modules are compiled software components that can be inserted into the ke
 
 Because kernel modules have unrestricted system access, a security flaw in them is a system wide exposure.  A single unchecked buffer or other error in such a low level component can lead to the complete compromise of an otherwise well designed and hardened system.  Further, kernel modules can introduce significant stability risks to a system.  Again, because of their wide access, a poorly performing kernel module that’s frequently called can drag down performance of the entire host, consume excessive resources, and lead to kernel panics.  For these reasons, many modern operating systems designed for cloud native apps, like Google Container-Optimized OS, explicitly prevent the usage of kernel modules.
 
+=== Defender - Console communication
+
+By default, Defender establishes a connection to Console on TCP port 8084 but the port can be customized to meet the needs of your environment. All traffic between the Defender and the console is TLS encrypted.
+
+The Defender has no privilege to the console or the underlying host the console is installed on beyond receiving policy updates and streaming event data to the console.
+Prisma's console and defender natively do not trust each other and require certificate authentication to make a connection. Pre-auth any connection is blocked and Post-auth capabilities is limited to getting the policies and sending events to the console.
+
+If the defender were to be compromised, the risk would be to the local system where the defender is deployed, the privilege it has on that local system, and the possibility it will send out garbage data to the Console.
+Console communication channels are separated, with no ability to jump channels - the defender communication being on 8084 means that it has no ability to interact with the console beyond this as the API and web interface only listens on 8081 and 8083. The API and Web interface require authentication via different channels (such as user name and password, access key, etc.) which the Defender does not hold.
 
 [#_blocking_rules]
 === Blocking rules
@@ -69,7 +76,6 @@ When starting a container in a Prisma Cloud-protected environment:
 
 The last step guarantees that Defender always fails open, which is important for the resiliency of your environment.
 Even if the Defender process terminates, becomes unresponsive, or cannot be restarted, a failed Defender will not hinder deployments or the normal operation of a node.
-
 
 === Firewalls
 
