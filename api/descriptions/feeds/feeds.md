@@ -1,1 +1,1 @@
-Augment the Twistlock Intelligence Stream with your own custom threat data.
+Augments the Twistlock Intelligence Stream with custom threat data. The custom threat data informs Twistlock of how to handle threats specific to your app.
