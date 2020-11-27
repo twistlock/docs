@@ -434,6 +434,9 @@
   /offline/refresh:
     post: !include ../descriptions/feeds/refresh_post.md
 
+  /offline/{id}:
+    put: !include ../descriptions/feeds/upload_put.md
+
 #
 # /api/v1/forensic
 #
