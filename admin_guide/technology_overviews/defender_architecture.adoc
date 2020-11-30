@@ -43,15 +43,20 @@ Kernel modules are compiled software components that can be inserted into the ke
 
 Because kernel modules have unrestricted system access, a security flaw in them is a system wide exposure.  A single unchecked buffer or other error in such a low level component can lead to the complete compromise of an otherwise well designed and hardened system.  Further, kernel modules can introduce significant stability risks to a system.  Again, because of their wide access, a poorly performing kernel module that’s frequently called can drag down performance of the entire host, consume excessive resources, and lead to kernel panics.  For these reasons, many modern operating systems designed for cloud native apps, like Google Container-Optimized OS, explicitly prevent the usage of kernel modules.
 
-=== Defender - Console communication
+=== Defender-Console communication
 
-By default, Defender establishes a connection to Console on TCP port 8084 but the port can be customized to meet the needs of your environment. All traffic between the Defender and the console is TLS encrypted.
+By default, Defender establishes a connection to Console on TCP port 8084, although the port number can be customized to meet the needs of your environment.
+All traffic between Defender and Console is TLS encrypted.
 
-The Defender has no privilege to the console or the underlying host the console is installed on beyond receiving policy updates and streaming event data to the console.
-Prisma's console and defender natively do not trust each other and require certificate authentication to make a connection. Pre-auth any connection is blocked and Post-auth capabilities is limited to getting the policies and sending events to the console.
+Defender has no privileged access to Console or the underlying host where Console is installed.
+By design, Console and Defender don't trust each other and Defender mutual certificate-based authentication is required to connect.
+Pre-auth, connections are blocked
+Post-auth, Defender's capabilities are limited to getting policies from Console and sending event data to Console.
 
-If the defender were to be compromised, the risk would be to the local system where the defender is deployed, the privilege it has on that local system, and the possibility it will send out garbage data to the Console.
-Console communication channels are separated, with no ability to jump channels - the defender communication being on 8084 means that it has no ability to interact with the console beyond this as the API and web interface only listens on 8081 and 8083. The API and Web interface require authentication via different channels (such as user name and password, access key, etc.) which the Defender does not hold.
+If Defender were to be compromised, the risk would be local to the system where it is deployed, the privilege it has on the local system, and the possibility of it sending garbage data to Console.
+Console communication channels are separated, with no ability to jump channels.
+Defender has no ability to interact with Console beyond port 8084.
+Both Console's API and web interfaces, served on port 8083 (HTTPS), require authentication via different channels (such as user name and password, access key, etc.), none of which Defender holds.
 
 [#_blocking_rules]
 === Blocking rules
