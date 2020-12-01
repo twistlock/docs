@@ -4,11 +4,13 @@ Custom image checks give you a way to write and run your own compliance checks t
 
 Prisma Cloud lets you implement your own custom image checks with simple scripts.
 
+Custom compliance checks are supported for Linux containers and hosts and Windows containers.
+
 A custom image check consists of a single script.
 The script's exit code determines the result of the check, where 0 is pass and 1 is fail.
 
-Scripts are executed in the container's default shell.
-For many Linux container images, the default shell is bash, but that's not always the case.
+Scripts are executed in the default shell.
+The most common default shell for Linux is bash, but that's not always the case.
 For Windows container images, the default shell is cmd.exe.
 
 [NOTE]
@@ -21,11 +23,12 @@ For example, the following directive specifies that the Linux Bourne-again (bash
   #!/bin/bash
 ====
 
-Defender runs the compliance checks inside a container instantiated from the image being scanned.
-Due to risks associated with running arbitrary code, all compliance checks are executed in a restricted sandboxed environment.
+For containers, Defender runs the compliance checks inside a restricted sanboxed container instantiated from the image being scanned, thus avoiding unncessary risk associated with running arbitarary code.
+
+For hosts, Defedener runs the compliance checks on the host itself with unrestricted privileges to allow execution of any script. In order to limit the exposure only to customers that require this capability, this feature is disabled by default. To enable custom compliance checks for hosts, enable this setting first via *Manage > Defenders > Advanced Settings > Custom Compliance Checks for hosts* and deploy or redeploy Defenders if already deployed. Disabling this setting take place immediatly and does not require Defenders to be redepolyed. 
 
 Every compliance check in the system has a unique ID.
-Custom image checks are automatically assigned an ID, starting with the number 9000.
+Custom checks are automatically assigned an ID, starting with the number 9000.
 As new custom checks are added, they are automatically assigned the next available ID (9001, 9002, and so on).
 
 NOTE: If a new rule with custom compliance checks is added, or an existing rule is updated with a new custom compliance check, Prisma Cloud drops the cached scan results for registries, and rescans registry images.
@@ -37,7 +40,7 @@ In a scaled-out environment with large registries, repeated changes to custom co
 
 The flow for writing and operationalizing a custom image check is:
 
-* Write a custom image check.
+* Write a custom check.
 
 * Create a new compliance rule that includes your custom image check, and specifies what action to take when the check fails (ignore, alert, block).
 
@@ -60,14 +63,18 @@ The flow for writing and operationalizing a custom image check is:
 
 . Update the compliance policy to run your check.
 
-.. Go to *Defend > Compliance > Containers and Images*.
+.. Go to *Defend > Compliance > Containers and Images* for containers or + 
+*Defend > Compliance > Hosts* for hosts.
 
 .. Click *Add rule*.
 
 .. Enter a rule name.
 
 .. Under *Compliance actions*, narrow the compliance checks displayed.
-On the *All types* drop-down list, select *Custom > Image*.
++
+For containers, on the *All types* drop-down list, select *Custom > Image*.
++
+For hosts, on the *All types* drop-down list, select *Custom > Custom*.
 +
 You should see a list of custom checks you've implemented, starting with ID 9000.
 
