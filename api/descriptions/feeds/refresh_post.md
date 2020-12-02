@@ -1,8 +1,8 @@
-Triggers the Console to refresh its data from the Intelligence Stream.
+Triggers Console to refresh its data from the Intelligence Stream.
 
 ### cURL Request
 
-The following cURL command triggers the Console to refresh its data from the Intelligence Stream.
+The following cURL command triggers Console to refresh its data from the Intelligence Stream.
 
 ```bash
 $ curl -k \
