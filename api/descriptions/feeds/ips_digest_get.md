@@ -1,4 +1,4 @@
-Retrieves the digest string for the list of suspicious or high risk IP endpoints configured in the console.
+Retrieves the digest string for the list of suspicious or high risk IP endpoints configured in Console.
 
 ### cURL Request
 
