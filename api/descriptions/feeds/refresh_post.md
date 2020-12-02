@@ -4,8 +4,6 @@ Triggers the Console to refresh its data from the Intelligence Stream.
 
 The following cURL command triggers the Console to refresh its data from the Intelligence Stream.
 
-**Note:** The cURL will require you to enter the user's password after submission.
-
 ```bash
 $ curl -k \
   -u <USER> \
