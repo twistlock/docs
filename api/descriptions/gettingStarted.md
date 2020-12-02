@@ -17,7 +17,7 @@ To find your `<CONSOLE>` path for a SaaS environment:
 
 #### For Self-hosted Installations
 
-For self-hosted environments, the Prisma Cloud API is exposed on port 8083 (HTTPS).
+For self-hosted environments, the Prisma Cloud Compute API is exposed on port 8083 (HTTPS).
 This port is specified at install time in `twistlock.cfg`.
 
 * **(Default) Kubernetes installations:** The Console service is exposed by a LoadBalancer.
