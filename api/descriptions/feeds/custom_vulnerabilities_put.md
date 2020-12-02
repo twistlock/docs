@@ -4,8 +4,6 @@ Simultaneously updates all the custom vulnerabilities and associated rules for h
 
 The following cURL command updates a vulnerability for a library named `internal-lib`, and specifies that its versions `1.1` to `1.8` are known to be vulnerable.
 
-**Note:** The cURL will require you to enter the user's password after submission.
-
 ```
 $ curl -k \
   -u <USER> \
