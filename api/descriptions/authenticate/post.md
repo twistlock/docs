@@ -1,4 +1,5 @@
-Retrieves an access token using your username and password. By default, access tokens are valid for 24 hours.
+Retrieves an access token using your username and password.
+By default, access tokens are valid for 24 hours.
 
 ### cURL Request
 

@@ -12,7 +12,8 @@ $ curl -k \
 
 ### Response
 
-A successful response will return the following response containing the new access token. This access token replaces the old access token.
+A successful response will return the following response containing the new access token.
+This access token replaces the old access token.
 
 ```bash
 {"token", "ACCESS_TOKEN_VALUE"}
