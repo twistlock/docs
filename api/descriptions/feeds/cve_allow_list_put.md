@@ -6,8 +6,6 @@ Globally whitelists a set of Custom Vulnerability Environments (CVEs).
 
 The following cURL command installs a list of globally whitelisted CVEs.
 
-**Note:** The cURL will require you to enter the user's password after submission.
-
 ```bash
 $ curl -k \
   -u <USER> \

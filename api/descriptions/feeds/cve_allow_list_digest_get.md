@@ -4,8 +4,6 @@ Retrieves the digest string for the Custom Vulnerability Environment (CVE) allow
 
 The following cURL command retrieves the digest for the configured CVE.
 
-**Note:** The cURL will require you to enter the user's password after submission.
-
 ```bash
 $ curl -k \
   -u <USER> \

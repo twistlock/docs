@@ -4,8 +4,6 @@ Retrieves the list of globally whitelisted Custom Vulnerability Environments (CV
 
 The following cURL command retrieves the list of globally whitelisted CVEs.
 
-**Note:** The cURL will require you to enter the user's password after submission.
-
 ```bash
 $ curl -k \
   -u <USER> \
