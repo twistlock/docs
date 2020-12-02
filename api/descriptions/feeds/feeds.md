@@ -1,1 +1,2 @@
-Augments the Twistlock Intelligence Stream with custom threat data. The custom threat data informs Twistlock of how to handle threats specific to your app.
+Augments the Prisma Cloud Compute Intelligence Stream with custom threat data.
+The custom threat data informs Prisma Cloud Compute how to handle threats specific to your app.
