@@ -4,8 +4,6 @@ Retrieves the digest string for the list of suspicious or high risk IP endpoints
 
 The following cURL command retrieves the digest for the banned suspicious or high-risk IP addresses.
 
-**Note:** The cURL will require you to enter the user's password after submission.
-
 ```bash
 $ curl -k \
   -u <USER> \

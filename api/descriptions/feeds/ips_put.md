@@ -6,8 +6,6 @@ Bans a custom list of suspicious or high-risk IP addresses.
 
 The following cURL command installs a custom list of banned suspicious or high-risk IP addresses.
 
-**Note:** The cURL will require you to enter the user's password after submission.
-
 ```bash
 $ curl -k \
   -u <USER> \
