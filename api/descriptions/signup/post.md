@@ -2,7 +2,7 @@ Creates the initial admin user after the Console is first installed.
 
 ### cURL Request
 
-The following curl command creates the initial admin user with the username `admin` and password `password`.
+The following cURL command creates the initial admin user with the username `admin` and password `password`.
 
 ```bash
 $ curl -k \
