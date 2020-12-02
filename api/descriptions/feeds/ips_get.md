@@ -2,7 +2,7 @@ Retrieves the customized list of blacklisted suspicious or high-risk IP addresse
 
 ### cURL Request
 
-The following cURL command retrieves the list of globally blacklisted suspicious or high-risk IP addresses:
+The following cURL command retrieves the list of globally blacklisted suspicious or high-risk IP addresses.
 
 **Note:** The cURL will require you to enter the user's password after submission.
 
@@ -16,7 +16,7 @@ $ curl -k \
 
 ### Response
 
-A successful response will return a list of suspicious or high-risk IP addresses that will be banned:
+A successful response will return a list of suspicious or high-risk IP addresses that will be banned.
 
 ```json
 {
