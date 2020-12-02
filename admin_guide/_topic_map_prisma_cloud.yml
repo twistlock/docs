@@ -28,6 +28,12 @@ Topics:
   File: welcome
 - Name: Getting started
   File: getting_started
+- Name: Upgrade announcements
+  File: announcements
+- Name: Compute SaaS maintenance updates
+  File: saas_maintenance
+- Name: NAT gateway IP addresses
+  File: nat_gateway_ip_addresses
 - Name: Product architecture
   File: product_architecture
 - Name: Licensing
@@ -50,10 +56,12 @@ Topics:
   File: twistlock_container_images
 - Name: Kubernetes
   File: install_kubernetes
-- Name: OpenShift
-  File: install_openshift
-- Name: VMware Tanzu Enterprise PKS
-  File: install_pks
+- Name: OpenShift 4
+  File: install_openshift_4
+- Name: OpenShift 3.11
+  File: install_openshift_3_11
+- Name: VMware Tanzu Kubernetes Grid
+  File: install_vmware_tkg
 - Name: Amazon ECS
   File: install_amazon_ecs
 - Name: Docker Swarm
@@ -74,17 +82,21 @@ Topics:
   - Name: Cluster Container Defender
     File: install_cluster_container_defender
   - Name: App Embedded Defender
-    File: install_app_embedded_defender
+    File: install_rasp_defender
   - Name: App Embedded Defender for Fargate
     File: install_app_embedded_defender_fargate
-  - Name: App Embedded Defender for Pivotal PAS
-    File: install_app_embedded_defender_pivotal_pas
+  - Name: Defender for VMWare Tanzu TAS
+    File: install_tas_defender
   - Name: Serverless Defender (auto-protect)
     File: install_serverless_defender_autoprotect
   - Name: Serverless Defender
     File: install_serverless_defender
   - Name: Serverless Defender (Lambda layer)
     File: install_serverless_defender_layer
+  - Name: Host Defender
+    File: install_host_defender
+  - Name: Deploy Defender from GCP Marketplace
+    File: install_defender_gcp_marketplace
   - Name: Decommission single Container Defender
     File: decommission_defender
 ---
@@ -94,7 +106,7 @@ Topics:
   - Name: Upgrade
     File: upgrade
   - Name: Upgrade process
-    File: upgrade_process
+    File: upgrade_process_saas
   - Name: Kubernetes
     File: upgrade_kubernetes
   - Name: OpenShift
@@ -181,6 +193,8 @@ Topics:
   File: user_roles
 - Name: Assign roles
   File: assign_roles
+- Name: Credentials store
+  File: credentials_store
 ---
 Name: Vulnerability management
 Dir: vulnerability_management
@@ -225,11 +239,11 @@ Topics:
   - Name: Webhooks
     File: webhooks
 - Name: VM image scanning
-  File: vm_image_scanning
+  File: vm_images_scanning
+- Name: Code repository scanning
+  File: code_repo_scanning
 - Name: Malware scanning
   File: malware_scanning
-- Name: Zero-day vulnerabilities
-  File: zero_day_vulns
 - Name: Risk trees
   File: risk_tree
 - Name: Detect vulnerabilities in unpackaged software
@@ -242,8 +256,8 @@ Topics:
   File: windows_image_scanning
 - Name: Serverless function scanning
   File: serverless_functions
-- Name: PCF blobstore scanning
-  File: pcf_blobstore
+- Name: VMWare Tanzu blobstore scanning
+  File: vmware_tanzu_blobstore
 ---
 Name: Access control
 Dir: access_control
@@ -281,7 +295,7 @@ Topics:
 - Name: Host scanning
   File: host_scanning
 - Name: VM image scanning
-  File: vm_image_scanning
+  File: vm_images_scanning
 - Name: Detect secrets
   File: detect_secrets
 - Name: Cloud discovery
@@ -371,14 +385,12 @@ Dir: firewalls
 Topics:
 - Name: Firewalls
   File: firewalls
-- Name: Cloud Native Application Firewall (CNAF)
-  File: cnaf
-- Name: Deploy CNAF
-  File: deploy_cnaf
+- Name: Web-Application and API Security (WAAS)
+  File: waas
+- Name: Deploy Web-Application and API Security (WAAS)
+  File: deploy_waas
 - Name: Cloud Native Network Firewall (CNNF)
   File: cnnf
-- Name: CNNF for hosts
-  File: cnnf_hosts
 ---
 Name: Secrets
 Dir: secrets
@@ -432,6 +444,10 @@ Topics:
   File: jira
 - Name: PagerDuty
   File: pagerduty
+- Name: ServiceNow Security Incident Response
+  File: servicenow_sir
+- Name: ServiceNow Vulnerability Response
+  File: servicenow_vr
 - Name: Slack
   File: slack
 - Name: Webhook
@@ -482,6 +498,8 @@ Topics:
   File: deployment_patterns
 - Name: DNS and certificate management
   File: best_practices_dns_cert_mgmt
+- Name: Caps
+  File: caps
 - Name: Performance planning
   File: performance_planning
 ---
@@ -490,12 +508,16 @@ Dir: api
 Topics:
 - Name: API
   File: api
+- Name: Stability guide
+  File: stable_api
 - Name: Access the API
   File: access_api
 - Name: Automate Defender install
   File: automate_defender_install
 - Name: Manage compliance policies
   File: manage_compliance_api
+- Name: 20.09 porting guide
+  File: porting_guide
 ---
 Name: How-to guides
 Dir: howto
@@ -508,3 +530,5 @@ Topics:
 #  File: openshift_build_twistcli_scanning
 - Name: Disable automatic learning
   File: disable_automatic_learning
+- Name: Review debug logs
+  File: review_debug_logs

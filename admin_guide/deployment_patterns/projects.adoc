@@ -132,6 +132,10 @@ Each project can support a maximum of 5,000 Defenders.
 Scale projects can be stacked to support very large environments (greater than 5,000 hosts).
 For example, if your your container environment runs 10,000 hosts, then you would deploy 2 scale projects.
 
+NOTE: Starting in Galileo, each instance of Console will be able to support 10K Defenders.
+With this new capability, we will deprecate scale projects.
+See xref:migration_options_for_scale_projects.adoc[Migration options for scale projects] for more information and possible migration paths.
+
 // Sharding pattern (Microsoft Azure docs)
 // https://docs.microsoft.com/en-us/azure/architecture/patterns/sharding
 Data for each project is maintained with each supervisor.
@@ -157,7 +161,7 @@ For scale projects, requests for the settings pages and policies pages will retu
 
 Scale projects inherit almost all rules from Central Console:
 
-* *Defend > Firewalls > {CNAF, CNNF}*
+* *Defend > Firewalls > WAAS*
 * *Defend > Runtime > {Container Policy, Host Policy}*
 * *Defend > Vulnerabilities > Policy*
 * *Defend > Compliance > {Policy, Trusted Images}*
@@ -373,7 +377,7 @@ You can use basic auth or an auth token.
 
 . Update the supervisor's project settings.
 The following example command uses basic auth.
-Only xref:../access_control/user_roles.adoc#administrator[admin users] are permitted to change project settings.
+Only xref:../authentication/user_roles.adoc#administrator[admin users] are permitted to change project settings.
 
   $ curl -k \
     -u <USER> \
