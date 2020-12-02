@@ -16,7 +16,7 @@ $ curl -k \
 
 ### Response
 
-A successful response will return a list of CVEs that will be used for global whitelisting:
+A successful response will return a list of CVEs that will be used for global whitelisting.
 
 ```json
 {
