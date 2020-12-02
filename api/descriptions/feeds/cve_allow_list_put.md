@@ -1,10 +1,10 @@
-Globally whitelists a set of Custom Vulnerability Environments (CVEs).
+Globally whitelists a set of Common Vulnerabilities and Exposures (CVE).
 
 **Note:** Any previously installed lists are overwritten.
 
 ### cURL Request
 
-The following cURL command installs a list of globally whitelisted CVEs.
+The following cURL command installs a globally whitelisted CVE list.
 
 ```bash
 $ curl -k \
@@ -25,5 +25,5 @@ $ curl -k \
 
 **Note:** No response will be returned upon successful execution.
 
-To confirm the CVEs have been added to the global whitelist, invoke the `GET /api/v1/feeds/custom/cve-allow-list` endpoint.
+To confirm the CVE list has been added to the global whitelist, invoke the `GET /api/v1/feeds/custom/cve-allow-list` endpoint.
 

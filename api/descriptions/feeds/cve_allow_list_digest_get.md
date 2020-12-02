@@ -1,8 +1,8 @@
-Retrieves the digest string for the Custom Vulnerability Environment (CVE) allow lists configured in Console.
+Retrieves the digest string for the Common Vulnerabilities and Exposures (CVE) allow list configured in Console.
 
 ### cURL Request
 
-The following cURL command retrieves the digest for the configured CVE.
+The following cURL command retrieves the digest for the configured CVE allow list.
 
 ```bash
 $ curl -k \
