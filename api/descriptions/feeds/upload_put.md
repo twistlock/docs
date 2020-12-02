@@ -2,7 +2,7 @@ Uploads an Intelligence Stream.
 
 ### cURL Request
 
-The following cURL command triggers the Console to upload an Intelligence Stream:
+The following cURL command triggers the Console to upload an Intelligence Stream.
 
 ```bash
 $ curl -k \
