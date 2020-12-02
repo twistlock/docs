@@ -2,7 +2,7 @@ Retrieves an access token using your username and password. By default, access t
 
 ### cURL Request
 
-The following curl command retrieves a token for user 'admin' with password 'password':
+The following cURL command retrieves a token for user `admin` with password `password`.
 
 ```bash
 $ curl -k \
