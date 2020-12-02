@@ -1,4 +1,4 @@
-Creates the initial admin user after the Console is first installed.
+Creates the initial admin user after Console is first installed.
 
 ### cURL Request
 
