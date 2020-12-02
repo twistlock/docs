@@ -6,7 +6,7 @@ This list is used by the Twistlock scanner to detect vulnerable custom component
 
 ### cURL Request
 
-The following cURL command retrieves a list of all the custom vulnerabilities and associated rules:
+The following cURL command retrieves a list of all the custom vulnerabilities and associated rules.
 
 **Note:** The cURL will require you to enter the user's password after submission.
 
