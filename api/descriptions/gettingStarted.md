@@ -1,6 +1,7 @@
 ### How to Evaluate `<CONSOLE>`
 
-All the example API commands is these documents specify a `<CONSOLE>` variable, which represents the address for your Console. The Console address will depend on how your Console was installed.
+All the example API commands is these documents specify a `<CONSOLE>` variable, which represents the address for your Console.
+The Console address will depend on how your Console was installed.
 
 #### For SaaS Installations
 
@@ -16,7 +17,8 @@ To find your `<CONSOLE>` path for a SaaS environment:
 
 #### For Self-hosted Installations
 
-For self-hosted environments, the Prisma Cloud API is exposed on port 8083 (HTTPS). This port is specified at install time in `twistlock.cfg`.
+For self-hosted environments, the Prisma Cloud API is exposed on port 8083 (HTTPS).
+This port is specified at install time in `twistlock.cfg`.
 
 * **(Default) Kubernetes installations:** The Console service is exposed by a LoadBalancer.
 	
@@ -39,7 +41,8 @@ For self-hosted environments, the Prisma Cloud API is exposed on port 8083 (HTTP
 
 Paginated API requests are capped to a max of 50 returned objects because very large responses could DoS your Console.
 
-If the response contains more than 50 objects, cycle through the collection with the `offset` query parameter to retrieve more objects. For example:
+If the response contains more than 50 objects, cycle through the collection with the `offset` query parameter to retrieve more objects.
+For example:
 
 ```
 https://<CONSOLE>/api/v1/images?limit=50&offset=X
