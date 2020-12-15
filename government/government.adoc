@@ -9,12 +9,8 @@ Please check up on this site as guidance may change over time.
 
 Prisma Cloud Compute has been assessed to the following STIGs:
 
-- The Console and Defender components of every Prisma Cloud Compute release are assessed against the https://static.open-scap.org/ssg-guides/ssg-rhel7-guide-stig.html[DISA STIG for Red Hat Enterprise Linux 7, xccdf_org.ssgproject.content_profile_stig].
-The findings' justifications can be found link:STIG\ssgproject[here].
-
 - Prisma Cloud Compute has been assessed to the https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_ASD_V4R11_STIG.zip[Application Security and Development Security Technical Implementation Guide Version 4, Release: 11 Benchmark Date: 24 Jul 2020].
 The findings based upon the vulnerability severity category codes can be found link:STIG/ADS_v4_r11/ASD_v4_r11_overview.adoc[here].
-
 
 == Federal Risk and Authorization Management Program (FedRAMP)
 

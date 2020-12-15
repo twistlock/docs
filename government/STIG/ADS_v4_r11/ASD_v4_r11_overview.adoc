@@ -5,7 +5,7 @@ The findings based upon the vulnerability severity category codes can be found l
 == Updates
 20201012 - https://docs.twistlock.com/docs/releases/release-information/latest.html[Prisma Cloud Compute v20_04_177] assessed
 
-== Control findings by vulnerability Severity Category Code Definitions
-- Category 1
-- Category 2
+== Control findings by vulnerability severity category code definitions
+- link:ASD_v4_r11_CAT1.adoc[Category 1]
+- link:ASD_v4_r11_CAT2.adoc[Category 2]
 - link:ASD_v4_r11_CAT3.adoc[Category 3]
