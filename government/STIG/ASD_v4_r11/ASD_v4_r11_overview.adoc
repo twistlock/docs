@@ -1,6 +1,5 @@
 == Application Security and Development v4 r11 STIG
-Prisma Cloud Compute has been assessed to the https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_ASD_V4R11_STIG.zip[Application Security and Development Security Technical Implementation Guide Version 4, Release: 11 Benchmark Date: 24 Jul 2020].
-The findings based upon the vulnerability severity category codes can be found link:STIG/ADS_v4_r11/ASD_v4_r11_overview.adoc[here]:
+Prisma Cloud Compute has been assessed to the https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=app-security%2Capp-security-dev[Application Security and Development Security Technical Implementation Guide Version 4, Release: 11 Benchmark Date: 24 Jul 2020].
 
 == Updates
 20201012 - https://docs.twistlock.com/docs/releases/release-information/latest.html[Prisma Cloud Compute v20_04_177] assessed
