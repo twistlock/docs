@@ -1,4 +1,4 @@
-== Altered Binary
+== Altered binary
 
 An altered binary incident indicates that a binary that during image scanning was found with different metadata than what is specified by its package was executed. This binary might have been maliciously replaced or altered.
 
