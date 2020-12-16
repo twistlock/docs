@@ -3,7 +3,6 @@
 Custom image checks give you a way to write and run your own compliance checks to assess, measure, and enforce security baselines in your environment.
 
 Prisma Cloud lets you implement your own custom image checks with simple scripts.
-
 Custom compliance checks are supported for Linux containers and hosts and Windows containers.
 
 A custom image check consists of a single script.
@@ -23,9 +22,10 @@ For example, the following directive specifies that the Linux Bourne-again (bash
   #!/bin/bash
 ====
 
-For containers, Defender runs the compliance checks inside a restricted sanboxed container instantiated from the image being scanned, thus avoiding unncessary risk associated with running arbitarary code.
+For containers, Defender runs the compliance checks inside a restricted sandboxed container instantiated from the image being scanned, thus avoiding the unnecessary risk associated with running arbitrary code.
 
-For hosts, Defedener runs the compliance checks on the host itself with unrestricted privileges to allow execution of any script. In order to limit the exposure only to customers that require this capability, this feature is disabled by default. To enable custom compliance checks for hosts, enable this setting first via *Manage > Defenders > Advanced Settings > Custom Compliance Checks for hosts* and deploy or redeploy Defenders if already deployed. Disabling this setting take place immediatly and does not require Defenders to be redepolyed. 
+For hosts, Defender runs the compliance checks on the host itself with unrestricted privileges to allow execution of any script.
+In order to limit exposure, this feature is disabled by default.
 
 Every compliance check in the system has a unique ID.
 Custom checks are automatically assigned an ID, starting with the number 9000.
@@ -36,13 +36,30 @@ In a scaled-out environment with large registries, repeated changes to custom co
 
 
 [.task]
-=== Creating a new custom image check
+=== Enabling custom compliance checks for hosts
 
-The flow for writing and operationalizing a custom image check is:
+By default, custom compliance checks for hosts is disabled.
+
+If you enable the feature, and then later disable it, the disabled state is effective immediately.
+You don't need to redeploy Defenders when you switch to the disabled state.
+You only need to redeploy Defenders when switching to the enabled state.
+
+[.procedure]
+. Go to *Manage > Defenders > Advanced Settings*.
+
+. Set *Custom Compliance Checks for hosts* to enabled.
+
+. Deploy Defenders to your environment.
+Or if already deployed, redeploy your Defenders.
+
+
+[.task]
+=== Creating a new custom check
+
+The flow for writing and operationalizing a custom check is:
 
 * Write a custom check.
-
-* Create a new compliance rule that includes your custom image check, and specifies what action to take when the check fails (ignore, alert, block).
+* Create a new compliance rule that includes your custom check, and specifies the action to take when the check fails (ignore, alert, block).
 
 [.procedure]
 . Open Console
@@ -63,8 +80,7 @@ The flow for writing and operationalizing a custom image check is:
 
 . Update the compliance policy to run your check.
 
-.. Go to *Defend > Compliance > Containers and Images* for containers or + 
-*Defend > Compliance > Hosts* for hosts.
+.. Go to *Defend > Compliance > Containers and Images* for containers or *Defend > Compliance > Hosts* for hosts.
 
 .. Click *Add rule*.
 
