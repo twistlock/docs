@@ -44,7 +44,7 @@ Any previously installed rules are overwritten.
 To create or update a rule, the rule must specify the following:
 
 * Rule name
-* At least 1 collection (For versions 20.12+) with a collection name (at minimum).
+* At least 1 collection specifying a collection name (at minimum).
 
 You can reference a collection by its name when creating / updating a rule.
 If the collection name exists in Console, the remaining resource fields for the collection will automatically be filled in.
@@ -72,6 +72,14 @@ $ curl 'https://<CONSOLE>/api/v1/policies/vulnerability/ci/images?project=<PROJE
             "name":"<COLLECTION_NAME>",
          }
       ],
+      "alertThreshold":{
+         "disabled":false,
+         "value":4
+      },
+      "blockThreshold":{
+         "enabled":false,
+         "value":0
+      },
     }
   ],
   "policyType": "ciImagesVulnerability"
