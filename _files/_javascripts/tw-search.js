@@ -62,12 +62,24 @@ function twSearch() {
   });
 
   // Pressing enter in the input = search btn click
-  query.addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.keyCode == 13) {
-        searchBtn.click();
-    }
-  });
+  //query.addEventListener("keyup", function(event) {
+  //  console.log('keyup');
+  //  event.preventDefault();
+  //  if (event.keyCode == 13) {
+  //      console.log('Pressed ENTER');
+  //      searchBtn.click();
+  //  }
+  //});
+
+  // Pressing enter in the input = search btn click
+  //query.addEventListener("keydown", function(event) {
+  //  console.log('keydown');
+    //event.preventDefault();
+  //  if (event.code === 'Enter') {
+  //      console.log('Pressed ENTER');
+  //      searchBtn.click();
+  //  }
+  //});
 
   helper.on("result", searchCallback);
 
