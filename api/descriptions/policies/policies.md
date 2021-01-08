@@ -41,19 +41,12 @@ Any previously installed rules are overwritten.
 
 #### Minimum Rule Parameters
 
-To create or update a rule, the rule must specify the following:
+To create or update a rule, specify the following:
 
 * Rule name
-* At least 1 collection specifying a collection name (at minimum).
-
-You can reference a collection by its name when creating / updating a rule.
-If the collection name exists in Console, the remaining resource fields for the collection will automatically be filled in.
-
-**Note:** The referenced collections *must* exist prior to creating / updating rules, or the API will not add / update your rules.
-
-In Console, the default collection is `All`.
-`All` is a collection created by the system when the software is installed / upgraded.
-When using the API, you can specify `All` as the `<COLLECTION_NAME>` to apply the default collection.
+* At least 1 collection specifying a collection name (at minimum)
+* A block threshold (optional, but recommended)
+* An alert threshold (optional, but recommended)
 
 For example, to replace all the vulnerability rules for CI image deployments:
 
@@ -86,6 +79,18 @@ $ curl 'https://<CONSOLE>/api/v1/policies/vulnerability/ci/images?project=<PROJE
 }'
 ```
 
+**Note:** The default alert threshold of `Low` is typically too broad and not actionable. Usually you'll want to specify a threshold of `Critical` or `High`.
+
+##### Referencing Collections by Name
+
+You can reference a collection by its name when creating / updating a rule.
+If the collection name exists in Console, the remaining resource fields for the collection will automatically be filled in.
+
+**Note:** The referenced collections *must* exist prior to creating / updating rules, or the API will not add / update your rules.
+
+In Console, the default collection is `All`.
+`All` is a collection created by the system when the software is installed / upgraded.
+When using the API, you can specify `All` as the `<COLLECTION_NAME>` to apply the default collection.
 
 ### How to Delete Policy Rules
 
