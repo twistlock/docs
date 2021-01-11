@@ -9,7 +9,7 @@ Not everyone has the bandwidth to painstakingly work through the details of ever
 Prisma Cloud lets your security team centrally review all best practices, enable the ones that align with your organization’s security mandate, then evenly enforce them across your environment.
 
 Prisma Cloud's predefined checks are based on industry standards, such as the CIS benchmarks, as well as research and recommendations from Prisma Cloud Labs.
-Additionally, you can implement your own compliance checks with xref:../compliance/custom_compliance_checks.adoc#[scripts] or xref:../compliance/extensible_compliance_checks.adoc#[XCCDF].
+Additionally, you can implement your own compliance checks with xref:../compliance/custom_compliance_checks.adoc[scripts].
 
 
 === Enforcement
@@ -63,8 +63,8 @@ As you type, the available checks are filtered to match your search query.
 
 .. For check 599 (Container is running as root), set the action to *Block*.
 
-.. Under *Add resources*, accept the default settings.
-The default filter applies your rule to all containers, images, hosts, and labels in your environment.
+.. In *Scope*, accept the default collection, *All*.
+The default collection applies the rule to all containers in your environment.
 
 .. Click *Save*.
 +
