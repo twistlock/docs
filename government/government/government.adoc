@@ -10,12 +10,8 @@ Please check up on this site as guidance may change over time.
 Prisma Cloud Compute has been assessed to the following STIGs:
 
 - Prisma Cloud Compute has been assessed to the https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=app-security%2Capp-security-dev[Application Security and Development Security Technical Implementation Guide Version 4, Release: 11 Benchmark Date: 24 Jul 2020].
-<<<<<<< HEAD
 
 The findings based upon the vulnerability severity category codes can be found link:STIG/ASD_v4_r11/ASD_v4_r11_overview.adoc[here].
-=======
-The findings based upon the vulnerability severity category codes can be found link:STIG/ADS_v4_r11/ASD_v4_r11_overview.adoc[here].
->>>>>>> 0b1f935004778240e642361fda88e15e7228fc6a
 
 == Federal Risk and Authorization Management Program (FedRAMP)
 
