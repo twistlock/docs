@@ -10,7 +10,7 @@ This section lists the issues addressed in this release.
 === Improvements, fixes, and performance enhancements
 
 // #23776, #26095, #26103
-* Fixes an issue with naming collisions for Defenders deployed in AWS and Azure.
+* Fixes an issue with naming collisions for DaemonSet Defenders deployed in AWS and Azure.
 This fix has a number of implications, so you must explicitly enable it when upgrading.
 For more information, see <<_defender_name_collisions>>.
 
@@ -45,7 +45,8 @@ Hostnames can be duplicated across environments, causing naming conflicts for de
 For example, in AWS if you have VPCs with the same network ranges, nodes in EKS clusters can have the same hostname because hostnames are derived from the private ip address of the instance.
 This results in Defenders with duplicate names.
 
-Update 1 fixes the issue by extracting unique context from the cloud metadata, and wrapping hostnames with this context to generate unique hostnames.
+Update 1 fixes the issue for DaemonSet Defenders (Kubernetes and OpenShift) running on AWS or Azure.
+The fix extracts a unique context from the cloud metadata, and wraps hostnames with this context to generate unique hostnames.
 
 
 ==== Defender naming scheme
@@ -56,13 +57,13 @@ In AWS, the Defender name is derived as follows: `<hostname>-<instance ID>`.
 For example, `ip-172-31-80-18.ec2.internal-i-07dcaXXXXXXXXXXXX`.
 
 In Azure, the Defender name is dervived as follows: `<hostname>-<resource group name>-<subscription ID>`.
-For example, `aks-agentpool-16600000-vmss000000-MC_alexs-aks_alexs-aks_eastus-ae0XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`.
+For example, `aks-agentpool-16600000-vmss000000-MC_user-aks_user-aks_eastus-ae0XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`.
 
 
 ==== Enabling the new naming scheme on upgrade
 
 You can configure Prisma Cloud to rename Defenders with unique strings on upgrade.
-Renaming Defenders might break other product configurations, however, so it is disabled by default.
+Renaming Defenders might break other product configurations, so it is disabled by default.
 
 To enable Defender renaming on upgrade, redeploy Defenders in your EKS (AWS) and AKS (Azure) clusters.
 
@@ -77,10 +78,10 @@ To enable Defender renaming on upgrade, redeploy Defenders in your EKS (AWS) and
 
 . Update the Prisma Cloud objects.
 
-  $ kubectl apply -f twistlock_console.yaml
+  $ kubectl apply -f defender.yaml
 
-Upon upgrade, old Defenders appear in Console as disconnected for some time until they're automatically removed by Console.
-After that time, upgraded Defenders appear with their new unique name.
+Upon upgrade, old Defenders appear in Console as disconnected until they're automatically cleaned up by Console.
+Upgraded Defenders, with their longer unique name, appear alongside the old disconnected Defenders.
 
 
 ==== Known issues
@@ -94,5 +95,5 @@ In your registry settings (*Defend > Vulnerabilities > Images > Registry setting
 +
 To fix the issue, open the registry setting, and select the renamed Defender.
 
-* Policy rules with host-specific scopes will not longer match for AWS and Azure hosts.
+* Policy rules with host-specific scopes will no longer match for AWS and Azure hosts.
 Manually reconfigure any collections with this type of scope.
