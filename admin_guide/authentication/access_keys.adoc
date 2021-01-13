@@ -67,7 +67,7 @@ This role will be assigned to your service account.
 
 .. In *Permissions Group*, select *Account Group Read Only*.
 
-.. Select atleast one Account Group
+.. Select at least one Account Group.
 
 .. Click *Save*.
 
