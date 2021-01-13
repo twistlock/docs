@@ -17,13 +17,13 @@ The service account should have the role of xref:../authentication/user_roles.ad
 
 This procedure shows you how to access the API using an auth token, which is retrieved from the _/api/v1/authenticate_ endpoint.
 ifdef::compute_edition[]
-By default, tokens expire after 30 minutes, but you can configure Console to issue xref:../configure/long_lived_tokens.adoc[long-lived tokens].
+By default, tokens expire after 30 minutes, but you can configure Console to issue xref:../configure/logon_settings.adoc[long-lived tokens].
 The maximum validity period that can be configured for long-lived tokens is 71580 minutes (49.7 days).
 If these validity periods are too short, then access the Prisma Cloud API using xref:../api/access_api.adoc#accessing-the-api-using-basic-authentication[basic authentication].
 endif::compute_edition[]
 
 [NOTE]
-When you're installing Defender into a xref:../install/install_kubernetes.adoc#install-defender[Kubernetes], xref:../install/install_openshift.adoc#install-defender[OpenShift], or xref:../install/install_swarm.adoc[Docker Swarm] cluster, use the deployment method documented in each respective install guide as a reference.
+When you're installing Defender into a xref:../install/install_kubernetes.adoc#install-defender[Kubernetes], xref:../install/install_openshift_3_11.adoc#install-defender[OpenShift 3.11], xref:../install/install_openshift_4.adoc#install-defender[OpenShift 4], or xref:../install/install_swarm.adoc[Docker Swarm] cluster, use the deployment method documented in each respective install guide as a reference.
 Prisma Cloud supports these setups using orchestrator-native constructs, such as DaemonSet (for Kubernetes and OpenShift) and global services (for Docker Swarm), to automate Defender deployment.
 Deployment files can be generated from the Console web interface, the xref:../tools/twistcli.adoc[twistcli utility], and the Prisma Cloud API.
 
@@ -42,13 +42,13 @@ xref:../install/defender_types.adoc[Single Container Defenders] are installed on
 [.procedure]
 . Validate that the node where you will install Defender can reach Console over the network.
 
-  $ curl -k https://<COMPUTE_CONSOLE>:8083/api/v1/_ping
+  $ curl -k https://<COMPUTE_CONSOLE>/api/v1/_ping
 
 . Retrieve an auth token from Console.
 
   $ curl -H "Content-Type: application/json" \
     -d '{"username":"<USERNAME>", "password":"<PASSWORD>"}' \
-    https://<COMPUTE_CONSOLE>:8083/api/v1/authenticate
+    https://<COMPUTE_CONSOLE>/api/v1/authenticate
 +
 Where:
 +
@@ -63,13 +63,14 @@ Use the token you just retrieved to get a list of deployed Defenders.
 
   $ curl \
     -H "authorization: Bearer <TOKEN>" \
-    https://<COMPUTE_CONSOLE>:8083/api/v1/defenders
+    https://<COMPUTE_CONSOLE>/api/v1/defenders
 
 . Download and run the Defender install script.
 
   $ curl \
-    -H "authorization: Bearer <TOKEN> \
-    https://<COMPUTE_CONSOLE>:8083/api/v1/scripts/defender.sh \
+    -H "authorization: Bearer <TOKEN>" \
+    -X POST \
+    https://<COMPUTE_CONSOLE>/api/v1/scripts/defender.sh \
     -o defender.sh && \
     chmod a+x defender.sh && \
     sudo ./defender.sh -c "<CONSOLE>" -d "none"
@@ -103,13 +104,14 @@ By default, it is 8084.
 
   $ curl -H "Content-Type: application/json" \
     -d '{"username":"<USERNAME>", "password":"<PASSWORD>"}' \
-    https://<COMPUTE_CONSOLE>:8083/api/v1/authenticate
+    https://<COMPUTE_CONSOLE>/api/v1/authenticate
 
 . Download and run the Defender install script with the `--install-host` option.
 
   $ curl \
-    -H "authorization: Bearer <TOKEN> \
-    https://<COMPUTE_CONSOLE>:8083/api/v1/scripts/defender.sh \
+    -H "authorization: Bearer <TOKEN>" \
+    -X POST \
+    https://<COMPUTE_CONSOLE>/api/v1/scripts/defender.sh \
     -o defender.sh && \
     chmod a+x defender.sh && \
     sudo ./defender.sh -c "<COMPUTE_CONSOLE>" -d "none" --install-host
@@ -154,14 +156,16 @@ The following call generates the same YAML file as the xref:../install/install_k
 +
   $ curl -k \
     -u <USER> \
-    'https://<COMPUTE_CONSOLE>:8083/api/v1/defenders/daemonset.yaml?consoleaddr=<COMPUTE_CONSOLE>&namespace=twistlock&orchestration=kubernetes&privileged=true' \
+    -X POST \
+    'https://<COMPUTE_CONSOLE>/api/v1/defenders/daemonset.yaml?consoleaddr=<COMPUTE_CONSOLE>&namespace=twistlock&orchestration=kubernetes&privileged=true' \
     > defender.yaml
 +
 The following command generates the same YAML file as the default _twistcli_ invocation for OpenShift:
 +
   $ curl -k \
     -u <USER> \
-    'https://<COMPUTE_CONSOLE>:8083/api/v1/defenders/daemonset.yaml?consoleaddr=<COMPUTE_CONSOLE>&namespace=twistlock&orchestration=openshift' \
+    -X POST \
+    'https://<COMPUTE_CONSOLE>/api/v1/defenders/daemonset.yaml?consoleaddr=<COMPUTE_CONSOLE>&namespace=twistlock&orchestration=openshift' \
     > defender.yaml
 
 . Create the DaemonSet.

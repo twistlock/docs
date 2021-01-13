@@ -28,6 +28,12 @@ Topics:
   File: welcome
 - Name: Getting started
   File: getting_started
+- Name: Upgrade announcements
+  File: announcements
+- Name: Compute SaaS maintenance updates
+  File: saas_maintenance
+- Name: NAT gateway IP addresses
+  File: nat_gateway_ip_addresses
 - Name: Product architecture
   File: product_architecture
 - Name: Licensing
@@ -50,16 +56,16 @@ Topics:
   File: twistlock_container_images
 - Name: Kubernetes
   File: install_kubernetes
-- Name: OpenShift
-  File: install_openshift
-- Name: VMware Tanzu Enterprise PKS
-  File: install_pks
+- Name: OpenShift 4
+  File: install_openshift_4
+- Name: OpenShift 3.11
+  File: install_openshift_3_11
+- Name: VMware Tanzu Kubernetes Grid
+  File: install_vmware_tkg
 - Name: Amazon ECS
   File: install_amazon_ecs
 - Name: Docker Swarm
   File: install_swarm
-- Name: DC/OS
-  File: install_dcos
 - Name: Windows
   File: install_windows
 - Name: Defender types
@@ -77,7 +83,7 @@ Topics:
     File: install_rasp_defender
   - Name: App Embedded Defender for Fargate
     File: install_app_embedded_defender_fargate
-  - Name: Defender for VMWare Tanzu TAS
+  - Name: VMware Tanzu Application Service Defender
     File: install_tas_defender
   - Name: Serverless Defender (auto-protect)
     File: install_serverless_defender_autoprotect
@@ -98,7 +104,7 @@ Topics:
   - Name: Upgrade
     File: upgrade
   - Name: Upgrade process
-    File: upgrade_process
+    File: upgrade_process_saas
   - Name: Kubernetes
     File: upgrade_kubernetes
   - Name: OpenShift
@@ -169,8 +175,6 @@ Topics:
   File: collections
 - Name: Tags
   File: tags
-- Name: Credentials store
-  File: credentials_store
 ---
 Name: Authentication
 Dir: authentication
@@ -231,7 +235,7 @@ Topics:
   - Name: Webhooks
     File: webhooks
 - Name: VM image scanning
-  File: vm_images_scanning
+  File: vm_image_scanning
 - Name: Code repository scanning
   File: code_repo_scanning
 - Name: Malware scanning
@@ -248,7 +252,7 @@ Topics:
   File: windows_image_scanning
 - Name: Serverless function scanning
   File: serverless_functions
-- Name: VMWare Tanzu blobstore scanning
+- Name: VMware Tanzu blobstore scanning
   File: vmware_tanzu_blobstore
 ---
 Name: Access control
@@ -258,7 +262,7 @@ Topics:
   File: access_control
 - Name: Docker role-based access control
   File: rbac
-- Name: Open Policy Agent
+- Name: Admission control
   File: open_policy_agent
 ---
 Name: Compliance
@@ -280,14 +284,12 @@ Topics:
   File: windows
 - Name: Custom compliance checks
   File: custom_compliance_checks
-- Name: Extensible compliance checks
-  File: extensible_compliance_checks
 - Name: Trusted images
   File: trusted_images
 - Name: Host scanning
   File: host_scanning
 - Name: VM image scanning
-  File: vm_images_scanning
+  File: vm_image_scanning
 - Name: Detect secrets
   File: detect_secrets
 - Name: Cloud discovery
@@ -329,6 +331,8 @@ Topics:
   Topics:
   - Name: Incident types
     File: incident_types
+  - Name: Altered binary
+    File: altered_binary
   - Name: Backdoor admin accounts
     File: backdoor_admin_accounts
   - Name: Backdoor SSH access
@@ -337,18 +341,18 @@ Topics:
     File: brute_force
   - Name: Crypto miners
     File: crypto_miners
-  - Name: Data exfiltration
-    File: data_exfiltration
-  - Name: Hijacked processes
-    File: hijacked_processes
+  - Name: Execution flow hijack attempt
+    File: execution_flow_hijack_attempt
   - Name: Kubernetes attack
     File: kubernetes_attack
   - Name: Lateral movement
     File: lateral_movement
   - Name: Port scanning
     File: port_scanning
-  - Name: Service violation
-    File: service_violation
+  - Name: Reverse shell
+    File: reverse_shell
+  - Name: Suspicious binary
+    File: suspicious_binary
 ---
 Name: Continuous integration
 Dir: continuous_integration
@@ -372,17 +376,37 @@ Topics:
 - Name: Set policy in the CI plugins
   File: set_policy_ci_plugins
 ---
+Name: Web-Application and API Security (WAAS)
+Dir: waas
+Topics:
+- Name: Web-Application and API Security (WAAS)
+  File: waas
+- Name: Overview
+  File: waas-intro
+- Name: Deployment
+  File: deploy_waas
+- Name: App Firewall
+  File: waas_app_firewall
+- Name: API Protection
+  File: waas_api_protection
+- Name: DoS Protection
+  File: waas_dos_protection
+- Name: Bot Protection
+  File: waas_bot_protection
+- Name: Access Control
+  File: waas_access_control
+- Name: Advanced Settings
+  File: waas_advanced_settings
+- Name: Analytics
+  File: waas_analytics
+---
 Name: Firewalls
 Dir: firewalls
 Topics:
 - Name: Firewalls
   File: firewalls
-- Name: Web-Application and API Security (WAAS)
-  File: waas
-- Name: Deploy Web-Application and API Security (WAAS)
-  File: deploy_waas
 - Name: Cloud Native Network Firewall (CNNF)
-  File: cnnf
+  File: cnnf_saas
 ---
 Name: Secrets
 Dir: secrets
@@ -492,6 +516,8 @@ Topics:
   File: best_practices_dns_cert_mgmt
 - Name: Caps
   File: caps
+- Name: Performance planning
+  File: performance_planning
 ---
 Name: API
 Dir: api
@@ -506,7 +532,7 @@ Topics:
   File: automate_defender_install
 - Name: Manage compliance policies
   File: manage_compliance_api
-- Name: 20.09 porting guide
+- Name: 20.12 porting guide
   File: porting_guide
 ---
 Name: How-to guides

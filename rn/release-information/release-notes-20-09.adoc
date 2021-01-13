@@ -229,6 +229,11 @@ The new endpoints in 20.09 are:
 For HA, use a container orchestrator, such as Kubernetes, to run and manage the Console container.
 
 
+=== Known issues
+
+* On OpenShift 4 clusters, we do not currently show any image labels or layer information.
+This is being addressed in our next major release, which will continue our goal of parity for dockerless OpenShift environments.
+
 
 === Upcoming deprecations
 
@@ -239,3 +244,4 @@ For HA, use a container orchestrator, such as Kubernetes, to run and manage the 
 
 * Scale projects will be deprecated in the next release.
 Starting in the next release, each Console, including each tenant project Console, will be able to support 10,000 Defenders.
+For information about how to migrate your scale projects to a supported configuration, see https://docs.twistlock.com/docs/compute_edition/deployment_patterns/migration_options_for_scale_projects.html[here].

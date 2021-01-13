@@ -2,11 +2,11 @@
 
 Upgrade Prisma Cloud Onebox.
 First upgrade Console.
-Console will then automatically upgrade all^{asterisk}^ deployed Defenders for you.
+Console will then automatically upgrade all deployed Defenders for you.
 
 If you've disabled Defender auto-upgrade or if Console fails to upgrade one or more Defenders, manually upgrade your Defenders.
 
-^{asterisk}^You must manaully upgrade App-embedded Defenders and PCF Defenders.
+NOTE: You must manaully upgrade App-Embedded Defenders.
 
 
 [.task, #_upgrade_console_onebox]
@@ -16,7 +16,7 @@ To upgrade Console, rerun the install script for the latest version of Prisma Cl
 Use this method for any Console that was originally installed with the _twistlock.sh_ script.
 
 [.procedure]
-. Download the latest Prisma Cloud release package from xref:../welcome/releases.adoc#[Releases].
+. xref:../welcome/releases.adoc#download[Download] the latest recommended release.
 
 . Unpack the downloaded tarball.
 +

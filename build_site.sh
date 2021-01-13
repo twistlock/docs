@@ -58,7 +58,6 @@ srcOps="$doc_dir""/ops_guide"
 srcRefArch="$doc_dir""/ref_arch"
 srcHistorical="$doc_dir""/historical"
 srcTroubleshooting="$doc_dir""/troubleshooting"
-srcSaaSUpgrades="$doc_dir""/saas_upgrades"
 
 # Delete previous build.
 if [ -d "$output_dir" ]
@@ -120,11 +119,24 @@ git commit -q -m "Commit index file for SaaS book"
 # Create a branch
 git checkout -b pcee
 
+# Delete all files.
+clear_output_dir
+
+# Copy admin guide files into place.
+echo "Copy admin guide files"
+cd "$work_dir"
+cp -R "$srcAdmin""/." "$output_dir"
+cp -R "$work_dir""/_files/." "$output_dir"
+
 # Rename topic map file.  
 mv "$output_dir""/_topic_map_prisma_cloud.yml" "$output_dir""/_topic_map.yml"
 
+# Fix up doc tree source files.
+python "_build/format_fixup.py" "$output_dir""/_topic_map.yml"
+
 # Commit files.
 echo "Commit SaaS files"
+cd "$output_dir"
 git add -A
 git commit -q -m "Commit admin guide (SaaS)"
 
@@ -256,32 +268,6 @@ echo "Commit Troubleshooting files"
 cd "$output_dir"
 git add -A
 git commit -q -m "Commit Troubleshooting"
-
-
-#
-# SaaS Upgrade Announcements
-#
-
-# Create a branch.
-git checkout -b saas_upgrades
-
-# Delete all files.
-clear_output_dir
-
-# Copy files into place.
-echo "Copy SaaS upgrade files"
-cd "$work_dir"
-cp -R "$work_dir""/_files/." "$output_dir"
-cp -R "$srcSaaSUpgrades""/." "$output_dir"
-
-# Fix adoc source files
-python "_build/format_fixup.py" "$output_dir""/_topic_map.yml"
-
-# Commit files.
-echo "Commit SaaS upgrade files"
-cd "$output_dir"
-git add -A
-git commit -q -m "Commit SaaS Upgrades"
 
 
 # Generate the static site.
