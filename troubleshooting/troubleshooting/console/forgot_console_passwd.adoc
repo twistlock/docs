@@ -32,7 +32,7 @@ where admin is the desired clear text password.
 
 . Exec into Console container
 +
-  $ docker exec -ti twistlock_console /bin/ash
+  $ docker exec -ti twistlock_console /bin/bash
 
 . Run mongo.
 +
