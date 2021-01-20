@@ -15,4 +15,4 @@ $ curl -k \
   https://<CONSOLE>/api/v1/policies/compliance/ci/images?project=<PROJECT_NAME>'
 ```
 
-A successful response returns a list of vulnerability rules in the policy.
+A successful response returns a list of compliance rules in the policy.
