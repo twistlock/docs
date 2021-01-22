@@ -10,11 +10,15 @@ This endpoint maps to the policy table in **Defend > Compliance > Containers and
 
 The following cURL command overwrites all rules in your current policy with a new policy that has a single rule.
 
-To make a rule effective, we recommend specifying at least one "check", which specifies a best practice or setting to be validated by the scanner.
-The checks are specified by the `condition.vulnerabilities` object and maps to the prebuilt checks shown under **Compliance actions** in the Console UI when adding a new rule.
+Specify at least one "check", where a check is a security best practice or baseline setting to be validated by the scanner.
+Checks are specified as list in the `condition.vulnerabilities` object.
+
+For a full list of checks, go to **Defend > Compliance > Containers and images > CI** in the Console UI and create a new rule.
+All prebuilt checks and their IDs are shown under **Compliance actions**.
 
 ```bash
-$ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images?project=<PROJECT_NAME>' \
+$ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images' \
+  -k \
   -X PUT \
   -u <USER> \
   -H 'Content-Type: application/json' \
@@ -22,10 +26,10 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images?project=<PROJECT_
 '{
   "rules": [
     {
-      "name": "<RULE_NAME>",
+      "name": "my-rule",
       "collections":[
          {
-            "name":"<COLLECTION_NAME>",
+            "name":"All"
          }
       ],
       "alertThreshold":{
@@ -45,19 +49,11 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images?project=<PROJECT_
          			"block": false,
          			"minSeverity": 1
          		}
-         	...
-         	
          	]
       }
-      
-      ...
-      
     }
   ],
   "policyType": "ciImagesCompliance"
-  
-  ...
-  
 }'
 ```
 
