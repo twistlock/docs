@@ -32,14 +32,6 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images' \
             "name":"All"
          }
       ],
-      "alertThreshold":{
-         "disabled":false,
-         "value":4
-      },
-      "blockThreshold":{
-         "enabled":false,
-         "value":0
-      },
       "condition": {
          "readonly": false,
          "device": "",
