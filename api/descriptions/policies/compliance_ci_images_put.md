@@ -27,6 +27,7 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images' \
   "rules": [
     {
       "name": "my-rule",
+      "effect": "alert, block",
       "collections":[
          {
             "name":"All"
