@@ -24,12 +24,14 @@ To reset the admin password:
 [discrete]
 ==== Procedure
 
-. Create a hash for the password that you wish to use for your local Compute user. In the example below, "Password123" would be the desired password.
+. Create a hash for the password that you wish to use for your local Compute user.
++
+In the following example, "Password123" is the desired new password.
 +
   $ echo -n Password123 | openssl dgst -binary -sha256 | openssl base64
   AIxwOS46v70PpHu8LtlqqZvUnhWXJ/y6Dy5qvrOp1gE=
 
-. Exec into Console container
+. Exec into the Console container.
 +
   $ docker exec -ti twistlock_console /bin/bash
 
@@ -45,7 +47,9 @@ If you're using older versions of Compute or Twistlock, the above command may no
     --sslPEMKeyFile /var/lib/twistlock/certificates/client.pem \
     --sslPEMKeyPassword `cat /var/lib/twistlock/certificates/service-parameter`
 
-. Switch to the `twistlock` database and update the local Compute user's password. The example below will set the password for the user "admin" to "Password123".
+. Switch to the `twistlock` database and update the local Compute user's password.
++
+The following example sets the password for the user "admin" to "Password123".
 +
   > use twistlock
   > db.users.update({username:"admin"},{$set: {password:"AIxwOS46v70PpHu8LtlqqZvUnhWXJ/y6Dy5qvrOp1gE="}})
