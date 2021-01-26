@@ -10,7 +10,8 @@ This endpoint maps to the policy table in **Defend > Compliance > Functions > CI
 
 The following cURL command overwrites all rules in your current policy with a new policy that has a single rule.
 
-To construct an effective rule for this policy, specify at least one "check" and one `effect` value. See [How to Construct a Compliance Policy](#how-to-construct-a-compliance-policy) for more info.
+To construct an effective rule for this policy, specify at least one "check" and one `effect` value. 
+See [How to Construct a Compliance Policy](#how-to-construct-a-compliance-policy) for more info.
 
 For a full list of checks, go to **Defend > Compliance > Functions > CI** in the Console UI and create a new rule.
 All prebuilt checks and their IDs are shown under **Compliance actions**.
@@ -26,7 +27,7 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/serverless' \
   "rules": [
     {
       "name": "my-rule",
-      "effect": "alert, block",
+      "effect": "alert",
       "collections":[
          {
             "name":"All"

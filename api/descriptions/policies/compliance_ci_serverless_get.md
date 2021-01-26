@@ -1,4 +1,4 @@
-Retrieves the compliance policy for serverless functions built in your Continuous Integration (CI) pipeline>.
+Retrieves the compliance policy for serverless functions built in your Continuous Integration (CI) pipeline.
 A policy consists of ordered rules.
 
 This endpoint maps to the policy table in **Defend > Compliance > Functions > CI** in the Console UI.
