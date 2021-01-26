@@ -10,8 +10,7 @@ This endpoint maps to the policy table in **Defend > Compliance > Functions > CI
 
 The following cURL command overwrites all rules in your current policy with a new policy that has a single rule.
 
-Specify at least one "check", where a check is a security best practice or baseline setting to be validated by the scanner.
-Checks are specified as list in the `condition.vulnerabilities` object.
+To construct an effective rule for this policy, specify at least one "check" and one `effect` value. See [How to Construct a Compliance Policy](#how-to-construct-a-compliance-policy) for more info.
 
 For a full list of checks, go to **Defend > Compliance > Functions > CI** in the Console UI and create a new rule.
 All prebuilt checks and their IDs are shown under **Compliance actions**.
