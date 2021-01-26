@@ -118,11 +118,15 @@ curl -k \
 
 To construct an effective rule for a compliance policy:
 
-1. Specify at least one "check" in the `condition.vulnerabilities` object. A check is a security best practice or baseline setting which will be validated by the scanner.
+1. Specify at least one "check" in the `condition.vulnerabilities` object.
+A check is a security best practice or baseline setting which will be validated by the scanner.
 
-2. Specify at one `effect` value per check. The `effect` value is a list separated by commas.
+2. Specify at one `effect` value per check.
+The `effect` value is a list separated by commas.
 
-	For example, in a two-check rule, the effect value could be `alert, ignore` or in a three-check rule, the effect value could be `alert, fail, ignore`. See [Effect Parameter](#effect-parameter) for more info.
+	For example, in a two-check rule, the effect value could be `alert, ignore` or in a three-check rule, the effect value could be `alert, fail, ignore`.
+	
+	See [Effect Parameter](#effect-parameter) for more info.
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images' \
@@ -160,9 +164,11 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images' \
 
 #### Effect Parameter
 
-The `effect` parameter is a helper for the Console UI and has no impact on the policy itself. However, we recommend you specify an `effect` parameter for each check within a rule, to ensure the policy table in the Console UI renders properly.
+The `effect` parameter is a helper for the Console UI and has no impact on the policy itself.
+However, we recommend you specify an `effect` parameter for each check within a rule, to ensure the policy table in the Console UI renders properly.
 
-In the UI, these are convenience strings which enable you to quickly review the policy table and see the effect of each rule. For example, you may want to quickly find the rule that's failing/blocking your build in the CI pipeline.
+In the UI, these are convenience strings which enable you to quickly review the policy table and see the effect of each rule.
+For example, you may want to quickly find the rule that's failing/blocking your build in the CI pipeline.
 
 To specify the supported effects for each type of check:
 
