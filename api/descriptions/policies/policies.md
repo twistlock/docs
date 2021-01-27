@@ -121,12 +121,17 @@ To construct an effective rule for a compliance policy:
 1. Specify at least one "check" in the `condition.vulnerabilities` object.
 A check is a security best practice or baseline setting which will be validated by the scanner.
 
-2. Specify at one `effect` value per check.
-The `effect` value is a list separated by commas.
+2. Specify an action for each check.
+Prisma Cloud needs to know what to do when a check fails (e.g. alert, block).
 
-	For example, in a two-check rule, the effect value could be `alert, ignore` or in a three-check rule, the effect value could be `alert, fail, ignore`.
+3. In the `effect` parameter, specify the range of possible actions configured in the rule.
+The value in `effect` a comma-separated list.
+
+   For example, in a one-check rule, the effect could be `alert` or in a two-check rule, the effect could be `alert, fail`.
 	
-	See [Effect Parameter](#effect-parameter) for more info.
+   See [Actions for failed checks](#actions-for-failed-checks) for more info.
+
+The following curl command creates a single rule compliance policy for images scanned in the CI pipeline:
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images' \
@@ -146,8 +151,6 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images' \
          }
       ],
       "condition": {
-         "readonly": false,
-         "device": "",
          "vulnerabilities": [
          		{
          			"id": 41,
@@ -162,22 +165,22 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images' \
 }'
 ```
 
-#### Effect Parameter
+#### Actions for failed checks
 
-The `effect` parameter is a helper for the Console UI and has no impact on the policy itself.
-However, we recommend you specify an `effect` parameter for each check within a rule, to ensure the policy table in the Console UI renders properly.
+To configure Prisma Cloud to run a check, add the check to your rule in the `condition.vulnerabilities` object.
+For each check, specify the action to take if the check fails.
+Actions are set on a per-check basis in `condition.vulnerabilities[X].block`, where:
 
-In the UI, these are convenience strings which enable you to quickly review the policy table and see the effect of each rule.
-For example, you may want to quickly find the rule that's failing/blocking your build in the CI pipeline.
-
-To specify the supported effects for each type of check:
-
-1. Explicitly include a check in the `condition.vulnerabilities` object
-2. For each `condition.vulnerabilities[X].block`, set the value to for the desired effect type:
-
-Effect type|`condition.vulnerabilities[X].block`
+Effect |`condition.vulnerabilities[X].block`
 ---|---
 `alert`|`false`
 `fail`|`true`
-`ignore`|The default effect for a compliance check is ignore. Therefore, Do not include `condition.vulnerabilities[X].block` in the check and the system will assume the effect is ignore.
+
+The `ignore` effect is set implicitly for any check *not* explicitly included in the `condition.vulnerabilities[X]` array.
+
+The `effect` parameter is a helper for the Console UI and has no impact on the policy itself.
+However, we recommend you specify an `effect` parameter for each rule, to ensure the policy table in the Console UI renders properly.
+
+In the UI, these are convenience strings which enable you to quickly review the policy table and see the effect of each rule.
+For example, you may want to quickly find the rule that's failing/blocking your build in the CI pipeline.
 
