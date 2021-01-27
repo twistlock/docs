@@ -61,7 +61,7 @@ image::./waas_rule_example.png[width=650]
 * *_Apps List_* - We deployed two policies each covering a different endpoint in the application (defined by HTTP hostname, port and path combinations)
 
 
-==== Protection evaluation workflow
+==== Protection evaluation flow
 
 WAAS offers a range of protection targeted at different attack vectors.
 Requests inspected by WAAS will be inspected in the following order of protections:
