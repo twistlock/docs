@@ -1,4 +1,4 @@
-Retrieves the compliance policy for images built in your continuous integration (CI) pipeline.
+Retrieves the compliance policy for images scanned in your continuous integration (CI) pipeline.
 A policy consists of ordered rules.
 
 This endpoint maps to the policy table in **Defend > Compliance > Containers and images > CI** in the Console UI.
