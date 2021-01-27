@@ -585,7 +585,7 @@
   displayName: Policies
   description: !include ../descriptions/policies/policies.md
 
-  /compliance/serverless:
+  /compliance/ci/serverless:
     get: !include ../descriptions/policies/compliance_ci_serverless_get.md
     put: !include ../descriptions/policies/compliance_ci_serverless_put.md
 

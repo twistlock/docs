@@ -1,4 +1,4 @@
-Updates the compliance policy for serverless functions built in your Continuous Integration (CI) pipeline>.
+Updates the compliance policy for serverless functions built in your Continuous Integration (CI) pipeline.
 All rules in the policy are updated in a single shot.
 
 The policy set in this endpoint is enforced by the scanners in the Jenkins plugin and the `twistcli` command line tool.
@@ -38,7 +38,7 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/serverless' \
          "device": "",
          "vulnerabilities": [
          		{
-         			"id": 41,
+         			"id": 436,
          			"block": false,
          			"minSeverity": 1
          		}
