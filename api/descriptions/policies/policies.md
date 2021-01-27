@@ -9,6 +9,7 @@ For more information about policy endpoints, see:
 * [How to Delete Policy Rules](#how-to-delete-policy-rules)
 * [How to Construct a Compliance Policy](#how-to-construct-a-compliance-policy)
 
+
 ### How to Add / Update Policy Rules
 
 All of the `PUT /api/v1/policies/*` endpoints work similarly. 
@@ -131,7 +132,7 @@ The value in `effect` a comma-separated list.
 	
    See [Actions for failed checks](#actions-for-failed-checks) for more info.
 
-The following curl command creates a single rule compliance policy for images scanned in the CI pipeline:
+The following curl command creates a single rule compliance policy for container images scanned in the CI pipeline:
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/images' \
@@ -183,4 +184,3 @@ However, we recommend you specify an `effect` parameter for each rule, to ensure
 
 In the UI, these are convenience strings which enable you to quickly review the policy table and see the effect of each rule.
 For example, you may want to quickly find the rule that's failing/blocking your build in the CI pipeline.
-
