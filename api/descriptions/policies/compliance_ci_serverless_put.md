@@ -34,8 +34,6 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/serverless' \
          }
       ],
       "condition": {
-         "readonly": false,
-         "device": "",
          "vulnerabilities": [
          		{
          			"id": 436,
