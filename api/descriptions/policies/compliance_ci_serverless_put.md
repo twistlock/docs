@@ -35,16 +35,16 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/ci/serverless' \
       ],
       "condition": {
          "vulnerabilities": [
-         		{
-         			"id": 436,
-         			"block": false,
-         			"minSeverity": 1
-         		}
-         	]
+           {
+             "id": 436,
+             "block": false,
+             "minSeverity": 1
+           }
+        ]
       }
     }
   ],
-  "policyType": "ciServerlessCompliance",
+  "policyType": "ciServerlessCompliance"
 }'
 ```
 
