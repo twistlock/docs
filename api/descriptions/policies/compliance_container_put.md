@@ -1,4 +1,4 @@
-Updates the compliance policy for containers protected by Defender.
+Updates the compliance policy for running containers.
 All rules in the policy are updated in a single shot.
 
 This endpoint maps to the policy table in **Defend > Compliance > Containers and images > Deployed** in the Console UI.
@@ -22,26 +22,27 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/container' \
   -H 'Content-Type: application/json' \
   -d \
 '{
-   "rules":[
-      {
-      "name": "my-rule",
-      "effect": "alert",
-      "collections":[
+  "rules":[
+     {
+       "name": "my-rule",
+       "effect": "alert",
+       "collections":[
          {
-            "name":"All"
+           "name":"All"
          }
-      ],
-      "condition": {
+       ],
+       "condition": {
          "vulnerabilities": [
-         		{
-         			"id": 406,
-         			"block": false,
-         			"minSeverity": 1
-         		}
-         	]
-      }
- ],
-   "policyType":"containerCompliance"
+           {
+             "id": 531,
+             "block": false,
+             "minSeverity": 1
+           }
+         ]
+       }
+     }
+  ],
+  "policyType":"containerCompliance"
 }'
 ```
 
