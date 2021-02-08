@@ -634,6 +634,8 @@
 
   /runtime/app-embedded:
     get: !include ../descriptions/policies/runtime_app-embedded_get.md
+    put: !include ../descriptions/policies/runtime_app-embedded_put.md
+    post: !include ../descriptions/policies/runtime_app-embedded_post.md
 
   /runtime/container:
     get: !include ../descriptions/policies/runtime_container_get.md
