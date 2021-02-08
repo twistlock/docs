@@ -29,7 +29,7 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/serverless' \
             {
                "name":"All"
             }
-         ]
+         ],
          "condition":{
             "vulnerabilities":[
                {
