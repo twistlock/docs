@@ -70,8 +70,6 @@ NOTE: Vulnerability and compliance blocking policies are not supported on Bottle
 |CentOS
 |CentOS 7, CentOS 8
 
-NOTE: CentOS 6 is supported for xref:../install/defender_types.adoc#_host_defender[Host Defender] only
-
 |Debian
 |Debian 9 (Stretch), Debian 10 (Buster)
 
@@ -79,8 +77,7 @@ NOTE: CentOS 6 is supported for xref:../install/defender_types.adoc#_host_defend
 |Container-Optimized OS on Google Cloud latest 
 
 NOTE: GCOOS is purposefully minimalistic.
-It doesn’t support installing new packages or writing new bins.
-Hence, Prisma Cloud's vulnerability detection on GCOOS only covers Docker and Kubernetes package binary detection.
+It doesn’t support installing new packages or writing new bins.  Hence, Prisma Cloud's vulnerability detection on GCOOS only covers Docker and Kubernetes package binary detection.
 
 |Red Hat
 |Red Hat Enterprise Linux 7, Red Hat Enterprise Linux 8, Red Hat Enterprise Linux CoreOS (RHCOS) versions included in supported OpenShift releases
@@ -88,18 +85,13 @@ Hence, Prisma Cloud's vulnerability detection on GCOOS only covers Docker and Ku
 |Ubuntu
 |Ubuntu Server 20.04 LTS, 18.04 LTS, 16.04 LTS
 
-NOTE: Ubuntu 14.04 LTS does not support system call monitoring.
-The required kernel option is not enabled in the default kernel.
-
-NOTE: xref:../install/defender_types.adoc#_host_defender[Host Defender] isn't supported on Ubuntu 14.04.
-
 |Windows
 |Windows Server 2016, Windows Server 2019
 
 [NOTE]
 ====
 ifdef::compute_edition[]
-Console must be installed on a supported Linux operating system, either natively or through virtualization (such as Hyper-V).
+The Console container must be run on a supported Linux operating system.
 endif::compute_edition[]
 Defender is supported on Windows Server 2016 (vulnerability and compliance scanning), and Windows Server 2019 (vulnerability scanning, compliance scanning, and runtime defense for containers).
 ====
@@ -191,7 +183,7 @@ GKE 1.16 (containerd 1.2.8)
 Includes managed solutions that are https://www.cncf.io/certification/software-conformance/[CNCF Certified Kubernetes conformant].
 
 |OpenShift
-|3.11 - docker version only, 4.4, 4.5, 4.6
+|3.11 - Docker version only, 4.4, 4.5, 4.6
 
 |VMware Tanzu Application Service - TAS
 |v2.9, v2.10
