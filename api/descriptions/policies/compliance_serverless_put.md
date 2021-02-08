@@ -34,8 +34,7 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/serverless' \
             "vulnerabilities":[
                {
                   "id":434,
-                  "block":false,
-                  "minSeverity":1
+                  "block":false
                }
             ]
          }
