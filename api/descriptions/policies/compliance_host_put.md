@@ -34,9 +34,8 @@ $ curl 'https://<CONSOLE>/api/v1/policies/compliance/host' \
          "condition":{
             "vulnerabilities":[
                {
-                  "id":11,
-                  "block":false,
-                  "minSeverity":1
+                  "id":6151,
+                  "block":false
                }
             ]
          }
