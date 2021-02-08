@@ -1,4 +1,4 @@
-Retrieves the runtime policy for app-embedded deployments.
+Retrieves the runtime policy for apps protected by App-Embedded Defenders.
 A policy consists of ordered rules.
 
 This endpoint maps to the policy table in **Defend > Runtime > App-Embedded policy** in the Console UI.
