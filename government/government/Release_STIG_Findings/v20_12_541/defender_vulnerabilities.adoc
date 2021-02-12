@@ -1,0 +1,4 @@
+[%header,format=csv]
+|===
+include::government/Release_STIG_Findings/v20_12_541/defender_vulnerabilities.csv[]
+|===
