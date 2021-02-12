@@ -27,31 +27,10 @@ $ curl 'https://<CONSOLE>/api/v1/policies/runtime/app-embedded' \
             "effect":"alert"
          },
          "network":{
-            "effect":"alert",
-            "blacklistIPs":[               
-            ],
-            "blacklistListeningPorts":[               
-            ],
-            "whitelistListeningPorts":[
-            ],
-            "blacklistOutboundPorts":[               
-            ],
-            "whitelistOutboundPorts":[
-               {
-                  "start":4312,
-                  "end":4312,
-                  "deny":false
-               }
-            ],
-            "whitelistIPs":[               
-            ]
+            "effect":"alert"
          },
          "dns":{
-            "effect":"prevent",
-            "whitelist":[
-            ],
-            "blacklist":[               
-            ]
+            "effect":"prevent"
          }
       }
    ]

@@ -23,11 +23,6 @@ $ curl 'https://<CONSOLE>/api/v1/policies/runtime/app-embedded' \
     "processes":{
        "effect":"alert"
     },
-    "collections":[
-       {
-          "name":"All"       
-       }
-    ],
     "network":{
        "effect":"alert",
        "blacklistIPs":[               
