@@ -27,6 +27,6 @@ The scanning process is as follows:
 |Notes
 
 |v20_12_541
-|link:v20_12_541/v20_12_541.adoc[Scan results.] Update2 of the https://docs.paloaltonetworks.com/prisma/prisma-cloud/20-12/prisma-cloud-compute-edition-admin/welcome/releases.html[v20_12_531] release.
+|link:v20_12_541/v20_12_541.adoc[Scan results.] Update2 of the https://docs.twistlock.com/docs/releases/release-information/release-notes-20-12.html[v20_12_531] release.
 
 |===
