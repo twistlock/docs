@@ -1,6 +1,6 @@
 === Scan Results v20_12_541
 
-OpenSCAN and vulnerability scan report:
+OpenSCAP and vulnerability scan report:
 
 - Prisma Cloud Compute release: https://docs.twistlock.com/docs/releases/release-information/latest.html[v20_12 Update2]
 - Base image: registry.access.redhat.com/ubi8/ubi-minimal:8.2-349
