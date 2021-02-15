@@ -138,7 +138,7 @@ Console dynamically selects an available Defender to execute the scan job.
 
 . Go to *Defend > Compliance > Functions*.
 
-. Clicl on *Add scope*. In the dialog, enter the following settings:
+. Click on *Add scope*. In the dialog, enter the following settings:
 
 .. Specify a cap for the number of functions to scan.
 +
