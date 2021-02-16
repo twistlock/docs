@@ -30,7 +30,7 @@ $ curl 'https://<CONSOLE>/api/v1/policies/runtime/app-embedded' \
             "effect":"alert"
          },
          "dns":{
-            "effect":"prevent"
+            "effect":"alert"
          }
       }
    ]
