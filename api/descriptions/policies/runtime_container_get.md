@@ -1,4 +1,4 @@
-Retrieves the runtime policy for running containers.
+Retrieves the runtime policy for containers protected by Defender.
 A policy consists of ordered rules.
 
 This endpoint maps to the policy table in **Defend > Runtime > Container policy** in the Console UI.
