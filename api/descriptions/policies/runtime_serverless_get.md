@@ -1,4 +1,4 @@
-Retrieves the runtime policy for serverless functions situated in your cloud provider's infrastructure.
+Retrieves the runtime policy for your serverless functions.
 A policy consists of ordered rules.
 
 This endpoint maps to the policy table in **Defend > Runtime > Serverless policy** in the Console UI.

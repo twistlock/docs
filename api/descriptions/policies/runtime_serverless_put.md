@@ -1,4 +1,4 @@
-Updates the runtime policy for serverless functions situated in your cloud provider's infrastructure.
+Updates the runtime policy for your serverless functions.
 All rules in the policy are updated in a single shot.
 
 This endpoint maps to the **Add rule** button in **Defend > Runtime > Serverless policy** in the Console UI.
@@ -27,10 +27,10 @@ $ curl 'https://<CONSOLE>/api/v1/policies/runtime/serverless' \
             "effect":"alert"
          },
          "network":{
-            "effect":"alert"
+            "effect":"disable"
          },
          "dns":{
-            "effect":"prevent"
+            "effect":"disable"
          },
          "filesystem":{
             "effect":"disable"
