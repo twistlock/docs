@@ -28,7 +28,7 @@ $ curl 'https://<CONSOLE>/api/v1/policies/runtime/host' \
             "effect":"alert"
          },
          "network":{
-            "effect":"alert"
+            "effect":"disable"
          },
          "dns":{
             "effect":"disable"
