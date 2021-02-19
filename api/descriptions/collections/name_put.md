@@ -1,26 +1,31 @@
-Updates the parameters that define a given collection.
+Updates the parameters for a specific collection.
 
-The following example curl command updates the parameters that define the collection named `finance_group_app`.
-In general, all parameters in your PUT request should be defined or redefined.
-Any field left unspecified is assigned the value of `""` (an empty string).
+To invoke this endpoint in the Console UI:
+
+1. Navigate to **Manage > Collections and Tags > Collections**.
+2. Click the dotted icon under the **Actions** column to open up the menu options. **Note:** The default collections do not have a dotted icon in the **Actions** column. Use the  **Manage** cog icon to open the update window.
+3. Click the **Manage** button and update the collection's parameters. 
+4. Click the **Save** button to save the changes.
+
+**Note:** You must define or redefine all parameters in the PUT request. Any parameter left unspecified is set to an empty string.
+
+### cURL Request
+
+The following cURL command updates a collection.
 
 ```bash
-$ curl -k \
+$ curl 'https://<CONSOLE>/api/v1/collections/<COLLECTION NAME>' \
+  -k \
+  -X PUT \
   -u <USER> \
   -H 'Content-Type: application/json' \
-  -X PUT \
   -d \
 '{
-   "name": "finance_group_app",
-   "color": "#ff0000",
-   "description": "A super cool collection",
-   "images": [
-     "docker.io/library/hello-world:latest",
-     "docker.io/library/ian_app:1.0"
-   ],
-   "hosts": [
-     "*"
+   "name":"<COLLECTION_NAME>",
+   "<ENTITY_NAME>":[
+      "*"
    ]
- }' \
-  https://<CONSOLE>:8083/api/v1/collections/test_collection
+}'
 ```
+
+**Note:** No response will be returned upon successful execution.

@@ -1,9 +1,17 @@
-Retrieves the list of collections.
+Retrieves all collections that have been defined for use in rules and views across the product.
+
+This endpoint maps to the table in **Manage > Collections and Tags > Collections** in the Console UI.
+
+### cURL Request
+
+The following cURL command retrieves all collections.
 
 ```bash
 $ curl -k \
   -u <USER> \
   -H 'Content-Type: application/json' \
   -X GET \
-  "https://<CONSOLE>:8083/api/v1/collections"
+  'https://<CONSOLE>/api/v1/collections'
 ```
+
+A successful response returns a list of collections.

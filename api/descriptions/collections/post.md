@@ -1,23 +1,28 @@
-Creates a new collection.
-Any field left unspecified is assigned the value of `""` (an empty string).
+Creates a new collection for use in rules and views across the product.
+
+To invoke this endpoint in the Console UI:
+
+1. Navigate to **Manage > Collections and Tags > Collections**.
+2. Add a collection using **+ Add collection**.
+3. Click the **Save** button.
+
+### cURL Request
+
+The following cURL command creates a new collection.
 
 ```bash
-$ curl -k \
+$ curl 'https://<CONSOLE>/api/v1/collections' \
+  -k \
+  -X POST \
   -u <USER> \
   -H 'Content-Type: application/json' \
-  -X POST \
   -d \
 '{
-   "name": "my collection",
-   "color": "#ff0000",
-   "description": "A test collection",
-   "images": [
-     "docker.io/library/hello-world:latest",
-     "docker.io/library/ian_app:1.0"
-   ],
-   "hosts": [
-     "*"
+   "name":"<COLLECTION_NAME>",
+   "<ENTITY_NAME>":[
+      "*"
    ]
- }' \
-  https://<CONSOLE>:8083/api/v1/collections
+}'
 ```
+
+**Note:** No response will be returned upon successful execution.
