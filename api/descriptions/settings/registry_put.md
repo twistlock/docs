@@ -1,32 +1,27 @@
-Specifies the registries to scan.
-The list of registries is set in a single shot.
-Any previous settings are completely overwritten.
+Updates the registries to scan.
+All registries to scan are updated in a single shot.
+
+To invoke this endpoint in the Console UI:
+
+1. Navigate to **Defend > Vulnerabilities > Images > Registry settings**.
+2. Under the **Registries** table, add a registry item using **+ Add registry**
+3. Click the **Save** button.
+
+### cURL Request
 
 Each registry to scan is specified as an item in the `specifications` array.
 
-The `version` string specifies the type of registry to scan.
-It can be one of the following strings:
-
-* Amazon EC2 Container Registry: `aws`
-* Azure Container Registry: `azure`
-* Docker Registry v2: `2`
-* Docker Trusted Registry: `dtr`
-* Google Container Registry: `gcr`
-* JFrog Artifactory: `jfrog`
-* Sonatype Nexus: `sonatype`
-* CoreOS Quay: `coreos`
-* Red Hat OpenShift: `redhat`
-* IBM Cloud Container Registry: `bluemix`
-
-The following example curl command configures Twistlock to scan the Ubuntu 18.04 and Alpine 3.10 images in Docker Hub.
+The following cURL command overwrites all registries to scan with two new registries.
+It configures Prisma Cloud to scan the Ubuntu 18.04 and Alpine 3.10 images in Docker Hub.
 
 ```bash
-curl -k \
+$ curl 'https://<CONSOLE>/api/v1/settings/registry' \
+  -k \
+  -X PUT \
   -u <USER> \
   -H 'Content-Type: application/json' \
-  -X PUT \
-  -d '
-  {
+  -d \
+  '{
     "specifications": [
       {
         "version": "2",
@@ -49,14 +44,20 @@ curl -k \
         "scanners": 2
       }
     ]
-  } ' \
-  https://<CONSOLE>:8083/api/v1/settings/registry
+  }'
 ```
 
-To remove a registry from the list, retrieve the current list using the GET method.
-Then remove the entry from the `specifications` array, and PUT the updated JSON object.
+**Note:** No response will be returned upon successful execution.
 
-To delete all entries, submit an empty `specifications` array:
+### Remove a Registry
+
+To remove a registry from the list:
+
+1. Retrieve the current list using the GET method.
+2. Remove the entry from the `specifications` JSON array in the response.
+3. Use the PUT method to submit the updated JSON object.
+
+To delete all entries, submit an empty `specifications` array. For example:
 
 ```bash
 curl -k \
@@ -64,5 +65,5 @@ curl -k \
   -H 'Content-Type: application/json' \
   -X PUT \
   -d '{"specifications":[]}' \
-  https://<CONSOLE>:8083/api/v1/settings/registry
+  https://<CONSOLE>/api/v1/settings/registry
 ```
