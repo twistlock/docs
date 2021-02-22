@@ -1,2 +1,2 @@
-Group related resources (containers, images, hosts) together.
-Collections are predefined filters that let you segment your views in the Console UI and the Twistlock API.
+Collections are predefined filters that let you group related resources together (for example, containers, images, hosts).
+Collections are used for scoping policy rules and segmenting data/views in the Console UI and Prisma Cloud API.

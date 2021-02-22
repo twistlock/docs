@@ -1,4 +1,4 @@
-Retrieves all collections that have been defined for use in rules and views across the product.
+Retrieves a list of all collections.
 
 This endpoint maps to the table in **Manage > Collections and Tags > Collections** in the Console UI.
 
