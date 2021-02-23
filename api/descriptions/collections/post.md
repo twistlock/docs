@@ -8,7 +8,8 @@ To invoke this endpoint in the Console UI:
 
 ### cURL Request
 
-The following cURL command creates a new collection.
+The following cURL command creates a new collection named `my-collection`.
+This collection captures all container images named `ubuntu:18.04`.
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/collections' \
@@ -18,10 +19,17 @@ $ curl 'https://<CONSOLE>/api/v1/collections' \
   -H 'Content-Type: application/json' \
   -d \
 '{
-   "name":"<COLLECTION_NAME>",
-   "<ENTITY_NAME>":[
-      "*"
-   ]
+   "name":"my-collection",
+   "accountIDs":["*"],
+   "appIDs":["*"],
+   "clusters":["*"],
+   "codeRepos":["*"],
+   "containers":["*"],
+   "functions":["*"],
+   "hosts":["*"],
+   "images":["ubuntu:18.04"],
+   "labels":["*"],
+   "namespaces":["*"]
 }'
 ```
 

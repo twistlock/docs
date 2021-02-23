@@ -9,16 +9,14 @@ To invoke this endpoint in the Console UI:
 
 ### cURL Request
 
-The following cURL command deletes a collection.
-
-**Note:** Spaces are considered [unsafe characters in a URL](https://www.ietf.org/rfc/rfc1738.txt) so they must be encoded with the value `%20`.
+The following cURL command deletes a collection with the name `my-collection`.
 
 ```bash
 $ curl -k \
   -u <USER> \
   -H 'Content-Type: application/json' \
   -X DELETE \
-  'https://<CONSOLE>/api/v1/collections/<COLLECTION NAME>'
+  'https://<CONSOLE>/api/v1/collections/my-collection'
 ```
 
 **Note:** No response will be returned upon successful execution.

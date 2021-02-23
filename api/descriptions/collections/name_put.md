@@ -11,20 +11,51 @@ To invoke this endpoint in the Console UI:
 
 ### cURL Request
 
-The following cURL command updates a collection.
+The PUT cURL command updates a collection.
+For example, the existing collection `my-collection` captures all container images named `ubuntu:18.04`.
+
+```json
+{
+   "hosts":["*"],
+   "images":["ubuntu:18.04"],
+   "labels":["*"],
+   "containers":["*"],
+   "functions":["*"],
+   "namespaces":["*"],
+   "appIDs":["*"],
+   "accountIDs":["*"],
+   "codeRepos":["*"],
+   "clusters":["*"],
+   "name":"my-collection",
+   "owner":"<OWNER_NAME>",
+   "modified":"2021-01-01T21:04:30.417Z",
+   "color":"#AD3C21",
+   "system":"false"
+}
+```
+
+The following cURL command updates `my-collection` to captures all container images named `ubuntu:20.04`.
+
+**Note:** You can retrieve collection names from the `GET /api/v1/collections` endpoint using the `name` key.
 
 ```bash
-$ curl 'https://<CONSOLE>/api/v1/collections/<COLLECTION NAME>' \
+$ curl 'https://<CONSOLE>/api/v1/collections/my-collection' \
   -k \
   -X PUT \
   -u <USER> \
   -H 'Content-Type: application/json' \
   -d \
 '{
-   "name":"<COLLECTION_NAME>",
-   "<ENTITY_NAME>":[
-      "*"
-   ]
+   "name":"my-collection",
+   "accountIDs":["*"],
+   "appIDs":["*"],
+   "clusters":["*"],
+   "codeRepos":["*"],
+   "containers":["*"],
+   "functions":["*"],
+   "hosts":["*"],
+   "images":["ubuntu:20.04"],
+   "namespaces":["*"]
 }'
 ```
 
