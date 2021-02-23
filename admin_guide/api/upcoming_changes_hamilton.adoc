@@ -1,0 +1,39 @@
+== Upcoming breaking changes in the H1Y21 release
+
+This article outlines some of the anticipated changes to the API as a part of the upcoming release of Prisma Cloud Compute.
+
+=== Compliance stats
+
+A new compliance dashboard will be introduced, which will simplify compliance visibility across leading compliance regulations, CIS Benchmarks, and policy rules.
+
+As a result of this enhancement, the API that provides the compliance statistics for the dashboard was changed, to include the newly added metrics and data.
+The changed API, `/api/v1/stats/compliance`, will now include the compliance rate by each regulation, CIS benchmark and policy rule, the trend of failed compliance checks over time, and a list of all compliance checks with their compliance rate. The data provided so far by this API will no longer be available.
+
+Furthermore, A new API will be added `api/v1/stats/compliance/download`, to allow getting the list of all compliance checks in a CSV format.
+
+=== Serverless scaninng scope settings
+
+A new ability will be added to the serverless scanning scope, that will allow to set the scopes per account instead of specifying a scope for each region within the account. 
+
+The changes to the ServerlessScanSpecification schema as a result of this enhancement:
+
+* Region and Pattern will be removed
+* Multiple credential IDs will be supported
+
+Furthermore, up until now, the existing POST method for `api/v1/settings/serverless-scan` replaces the scanning scopes configuration completely. Therefore, it will be changed from POST method to PUT. 
+
+In addition, a new POST method will be added for customers to be able to add a single serverless scan spec without sending all the aggregated information each time.
+
+=== Custom rules
+
+The route path for `api/v1/policies/runtime/custom-rules` will be changed to `api/v1/custom-rules`.
+
+=== twistcli output file
+
+The schema of the JSON output file being exported via twistcli images scanning will be stabilized in the upcoming release. This feature is done in order to ensure the backward compatibility of the schema in future releases.
+
+Following this feature, some new fields were added to the schema, and some existing fields were adjusted:
+
+* results.vulnerabilities.riskFactors - changed from key:value array to strings array
+* results.vulnerabilities.publishedDays - changed from the number of days since published date to the published date itself. The new name of the field is 'publishedDate'
+* results.vulnerabilities.discoveredDays - changed from the number of days since discovered date to the discovered date itself. The new name of the field is 'discoveredDate'
