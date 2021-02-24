@@ -1,4 +1,4 @@
-Creates a new collection for use in rules and views across the product.
+Creates a new collection.
 
 To invoke this endpoint in the Console UI:
 
@@ -10,6 +10,7 @@ To invoke this endpoint in the Console UI:
 
 The following cURL command creates a new collection named `my-collection`.
 This collection captures all container images named `ubuntu:18.04`.
+Any resource left unspecified, such as `hosts`, `functions`, and `clusters`, is assigned a wildcard by default.
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/collections' \
@@ -20,16 +21,7 @@ $ curl 'https://<CONSOLE>/api/v1/collections' \
   -d \
 '{
    "name":"my-collection",
-   "accountIDs":["*"],
-   "appIDs":["*"],
-   "clusters":["*"],
-   "codeRepos":["*"],
-   "containers":["*"],
-   "functions":["*"],
-   "hosts":["*"],
-   "images":["ubuntu:18.04"],
-   "labels":["*"],
-   "namespaces":["*"]
+   "images":["ubuntu:18.04"]
 }'
 ```
 
