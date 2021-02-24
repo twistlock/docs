@@ -1,10 +1,36 @@
 Adds a new user to the system.
 
+To invoke this endpoint in the Console UI:
+
+1. Navigate to **Manage > Authentication > Users**.
+2. Click **+ Add user** and enter the user's information.
+3. Click the **Save** button.
+
+### cURL Request
+
+The following cURL command adds a new user.
+
 ```bash
-$ curl -k \
+$ curl 'https://<CONSOLE>/api/v1/users' \
+  -k \
+  -X POST \
   -u <USER> \
   -H 'Content-Type: application/json' \
-  -X POST \
-  -d '{"username":"<USERNAME>","password":",<PASSWORD>","role":"user","authType":"basic","projects":[],"collections":["All"]}' \
-  https://<CONSOLE>:8083/api/v1/users
+  -d \
+'{
+   "username":"<USER_NAME>",
+   "password":"<PASSWORD>",
+   "role":"auditor",
+   "authType":"basic",
+   "permissions":[
+      {
+         "project":"<PROJECT_NAME>",
+         "collections":[
+            "All"
+         ]
+      }
+   ]   
+}'
 ```
+
+**Note:** No response will be returned upon successful execution.
