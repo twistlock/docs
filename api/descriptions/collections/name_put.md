@@ -12,7 +12,27 @@ To invoke this endpoint in the Console UI:
 ### cURL Request
 ​
 The PUT cURL command updates a collection.
-For example, the existing collection `my-collection` captures all container images named `ubuntu:18.04`.
+
+**To submit a cURL request:**
+
+* The `name` value is required.
+* If `description` is not included in the request, the value will be defaulted to an empty string.
+* If `color` is not included in the request, the system will set the color to a random value.
+* If one of the following resources is left unspecified, the resource value will be set to a wildcard `[*]`.
+	* `hosts`
+	* `images`
+	* `labels`
+	* `containers`
+	* `functions`
+	* `namespaces`
+	* `appIDs`
+	* `accountIDs`
+	* `codeRepos`
+	* `clusters`
+
+#### Example cURL Request
+
+This existing collection `my-collection` captures all container images named `ubuntu:18.04`.
 ​
 ```json
 {
@@ -47,15 +67,7 @@ $ curl 'https://<CONSOLE>/api/v1/collections/my-collection' \
   -d \
 '{
    "name":"my-collection",
-   "accountIDs":["*"],
-   "appIDs":["*"],
-   "clusters":["*"],
-   "codeRepos":["*"],
-   "containers":["*"],
-   "functions":["*"],
-   "hosts":["*"],
-   "images":["ubuntu:20.04"],
-   "namespaces":["*"]
+   "images":["ubuntu:20.04"]
 }'
 ```
 ​
