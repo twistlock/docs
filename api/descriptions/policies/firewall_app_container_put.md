@@ -1,33 +1,195 @@
-Updates all application firewall (CNAF) rules in a single shot.
+Updates the runtime policy for an application's firewall (CNAF) rules.
+All rules are updated in a single shot.
+
 Updating all rules at the same time makes it possible to maintain strict ordering between rules.
 
-The procedure to add, edit, or remove application firewall rules is:
+To invoke this endpoint in the Console UI:
 
-1. Get all application firewall rules using the GET endpoint.
+1. Navigate to **Defend > WAAS > Container**.
+2. Click **+ Add rule** and enter the new rule information.
+3. Click the **Add new app** button to move to the configuration window.
+4. Configure the application with at least one endpoint, and click the **Save** button.
 
-  The following curl command uses basic auth to retrieve a list of all rules, pretty-print the JSON response, and save the results to a file.
+### cURL Request
 
-   ```
-   $ curl -k \
-     -u <USER> \
-     https://<CONSOLE>:8083/api/v1/policies/firewall/app/container \
-     | jq '.' > app_firewall_rules.json
-   ```
+The following cURL command overwrites all applications rules with a single rule.
 
-2. Modify the JSON output according to your needs.
+```
+$ curl 'https://<CONSOLE>/api/v1/policies/firewall/app/container' \
+  -k \
+  -X PUT \
+  -u <USER> \
+  -H 'Content-Type: application/json' \
+  -d \
+'
+{
+   "_id":"appEmbeddedAppFirewall",
+   "rules":[
+      {
+         "name":"my-rule",
+         "collections":[
+            {
+               "name":"All"
+            }
+         ],
+         "applicationsSpec":[
+            {
+               "banDurationMinutes":5,
+               "certificate":{
+                  
+               },
+               "dosConfig":{
+                  "effect":"disable",
+                  "matchConditions":[
+                     
+                  ]
+               },
+               "apiSpec":{
+                  "endpoints":[
+                     {
+                        "host":"*",
+                        "basePath":"*",
+                        "exposedPort":1,
+                        "internalPort":1,
+                        "tls":false,
+                        "http2":false
+                     }
+                  ],
+                  "paths":[
+                     {
+                        "path":"/api/v1/logs/system/upload",
+                        "methods":[
+                           {
+                              "method":"POST"
+                           }
+                        ]
+                     }
+                  ],
+                  "effect":"disable",
+                  "fallbackEffect":"disable"
+               },
+               "botProtectionSpec":{
+                  "userDefinedBots":[
+                     
+                  ],
+                  "knownBotProtectionsSpec":{
+                     "searchEngineCrawlers":"disable",
+                     "businessAnalytics":"disable",
+                     "educational":"disable",
+                     "news":"disable",
+                     "financial":"disable",
+                     "contentFeedClients":"disable",
+                     "archiving":"disable",
+                     "careerSearch":"disable",
+                     "mediaSearch":"disable"
+                  },
+                  "unknownBotProtectionSpec":{
+                     "generic":"disable",
+                     "webAutomationTools":"disable",
+                     "webScrapers":"disable",
+                     "apiLibraries":"disable",
+                     "httpLibraries":"disable",
+                     "botImpersonation":"disable",
+                     "browserImpersonation":"disable",
+                     "requestAnomalies":{
+                        "threshold":9,
+                        "effect":"disable"
+                     }
+                  },
+                  "sessionValidation":"disable",
+                  "interstitialPage":false,
+                  "jsInjectionSpec":{
+                     "enabled":false,
+                     "timeoutEffect":"disable"
+                  }
+               },
+               "networkControls":{
+                  "advancedProtectionEffect":"alert",
+                  "deniedSubnetsEffect":"alert",
+                  "deniedCountriesEffect":"alert",
+                  "allowedCountriesEffect":"alert"
+               },
+               "body":{
+                  "inspectionSizeBytes":131072
+               },
+               "intelGathering":{
+                  "infoLeakageEffect":"disable",
+                  "removeFingerprintsEnabled":true
+               },
+               "maliciousUpload":{
+                  "effect":"disable",
+                  "allowedFileTypes":[
+                     
+                  ],
+                  "allowedExtensions":[
+                     
+                  ]
+               },
+               "csrfEnabled":true,
+               "clickjackingEnabled":true,
+               "sqli":{
+                  "effect":"prevent",
+                  "exceptionFields":[
+                     
+                  ]
+               },
+               "xss":{
+                  "effect":"alert",
+                  "exceptionFields":[
+                     
+                  ]
+               },
+               "attackTools":{
+                  "effect":"alert",
+                  "exceptionFields":[
+                     
+                  ]
+               },
+               "shellshock":{
+                  "effect":"alert",
+                  "exceptionFields":[
+                     
+                  ]
+               },
+               "malformedReq":{
+                  "effect":"alert",
+                  "exceptionFields":[
+                     
+                  ]
+               },
+               "cmdi":{
+                  "effect":"alert",
+                  "exceptionFields":[
+                     
+                  ]
+               },
+               "lfi":{
+                  "effect":"alert",
+                  "exceptionFields":[
+                     
+                  ]
+               },
+               "codeInjection":{
+                  "effect":"alert",
+                  "exceptionFields":[
+                     
+                  ]
+               },
+               "remoteHostForwarding":{
+                  
+               },
+               "selected":true,
+               "headerSpecs":[
+                  
+               ]
+            }
+         ],
+         "expandDetails":true
+      }
+   ],
+   "minPort":30000,
+   "maxPort":31000
+}'
+```
 
-3. Update rules by pushing the new JSON payload.
-
-   The following curl command installs the rules defined in your `app_firewall_rules.json` file.
-   Do not forget to specify the `@` symbol.
-
-   ```
-   $ curl -k \
-     -u <USER> \
-     -X PUT \
-     -H "Content-Type:application/json" \
-     https://<CONSOLE>:8083/api/v1/policies/firewall/app/container \
-     --data-binary "@app_firewall_rules.json"
-   ```
-
-Any previously installed rules are overwritten.
+​**Note:** No response will be returned upon successful execution.
