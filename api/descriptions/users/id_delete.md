@@ -18,7 +18,7 @@ $ curl -k \
   -u <USER> \
   -H 'Content-Type: application/json' \
   -X DELETE \
-  https://<CONSOLE>/api/v1/users/<USER NAME>
+  https://<CONSOLE>/api/v1/users/{id}
 ```
 
 **Note:** No response will be returned upon successful execution.
