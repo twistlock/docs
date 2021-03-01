@@ -1,5 +1,5 @@
 Updates the registries to scan.
-All registries to scan are updated in a single shot.
+The list of registries to scan is updated in a single shot.
 
 To invoke this endpoint in the Console UI:
 
@@ -11,23 +11,18 @@ To invoke this endpoint in the Console UI:
 
 This endpoint works hand-in-hand with the `/policies` endpoints.
 
-**To set up a registry:**
+**To set up a registry for scanning:**
 
-1. Add your registry account information using this endpoint or use the Console UI.
+1. Add your registry account information using this endpoint.
 
-	**Note:** This is where your resources live. For example, an AWS account.
+   For example, specify the location and credentials of an ECR registry in your AWS account.
 
-2. Prisma Cloud auto-discovers the resources in those accounts.
+2. Prisma Cloud auto-discovers the images in the registries specified with this endpoint.
 
-	* The resources are auto-discovered based on the results of the `/settings/registries` endpoint.
-
-		For example, a container image.
-
-3. Those resources are passed to the scanner for evaluation.
+3. The list of auto-discovered images is passed to the scanner for evaluation.
 	
-	* The scanner uses the corresponding `/policies` endpoints to assess the resource.
+   The scanner uses the corresponding `/policies/vulnerability/images` and `/policies/compliance/images` endpoints to assess each image.
 
-		For example, the `/policies/vulnerability/images` and `/policies/compliance/images` endpoints.
 
 ### cURL Request
 
@@ -52,25 +47,29 @@ Version|Description
  `redhat`|Red Hat OpenShift
  `bluemix`|IBM Cloud Container Registry
 
-The remaining fields (e.g., `repository`, `exclusions`, etc.) are optional.
-These fields enable you to refine the scope of what Prisma Cloud auto-discovers.
+The remaining fields in the `specifications` object (e.g., `repository`, `exclusions`, etc.) are optional.
+They let you refine the scope of what Prisma Cloud auto-discovers.
 
-**Note:** An empty registry string implicitly refers to the Docker Hub and pulls from a public repo.
-The library namespace specifies a [Docker official image](https://docs.docker.com/docker-hub/official_images/).
-To see the current list of Docker images, see [here](https://github.com/docker-library/official-images/tree/master/library).
+**Note:** An empty string in `registry` implicitly refers to Docker Hub.
+In `repository`, use the `library/` namespace to specify a [Docker official image](https://docs.docker.com/docker-hub/official_images/).
+To see the current list of Docker official images, see [here](https://github.com/docker-library/official-images/tree/master/library).
 
-#### Set up a Private Registry
+#### Set up a Private Registry for Scanning
 
-Most uses cases will use a private registry.
+Most registries you'll configure for scanning will be private.
+Prisma Cloud needs credentials to access private registries.
 To set this up:
 
 * Create the credentials with the `/credentials` endpoint.
-* Retrieve the credential ID from the `/credentials` endpoint.
+* Retrieve the credential ID from the `/credentials` endpoint (`_id`).
 * Create the registry setting with the recommended minimum required fields (`version`, `registry`, and `credentialID`).
 
 #### Example cURL Request
 
-The following cURL command overwrites all registries to scan with two new registries and configures Prisma Cloud to scan the Ubuntu 18.04 and Alpine 3.10 images in Docker Hub.
+The following cURL command overwrites the current list of registries to scan with two new registries:
+
+* The official Ubuntu 18.04 image in Docker Hub
+* All repositories in a private AWS ECR registry
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/settings/registry' \
@@ -83,25 +82,21 @@ $ curl 'https://<CONSOLE>/api/v1/settings/registry' \
     "specifications": [
       {
         "version": "2",
-        "registry": "url.to.ubuntu.registry",
+        "registry": "",
         "repository": "library/ubuntu",
         "tag": "18.04",
         "os": "linux",
         "cap": 5,
-        "hostname": "",
-        "credentialID": "ubuntuCredentialID",
+        "credentialID": "<CREDENTIAL_ID1>",
         "scanners": 2
       },
       {
-        "version": "2",
-        "registry": "url.to.alpine.registry",
-        "repository": "library/alpine",
-        "tag": "3.10",
+        "version": "aws",
+        "registry": "<ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com",
         "os": "linux",
-        "cap": 5,
-        "hostname": "",
-        "credentialID": "alpineCredentialID",
-        "scanners": 2
+        "credentialID": "<CREDENTIAL_ID2>",
+        "scanners": 2,
+        "cap": 5
       }
     ]
   }'
