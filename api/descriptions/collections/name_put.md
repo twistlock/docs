@@ -18,17 +18,20 @@ The PUT cURL command updates a collection.
 * The `name` value is required.
 * If `description` is not included in the request, the value will be defaulted to an empty string.
 * If `color` is not included in the request, the system will set the color to a random value.
-* If one of the following resources is left unspecified, the resource value will be set to a wildcard `[*]`.
-	* `hosts`
-	* `images`
-	* `labels`
-	* `containers`
-	* `functions`
-	* `namespaces`
-	* `appIDs`
-	* `accountIDs`
-	* `codeRepos`
-	* `clusters`
+* If one of the following resources is left unspecified, the resource value will be set to a wildcard `[*]`:
+
+Resource|
+---|
+`hosts`|
+`images`|
+`labels`|
+`containers`|
+`functions`|
+`namespaces`|
+`appIDs`|
+`accountIDs`|
+`codeRepos`|
+`clusters`|
 
 #### Example cURL Request
 
