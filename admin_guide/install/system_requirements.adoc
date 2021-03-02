@@ -111,9 +111,6 @@ endif::compute_edition[]
 Defender is supported on Windows Server 2016 (vulnerability and compliance scanning), and Windows Server 2019 (vulnerability scanning, compliance scanning, and runtime defense for containers).
 ====
 
-|VMware
-|Photon OS 3.0 latest release
-
 |===
 
 
