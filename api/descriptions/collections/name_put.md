@@ -1,16 +1,14 @@
 Updates the parameters for a specific collection.
-​
+
 To invoke this endpoint in the Console UI:
-​
+
 1. Navigate to **Manage > Collections and Tags > Collections**.
 2. Click the dotted icon under the **Actions** column to open up the menu options. **Note:** The default collections do not have a dotted icon in the **Actions** column. Use the  **Manage** cog icon to open the update window.
 3. Click the **Manage** button and update the collection's parameters. 
 4. Click the **Save** button to save the changes.
-​
-**Note:** If the `color` parameter is left unspecified, Console will set it to a random color value.
-​
+
 ### cURL Request
-​
+
 The PUT cURL command updates a collection.
 
 **To submit a cURL request:**
@@ -23,7 +21,7 @@ The PUT cURL command updates a collection.
 #### Example cURL Request
 
 This existing collection `my-collection` captures all container images named `ubuntu:18.04`.
-​
+
 ```json
 {
    "hosts":["*"],
@@ -43,11 +41,11 @@ This existing collection `my-collection` captures all container images named `ub
    "system":"false"
 }
 ```
-​
+
 The following cURL command updates `my-collection` to captures all container images named `ubuntu:20.04`.
-​
+
 **Note:** You can retrieve collection names from the `GET /api/v1/collections` endpoint using the `name` key.
-​
+
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/collections/my-collection' \
   -k \
@@ -60,5 +58,5 @@ $ curl 'https://<CONSOLE>/api/v1/collections/my-collection' \
    "images":["ubuntu:20.04"]
 }'
 ```
-​
+
 **Note:** No response will be returned upon successful execution.
