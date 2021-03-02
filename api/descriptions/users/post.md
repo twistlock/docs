@@ -8,7 +8,9 @@ To invoke this endpoint in the Console UI:
 
 ### cURL Request
 
-The following cURL command adds a new user with no permissions to the master Console:
+The following cURL command adds a new user to Central Console.
+When `authType` is set to `basic`, the curl command creates a "local" user that's managed by Console.
+If you've integrated Prisma Cloud with an identity provider, set `authType` appropriately.
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/users' \
@@ -25,9 +27,13 @@ $ curl 'https://<CONSOLE>/api/v1/users' \
 }'
 ```
 
-The following cURL command adds a new user to Console and assigns permissions.
+Administrators centrally manage all users, and specify who has access to which projects and which collections.
+Use the `permissions` object to grant a user access to specific projects and specific collections in the project.
 
-**Note:** In this example, `<PROJECT_NAME>` must be set to the name of Console (e.g., `Central Console`).
+In Enterprise Edition (SaaS), you have a single Console
+
+The following cURL command adds a new user to Console and grants access to project `PROJECT_NAME`.
+If the `permissions` object is left unspecified, a single entry is created with `project` set to `Central Console` and collections set to `["All"]`.
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/users' \
@@ -37,7 +43,7 @@ $ curl 'https://<CONSOLE>/api/v1/users' \
   -H 'Content-Type: application/json' \
   -d \
 '{
-   "username":"{id}",
+   "username":"<ID>",
    "password":"<PASSWORD>",
    "role":"auditor",
    "authType":"basic",
