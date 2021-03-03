@@ -1,4 +1,5 @@
-Create and manage users.
+Administrative endpoint to create and manage users.
+Assign roles and specify who has access to which projects and which collections.
 
 User management with these endpoints is supported for Compute Edition (self-hosted) only.
 

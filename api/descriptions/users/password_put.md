@@ -9,7 +9,7 @@ To invoke this endpoint in the Console UI:
 
 ### cURL Request
 
-The following cURL command replaces the password of a user.
+The following cURL command replaces the password of `USER` (the user authenticating with Console to call this endpoint).
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/users/password' \

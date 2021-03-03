@@ -31,7 +31,7 @@ $ curl 'https://<CONSOLE>/api/v1/users' \
   -H 'Content-Type: application/json' \
   -d \
 '{
-   "username":"{id}",
+   "username":"<ID>",
    "password":"<PASSWORD>",
    "role":"auditor",
    "authType":"basic"   
@@ -42,7 +42,6 @@ $ curl 'https://<CONSOLE>/api/v1/users' \
 
 #### Add a New User and Grant Access to a Project
 
-Administrators centrally manage all users and specify who has access to which projects and which collections.
 Use the `permissions` object to grant a user access to specific projects and specific collections in a project.
 
 When specifying the `permissions` object, `projects` is the only required field.
