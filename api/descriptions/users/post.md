@@ -6,11 +6,22 @@ To invoke this endpoint in the Console UI:
 2. Click **+ Add user** and enter the user's information.
 3. Click the **Save** button.
 
-### cURL Request
+Every Console has a project name, even if projects aren't enabled.
+If you've deployed a single stand-alone Console, it's called `Central Console`.
+If you've enabled projects, the master Console is called `Central Console`.
+Each connected tenant project has a unique name, which is specified when the project is created.
+
+All users are created and managed in `Central Console`.
+
+### cURL Requests
+
+The following example cURL requests show how to use this endpoint.
+
+#### Add a New User
 
 The following cURL command adds a new user to Central Console.
-When `authType` is set to `basic`, the curl command creates a "local" user that's managed by Console.
-If you've integrated Prisma Cloud with an identity provider, set `authType` appropriately.
+When `authType` is set to `basic`, the system creates a "local" user that's managed in Console's database.
+If you integrated Prisma Cloud with an identity provider, set `authType` to a supported value, such as `saml`.
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/users' \
@@ -27,38 +38,17 @@ $ curl 'https://<CONSOLE>/api/v1/users' \
 }'
 ```
 
-Administrators centrally manage all users, and specify who has access to which projects and which collections.
-Use the `permissions` object to grant a user access to specific projects and specific collections in the project.
+**Note:** No response will be returned upon successful execution.
 
-In Enterprise Edition (SaaS), you have a single Console
+#### Add a New User and Grant Access to a Project
 
-The following cURL command adds a new user to Console and grants access to project `PROJECT_NAME`.
-If the `permissions` object is left unspecified, a single entry is created with `project` set to `Central Console` and collections set to `["All"]`.
+Administrators centrally manage all users and specify who has access to which projects and which collections.
+Use the `permissions` object to grant a user access to specific projects and specific collections in a project.
 
-```bash
-$ curl 'https://<CONSOLE>/api/v1/users' \
-  -k \
-  -X POST \
-  -u <USER> \
-  -H 'Content-Type: application/json' \
-  -d \
-'{
-   "username":"<ID>",
-   "password":"<PASSWORD>",
-   "role":"auditor",
-   "authType":"basic",
-   "permissions":[
-      {
-         "project":"<PROJECT_NAME>",
-         "collections":[
-            "All"
-         ]
-      }
-   ]   
-}'
-```
+When specifying the `permissions` object, `projects` is the only required field.
+If `collections` is left unspecified, users are granted access to the `All` collection by default.
 
-The following cURL command adds a new user to a tenant project.
+The following cURL command adds a new user to Console and grants access to the tenant project `PROJECT_NAME`.
 
 Before you invoke this request:
 
@@ -75,18 +65,48 @@ $ curl 'https://<CONSOLE>/api/v1/users' \
   -H 'Content-Type: application/json' \
   -d \
 '{
-   "username":"{id}",
+   "username":"<ID>",
    "password":"<PASSWORD>",
    "role":"auditor",
    "authType":"basic",
    "permissions":[
       {
-         "project":"<TENANT PROJECT_NAME>"
+         "project":"<PROJECT_NAME>"
       }
    ]   
 }'
 ```
 
-In this example, `collections` cannot be included because the user will inherit the permissions set in the specified tenant project.
+**Note:** No response will be returned upon successful execution.
+
+#### Add a New User and Grant Access to a Collection
+
+When assigning collections, you must explicitly specify a project.
+When you're working with a single stand-alone Console, the value for project is `Central Console`.
+
+The following cURL command adds a new user to Console and grants access to the `finance-app` collection in `Central Console`.
+
+```bash
+$ curl 'https://<CONSOLE>/api/v1/users' \
+  -k \
+  -X POST \
+  -u <USER> \
+  -H 'Content-Type: application/json' \
+  -d \
+'{
+   "username":"<ID>",
+   "password":"<PASSWORD>",
+   "role":"auditor",
+   "authType":"basic",
+   "permissions":[
+      {
+         "project":"Central Console",
+         "collections":[
+            "finance-app"
+         ]
+      }
+   ]   
+}'
+```
 
 **Note:** No response will be returned upon successful execution.
