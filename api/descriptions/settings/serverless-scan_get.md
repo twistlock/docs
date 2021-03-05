@@ -1,4 +1,4 @@
-Retrieves the scopes used for pattern matching on serverless functions.
+Retrieves the scopes used for pattern matching on the serverless functions Prisma Cloud is configured to scan.
 
 This endpoint maps to the **Function scope** table data in the **Defend > Vulnerabilities > Functions > Functions** Console UI.
 
