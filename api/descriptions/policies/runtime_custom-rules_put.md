@@ -1,44 +1,30 @@
 Updates the runtime policy's custom rules.
-All rules in the policy are updated in a single shot.
+Adds a new custom rule to a runtime policy or updates an existing runtime policy's custom rule.
 
 To invoke this endpoint in the Console UI:
 
-1. Navigate to the **Defend > Runtime > Custom rules** page.
-2. Click **+ Add rule**.
-3. Enter the details for the new rule and click **Add**.
+1. Navigate to **Defend > Runtime > Custom rules**.
+2. Click **+ Add rule** or the dotted icon under the **Actions** column and choose to the **Manage** cog icon to open the update window.
+3. Configure the custom rule's parameters. 
+4. Click the **Add** or **Update** button to save the changes.
 
 ### cURL Request
 
-The following cURL command overwrites all rules in your current policy with a new policy that has a single rule.
+The following cURL command updates a collection.
 
 ```bash
-$ curl 'https://<CONSOLE>/api/v1/policies/runtime/custom-rules' \
+$ curl 'https://<CONSOLE>/api/v1/collections/<COLLECTION NAME>' \
   -k \
   -X PUT \
   -u <USER> \
   -H 'Content-Type: application/json' \
   -d \
 '{
-   "rules":[
-      {
-         "name":"my-rule",
-         "collections":[
-            {
-               "name":"All"       
-            }
-         ],
-         "advancedProtection":"alert",
-         "processes":{
-            "effect":"alert"
-         },
-         "network":{
-            "effect":"disable"
-         },
-         "dns":{
-            "effect":"disable"
-         }
-      }
-   ]
+   "_id":{id},
+   "type":"processes",
+   "message":"unexpected %proc.name was spawned",
+   "name":"<CUSTOM_RULE_NAME>",
+   "script":"proc.interactive"
 }'
 ```
 
