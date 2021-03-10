@@ -1,5 +1,7 @@
 Deletes an existing list of IPv4 addresses/IP CIDR blocks for networks in WAAS.
 
+This endpoint is typically called to programmatically update the list, based on threat intelligence gathered by your application.
+
 To invoke this endpoint in the Console UI:
 
 1. Navigate to the **Defend > WAAS > Network lists** page.
