@@ -23,6 +23,7 @@ This endpoint works hand-in-hand with the `/policies` endpoints.
 	
    The scanner uses the corresponding `/policies/vulnerability/images` and `/policies/compliance/images` endpoints to assess each image.
 
+
 ### cURL Request
 
 Each registry to scan is specified as an item in the `specifications` array.
@@ -81,7 +82,7 @@ $ curl 'https://<CONSOLE>/api/v1/settings/registry' \
     "specifications": [
       {
         "version": "2",
-        "registry": "url.to.ubuntu.registry",
+        "registry": "",
         "repository": "library/ubuntu",
         "tag": "18.04",
         "os": "linux",
