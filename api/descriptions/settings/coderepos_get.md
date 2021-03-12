@@ -3,18 +3,18 @@ It also retrieves a partial webhook URL.
 
 This endpoint maps to the following information on the **Defend > Vulnerabilities > Code repositories** Console UI page:
 
-* Item #2 under **Webhook settings** (the URL suffix)
 * **GitHub repositories scan scope** table data
+* URL suffix in **Webhook settings**
 
 ### Webhook
 
-You can optionally configure your code repositories with a webhook to trigger Prisma Cloud to scan repositories when there is a pertinent event (e.g., new code is pushed to the repository).
+You can optionally configure your code repositories with a webhook to trigger Prisma Cloud to scan repositories when there are pertinent events (e.g., new code commits).
 
-Construct the full webhook using the publicly accessible DNS name or IP address, plus the webhook URL suffix.
+Construct the full webhook using Console's publicly accessible DNS name or IP address, plus the webhook URL suffix.
 
 ### cURL Request
 
-The following cURL command retrieves all the code repositories to scan and the URL suffix for the repositories.
+The following cURL command retrieves all code repositories to scan, as well as the webhook URL suffix.
 
 ```bash
 $ curl -k \
