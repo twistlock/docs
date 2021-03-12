@@ -1,4 +1,4 @@
-Retrieves the list of VM image scopes Prisma Cloud is configured to scan.
+Retrieves the list of VM image scan scopes.
 
 This endpoint maps to the **VM images scope** table data in the **Defend > Vulnerabilities > Hosts > VM images** Console UI.
 
