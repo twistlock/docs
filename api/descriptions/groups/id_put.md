@@ -22,7 +22,7 @@ The following cURL command updates `my-group` with the users associated with the
 **Note:** You can retrieve the group `id` names from the `GET /api/v1/groups`.
 
 ```bash
-$ curl 'https://<CONSOLE>/api/v1/groups' \
+$ curl 'https://<CONSOLE>/api/v1/groups/{id}' \
   -k \
   -X PUT \
   -u <USER> \

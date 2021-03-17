@@ -10,14 +10,14 @@ To invoke this endpoint in the Console UI:
 
 ### cURL Request
 
-The following cURL command deletes a collection with the name `my-group`.
+The following cURL command deletes a collection with the name `{id}`.
 
 ```bash
 $ curl -k \
   -u <USER> \
   -H 'Content-Type: application/json' \
   -X DELETE \
-  'https://<CONSOLE>/api/v1/groups/my-group'
+  'https://<CONSOLE>/api/v1/groups/{id}'
 ```
 
 **Note:** No response will be returned upon successful execution.
