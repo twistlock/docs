@@ -10,6 +10,13 @@ To invoke this endpoint in the Console UI:
 3. Click the **Add new app** button to move to the configuration window.
 4. Configure the application with at least one endpoint, and click the **Save** button.
 
+Adding and maintaining rules for a WAAS app involves populating a large and complex JSON request body.
+You may find it easier to:
+
+1. Manually define your app's policy via the Console UI as described [here](https://docs.twistlock.com/docs/compute_edition/waas/deploy_waas.html).
+2. Use the **Export** button on **Defend** > **WAAS** to export the app's policy rules to a JSON file.
+3. Use the exported file as a template to modify, then either import the file back in using the **Import** button, or use it as the basis for defining the rules to include in this endpoint's payload.
+
 ### cURL Request
 
 The following cURL command overwrites all applications rules with a single rule.
