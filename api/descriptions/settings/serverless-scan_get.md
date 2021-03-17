@@ -13,3 +13,5 @@ $ curl -k \
   -X GET \
   'https://<CONSOLE>/api/v1/settings/serverless-scan'
 ```
+
+A successful response returns a list of scopes used for pattern matching on the serverless functions.

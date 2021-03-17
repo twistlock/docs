@@ -36,7 +36,6 @@ Each serverless function is specified as an element within the endpoint's payloa
 The critical fields for this endpoint are:
 
 * `provider` - Host provider name. For example, `aws` refers to Amazon Web Services.
-* `pattern` - Text pattern to use for the scan. The pattern is compared against the resource names.
 * `credentialID` - ID of the credentials in the credentials store to authenticate against the service provider.
 
 The following cURL command overwrites all serverless scan scopes to scan with a new single serverless scan scope.
@@ -51,10 +50,8 @@ $ curl 'https://<CONSOLE>/api/v1/settings/serverless-scan' \
   '[
       {
         "provider": "aws",
-        "region":"us-east-1",
-        "pattern":"Ubuntu",
         "credential":{},
-        "credentialID":"IAM Role"
+        "credentialID":"IAM Role"  
       }
     ]'
 ```
