@@ -14,3 +14,5 @@ $ curl -k \
   "https://<CONSOLE>/api/v1/containers/download?id={id}&layers=true" \
   > container_report.csv
 ```
+
+A successful response displays the status of the download.
