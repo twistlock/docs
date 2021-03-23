@@ -14,3 +14,5 @@ $ curl -k \
   "https://<CONSOLE>/api/v1/registry/download" \
   > registry_report.csv
 ```
+
+A successful response displays the status of the download.
