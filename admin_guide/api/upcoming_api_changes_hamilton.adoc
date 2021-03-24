@@ -140,8 +140,6 @@ The following table summarizes the change:
 
 |===
 
-Any data you previously found in `binaries[].layerTime` can now be found in `applications[].layerTime`.
-
 As a reminder, software is typically added to an image with a package manager.
 Sometimes, however, a binary might be added directly to an image with the Dockerfile `ADD` instruction (for example, when software is built from source).
 The `binaries[].layerTime` field maps a binary added to an image to a layer in the image.
@@ -150,3 +148,5 @@ As such, we expect the impact of this change on any automation you've built arou
 
 In Hamilton, we're extending the number of binaries we can identify and assess for vulnerabilities.
 As part of this extended capability, we're introducing the `applications` object with its associated `layerTime` field, and we're deprecating `binaries[].layerTime`.
+Any data you previously found in `binaries[].layerTime` can now be found in `applications[].layerTime`.
+
