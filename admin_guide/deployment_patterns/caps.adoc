@@ -11,7 +11,7 @@ If you must retain all audits, consider configuring Console to send audits to sy
 |Cap
 
 |Jenkins plugin and twistcli scan reports
-|1000 scan reports or 100 MB (whichever limit is hit first)
+|5000 scan reports or 500 MB (whichever limit is hit first)
 
 |xref:../access_control/rbac.adoc[Access audits]
 |100K audits or 50 MB (whichever limit is hit first)
