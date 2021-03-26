@@ -2,12 +2,18 @@ Returns a summary count of compliance issues for the images, containers, hosts, 
 
 The response also includes a detailed list of compliance issues for each running container and host at the time of the last scan.
 
-The following example command that uses curl and basic auth to retrieve compliance statistics:
+This endpoint maps to the table in **Monitor > Compliance > Compliance explorer** in the Console UI.
+
+### cURL Request
+
+The following cURL command retrieves compliance statistics:
 
 ```bash
 $ curl -k \
   -u <USER> \
   -H 'Content-Type: application/json' \
   -X GET \
-  https://<CONSOLE>:8083/api/v1/stats/compliance
+  https://<CONSOLE>/api/v1/stats/compliance
 ```
+
+A successful response returns a summary count of compliance issues and a detailed list of compliance issues for each running container and host.
