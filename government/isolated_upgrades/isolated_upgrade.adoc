@@ -1,0 +1,23 @@
+= Overview
+:toc:
+:toclevels:
+:toc-title:
+
+
+Some deployments of Prisma Cloud Compute are only provided the updated container images.
+The supported and documented https://docs.twistlock.com/docs/compute_edition/upgrade/upgrade_process_self_hosted.html[upgrade process] requires the generation of new Console Deployment and Defender daemonSet yamls.
+Every https://docs.twistlock.com/docs/releases/release-information/latest.html[release] of Prisma Cloud Compute we publish the tools necessary to update an existing deployment of Compute without requiring access to the support portal.
+These tars files only contain the required tools to generate the new yamls.
+
+== Update release tools
+
+[cols="1,2,3", options="header"]
+|===
+|Release
+|Download
+|SHA256 Digest
+
+|20.12.531
+|https://storage.googleapis.com/twistlock-cdn/isolated_upgrades/v20_12_531/v20_12_531_isolated_update.tar.gz[v20_12_531_isolated_update.tar.gz]
+|2297ba877be8a3c9c56ec59ead0443348cc159d972d5d1eb4561d21d115b13e5
+|===
