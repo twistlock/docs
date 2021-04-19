@@ -1,4 +1,4 @@
-Adds or modifies a group from the system.
+Creates or modifies a group.
 The `id` can be retrieved with from the `GET /api/v1/groups` endpoint.
 
 To invoke this endpoint in the Console UI:
