@@ -1,5 +1,4 @@
-Updates the runtime policy's custom rules.
-Adds a new custom rule to a runtime policy or updates an existing runtime policy's custom rule.
+Creates or updates a custom runtime rule.
 
 To invoke this endpoint in the Console UI:
 
