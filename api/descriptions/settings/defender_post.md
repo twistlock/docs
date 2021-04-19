@@ -1,4 +1,4 @@
-Configures the advanced settings for defenders.
+Configures the advanced settings for Defenders.
 
 To invoke this endpoint in the Console UI:
 
@@ -10,9 +10,9 @@ To invoke this endpoint in the Console UI:
 
 The following cURL command:
 
-* Sets the local defender API port to `9998`.
-* Turns on the defender `runC` proxy.
-* Sets the number of days to automatically remove disconnected defenders to `4`.
+* Sets the local Defender API port to `9998`.
+* Turns on the Defender `runC` proxy.
+* Sets the number of days to automatically remove disconnected Defenders to `4`.
 
 ```bash
 $ curl 'https://<CONSOLE>/api/v1/settings/defender' \
