@@ -1,4 +1,4 @@
-Retrieves the list of all system groups.
+Retrieves the list of all groups.
 
 This endpoint maps to the table data on the **Manage > Authentication > Groups** Console UI page.
 
