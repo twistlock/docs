@@ -1,4 +1,4 @@
-Retrieves the firewall policy for WAAS hosts protected by Defender.
+Retrieves the WAAS policy for hosts.
 A policy consists of ordered rules.
 
 This endpoint maps to the table in **Defend > WAAS > Host** in the Console UI.
@@ -15,4 +15,4 @@ $ curl -k \
   'https://<CONSOLE>/api/v1/policies/firewall/app/host'
 ```
 
-A successful response returns a list of compliance rules in the policy.
+A successful response returns a list of rules in the policy.
