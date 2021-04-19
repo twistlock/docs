@@ -1,4 +1,4 @@
-Downloads image scan reports for the registry in CSV format.
+Downloads registry image scan reports in CSV format.
 
 This endpoint maps to the CSV hyperlink in **Monitor > Compliance > Images > Registries** in the Console UI.
 
