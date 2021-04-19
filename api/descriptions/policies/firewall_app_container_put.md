@@ -1,4 +1,4 @@
-Updates the runtime policy for an application's firewall (CNAF) rules.
+Updates the WAAS policy for containers.
 All rules are updated in a single shot.
 
 Updating all rules at the same time makes it possible to maintain strict ordering between rules.
@@ -11,7 +11,7 @@ To invoke this endpoint in the Console UI:
 4. Configure the application with at least one endpoint, and click the **Save** button.
 
 Adding and maintaining rules for a WAAS app involves populating a large and complex JSON request body.
-You may find it easier to:
+We recommend the following process:
 
 1. Manually define your app's policy via the Console UI as described [here](https://docs.twistlock.com/docs/compute_edition/waas/deploy_waas.html).
 2. Use the **Export** button on **Defend** > **WAAS** to export the app's policy rules to a JSON file.
