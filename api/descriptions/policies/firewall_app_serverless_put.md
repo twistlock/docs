@@ -1,4 +1,4 @@
-Updates an existing list of application firewall (CNAF) policies for serverless functions situated in WAAS.
+Updates the WAAS policy for serverless functions.
 
 To invoke this endpoint in the Console UI:
 
@@ -7,7 +7,7 @@ To invoke this endpoint in the Console UI:
 3. Enter the details for the new serverless function and click **Save**
 
 Adding and maintaining rules for a WAAS app involves populating a large and complex JSON request body.
-You may find it easier to:
+We recommend the process:
 
 1. Manually define your app's policy via the Console UI as described [here](https://docs.twistlock.com/docs/compute_edition/waas/deploy_waas.html).
 2. Use the **Export** button on **Defend** > **WAAS** to export the app's policy rules to a JSON file.
