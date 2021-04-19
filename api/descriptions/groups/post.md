@@ -1,4 +1,4 @@
-Adds a group of users to the system.
+Creates a group with users.
 
 To invoke this endpoint in the Console UI:
 
