@@ -1,4 +1,4 @@
-Retrieves image scan reports for registry images that Prisma Cloud is configured to scan.
+Retrieves registry image scan reports.
 
 This endpoint maps to the image table in **Monitor > Compliance > Images > Registries** in the Console UI.
 
