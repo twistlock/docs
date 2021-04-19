@@ -1,4 +1,4 @@
-Retrieves a list of all network lists.
+Retrieves a list of all WAAS network lists.
 Network lists are groups or related IPv4 addresses and CIDR blocks used in WAAS policy rules.
 
 This endpoint is typically called as part of a process to programmatically update network lists based on new threat intelligence.
