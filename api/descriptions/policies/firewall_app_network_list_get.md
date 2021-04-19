@@ -1,6 +1,7 @@
-Retrieves the lists of IPv4 addresses/IP CIDR blocks for networks in WAAS.
+Retrieves a list of all network lists.
+Network lists are groups or related IPv4 addresses and CIDR blocks used in WAAS policy rules.
 
-This endpoint is typically called as part of a programmatic process to update the list based on threat intelligence gathered by your application.
+This endpoint is typically called as part of a process to programmatically update network lists based on new threat intelligence.
 For example: add, update, or delete IP addresses.
 
 This endpoint maps to the table in **Defend > WAAS > Network lists** in the Console UI.
