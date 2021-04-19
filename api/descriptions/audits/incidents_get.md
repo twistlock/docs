@@ -11,7 +11,7 @@ The following cURL command retrieves all incidents.
 ```bash
 $ curl -k \
   -u <USER> \
-  https://console/api/v1/audits/incidents
+  https://<CONSOLE>/api/v1/audits/incidents
 ```
 
 A successful response returns the incidents.
