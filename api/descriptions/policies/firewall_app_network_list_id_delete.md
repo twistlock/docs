@@ -1,4 +1,4 @@
-Deletes an existing list of IPv4 addresses/IP CIDR blocks for networks in WAAS.
+Deletes an existing WAAS network list.
 
 This endpoint is typically called to programmatically update the list, based on threat intelligence gathered by your application.
 
