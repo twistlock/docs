@@ -1,4 +1,4 @@
-Gets the advanced settings for defenders.
+Gets the advanced settings for Defenders.
 
 ### cURL Request
 
