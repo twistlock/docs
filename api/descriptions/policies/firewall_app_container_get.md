@@ -1,4 +1,5 @@
-Retrieves the runtime policy for an application's firewall (CNAF) rules.
+Retrieves the WAAS policy for containers.
+A policy consists of ordered rules.
 
 This endpoint maps to the table in **Defend > WAAS > Container** in the Console UI.
 
@@ -12,4 +13,4 @@ $ curl -k \
   https://<CONSOLE>/api/v1/policies/firewall/app/container
 ```
 
-A successful response returns a list of runtime rules in the policy.
+A successful response returns a list of rules in the policy.
