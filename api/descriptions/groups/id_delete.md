@@ -1,4 +1,4 @@
-Deletes a group from the system.
+Deletes a group.
 The `id` can be retrieved from the `GET /api/v1/groups` endpoint.
 
 To invoke this endpoint in the Console UI:
