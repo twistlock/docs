@@ -1,5 +1,5 @@
-Updates the scopes used for pattern matching on the serverless function Prisma Cloud is configured to scan.
-All scopes to scan are updated in a single shot.
+Updates the serverless scan scopes.
+All scan scopes are updated in a single shot.
 
 To invoke this endpoint in the Console UI:
 
@@ -19,19 +19,17 @@ This endpoint works hand-in-hand with the `/policies` endpoints.
 
 1. Add your scope information using this endpoint.
 
-   For example, specify the pattern scope(s) and credentials of your GitHub account.
+   For example, specify a region and credentials for accessing the AWS account.
 
-2. Prisma Cloud auto-discovers the serverless functions specified with this endpoint.
-
-   The system invokes the GET `/serverless` endpoint to discover the available scopes using the credential ID provided.
+2. Prisma Cloud auto-discovers the serverless functions in scope.
 
 3. The list of auto-discovered serverless functions is passed to the scanner for evaluation.
   
-   The scanner uses the corresponding `/policies/vulnerability/serverless` endpoint to assess each code repository.
+   The scanner uses the corresponding `/policies/vulnerability/serverless` endpoint to assess each serverless function.
 
 ### cURL Request
 
-Each serverless function is specified as an element within the endpoint's payload array. The functions for each scope are specified as separate objects.
+Each scan scope is specified as an element in array.
 
 The critical fields for this endpoint are:
 
