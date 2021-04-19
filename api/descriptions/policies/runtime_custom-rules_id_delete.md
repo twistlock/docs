@@ -1,4 +1,4 @@
-Deletes an existing list of custom rules in the runtime policy.
+Deletes a custom runtime rule.
 
 To invoke this endpoint in the Console UI:
 
