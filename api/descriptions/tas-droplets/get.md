@@ -1,4 +1,4 @@
-Retrieves all Tanzu Application Service (TAS) droplets.
+Retrieves scan reports for Tanzu Application Service (TAS) droplets.
 
 This endpoint maps to the table in **Monitor > Vulnerabilities > VMware Tanzu blobstore** in the Console UI.
 
