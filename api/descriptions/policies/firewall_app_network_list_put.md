@@ -1,6 +1,6 @@
-Updates an existing list of IPv4 addresses/IP CIDR blocks for networks in WAAS.
+Updates an existing WAAS network list.
 
-This endpoint is typically called to programmatically update the list, based on threat intelligence gathered by your application.
+This endpoint is typically called to programmatically update a network list, based on new threat intelligence.
 
 To invoke this endpoint in the Console UI:
 
