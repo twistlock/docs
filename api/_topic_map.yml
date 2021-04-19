@@ -241,6 +241,11 @@
   displayName: Code repo scan reports
   description: !include ../descriptions/coderepos/coderepos.md
 
+  get: !include ../descriptions/coderepos/get.md
+
+  /download:
+    get: !include ../descriptions/coderepos/download_get.md
+
 #
 # /api/v1/collections
 #
@@ -254,6 +259,9 @@
   /{id}:
     put: !include ../descriptions/collections/name_put.md
     delete: !include ../descriptions/collections/name_delete.md
+
+  /{id}/usages:
+    get: !include ../descriptions/collections/name_usages_get.md
 
 #
 # Kubernetes auditing
@@ -620,9 +628,21 @@
     get: !include ../descriptions/policies/docker_get.md
     put: !include ../descriptions/policies/docker_put.md
 
+  /firewall/app/app-embedded:
+    get: !include ../descriptions/policies/firewall_app-embedded_get.md
+    put: !include ../descriptions/policies/firewall_app-embedded_put.md
+
   /firewall/app/container:
     get: !include ../descriptions/policies/firewall_app_container_get.md
     put: !include ../descriptions/policies/firewall_app_container_put.md
+
+  /firewall/app/host:
+    get: !include ../descriptions/policies/firewall_app_host_get.md
+    put: !include ../descriptions/policies/firewall_app_host_put.md
+
+  /firewall/app/serverless:
+    get: !include ../descriptions/policies/firewall_app_serverless_get.md
+    put: !include ../descriptions/policies/firewall_app_serverless_put.md
   
   /firewall/app/rasp:
     get: !include ../descriptions/policies/firewall_app_rasp_get.md
@@ -631,6 +651,13 @@
   /firewall/app/apispec:
     post: !include ../descriptions/policies/firewall_app_apispec_post.md
 
+  /firewall/app/network-list:
+    get: !include ../descriptions/policies/firewall_app_network_list_get.md
+    put: !include ../descriptions/policies/firewall_app_network_list_put.md
+    post: !include ../descriptions/policies/firewall_app_network_list_post.md
+
+  /firewall/app/network-list/{id}:
+    delete: !include ../descriptions/policies/firewall_app_network_list_id_delete.md
 
   /firewall/network/container:
     get: !include ../descriptions/policies/firewall_network_container_get.md
@@ -659,6 +686,13 @@
   /runtime/host:
     get: !include ../descriptions/policies/runtime_host_get.md
     put: !include ../descriptions/policies/runtime_host_put.md
+
+  /runtime/custom-rules:
+    get: !include ../descriptions/policies/runtime_custom-rules_get.md
+    put: !include ../descriptions/policies/runtime_custom-rules_put.md
+
+  /runtime/custom-rules/{id}:
+    delete: !include ../descriptions/policies/runtime_custom-rules_delete.md
   
   /runtime/serverless:
     get: !include ../descriptions/policies/runtime_serverless_get.md
@@ -970,10 +1004,15 @@
     get: !include ../descriptions/settings/certs_get.md
     post: !include ../descriptions/settings/certs_post.md
 
+  /coderepos:
+    get: !include ../descriptions/settings/coderepos_get.md
+    put: !include ../descriptions/settings/coderepos_put.md
+
   /console-certificate:
     post: !include ../descriptions/settings/console-certificate_post.md
 
   /defender:
+    get: !include ../descriptions/settings/defender_get.md    
     post: !include ../descriptions/settings/defender_post.md
 
   /intelligence-windows:
@@ -1164,6 +1203,17 @@
   /{id}/vuln:
     post: !include ../descriptions/tags/tag_cve_post.md
     delete: !include ../descriptions/tags/tag_cve_delete.md
+
+#
+# /api/v1/tas-droplets
+#
+/tas-droplets:
+  displayName: tas-droplets
+
+  get: !include ../descriptions/tas-droplets/get.md
+
+  /download:
+    get: !include ../descriptions/tas-droplets/download_get.md
 
 #
 # /api/v1/trust
