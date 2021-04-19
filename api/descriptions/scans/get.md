@@ -1,4 +1,4 @@
-Retrieves all scan reports for images scanned by the Jenkins plugin or twistcli tool.
+Retrieves all scan reports for images scanned by the Jenkins plugin or twistcli.
 
 This endpoint maps to the image table in **Monitor > Vulnerabilities > Images > CI** in the Console UI.
 
