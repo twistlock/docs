@@ -1,6 +1,8 @@
-Returns a summary count of compliance issues for the images, containers, hosts, and serverless functions in your environment, organized by day (`_id`).
+Returns compliance statistics, including:
 
-The response also includes a detailed list of compliance issues for each running container and host at the time of the last scan.
+* Compliance rate by regulation, CIS benchmark, and policy rule.
+* Trend of failed compliance checks over time.
+* List of all compliance checks with their corresponding compliance rate.
 
 This endpoint maps to the table in **Monitor > Compliance > Compliance explorer** in the Console UI.
 
