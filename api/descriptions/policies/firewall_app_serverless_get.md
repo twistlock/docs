@@ -1,4 +1,4 @@
-Retrieves a list of all application firewall (CNAF) policies for serverless functions situated in WAAS.
+Retrieves a list of all WAAS policy rules for serverless functions.
 
 This endpoint maps to the policy table in **Defend > WAAS > Serverless** in the Console UI.
 
