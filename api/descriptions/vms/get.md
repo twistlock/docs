@@ -1,4 +1,4 @@
-Retrieves all VM image scan reports in CSV format.
+Retrieves all VM image scan reports.
 
 This endpoint maps to the table in **Monitor > Vulnerabilities > Hosts > VM images** in the Console UI.
 
