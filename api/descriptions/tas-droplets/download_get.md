@@ -1,4 +1,4 @@
-Downloads all Tanzu Application Service (TAS) droplets.
+Downloads scan reports for Tanzu Application Service (TAS) droplets in CSV format.
 
 This endpoint maps to the CSV hyperlink in **Monitor > Vulnerabilities > VMware Tanzu blobstore** in the Console UI.
 
