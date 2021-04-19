@@ -1,6 +1,6 @@
 Deletes an existing WAAS network list.
 
-This endpoint is typically called to programmatically update the list, based on threat intelligence gathered by your application.
+This endpoint is typically called to programmatically delete a network list, based on new threat intelligence.
 
 To invoke this endpoint in the Console UI:
 
