@@ -1,4 +1,4 @@
-Retrieves all scan reports for the serverless functions which Twistlock has been configured to scan.
+Retrieves all scan reports for the serverless functions which Prisma Cloud has been configured to scan.
 
 This endpoint maps to the table in **Monitor > Vulnerabilities > Functions > Scanned functions** in the Console UI.
 
