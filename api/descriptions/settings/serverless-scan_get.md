@@ -1,10 +1,11 @@
-Retrieves the scopes used for pattern matching on the serverless functions Prisma Cloud is configured to scan.
+Retrieves the list of serverless function scan scopes.
+Serverless scan scopes specify a region and a credential.
 
 This endpoint maps to the **Function scope** table data in the **Defend > Vulnerabilities > Functions > Functions** Console UI.
 
 ### cURL Request
 
-The following cURL command retrieves the scopes used for pattern matching on serverless functions.
+The following cURL command retrieves a list of serverless scan scopes:
 
 ```bash
 $ curl -k \
@@ -14,4 +15,4 @@ $ curl -k \
   'https://<CONSOLE>/api/v1/settings/serverless-scan'
 ```
 
-A successful response returns a list of scopes used for pattern matching on the serverless functions.
+A successful response returns a list of scan scopes.
