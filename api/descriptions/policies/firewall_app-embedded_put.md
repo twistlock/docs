@@ -1,4 +1,4 @@
-Updates the runtime policy for an embedded defender application's firewall.
+Updates the WAAS policy for web apps protected by App-Embedded Defender.
 All rules in the policy are updated in a single shot.
 
 To invoke this endpoint in the Console UI:
@@ -9,7 +9,7 @@ To invoke this endpoint in the Console UI:
 4. Configure the application with at least one endpoint, and click the **Save** button.
 
 Adding and maintaining rules for a WAAS app involves populating a large and complex JSON request body.
-You may find it easier to:
+We recommend the following process:
 
 1. Manually define your app's policy via the Console UI as described [here](https://docs.twistlock.com/docs/compute_edition/waas/deploy_waas.html).
 2. Use the **Export** button on **Defend** > **WAAS** to export the app's policy rules to a JSON file.
