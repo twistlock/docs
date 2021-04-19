@@ -231,6 +231,8 @@ Dir: vulnerability_management
 Topics:
 - Name: Vulnerability management
   File: vulnerability_management
+- Name: Prisma Cloud vulnerability feed
+  File: prisma_cloud_vulnerability_feed
 - Name: Vulnerability Explorer
   File: vuln_explorer
 - Name: Vulnerability management rules
@@ -570,7 +572,7 @@ Topics:
   File: api
 - Name: Stability guide
   File: stable_api
-- Name: Upcoming API changes in H1Y21 release
+- Name: Upcoming API changes in the H1Y21 release
   File: upcoming_api_changes_hamilton
 - Name: Access the API
   File: access_api
