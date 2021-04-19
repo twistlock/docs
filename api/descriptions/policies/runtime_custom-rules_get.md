@@ -1,4 +1,4 @@
-Retrieves the runtime policy's custom rules.
+Retrieves a list of all custom runtime rules.
 
 This endpoint maps to the policy table in **Defend > Runtime > Custom rules** in the Console UI.
 
