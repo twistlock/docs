@@ -1,4 +1,4 @@
-Retrieves the list of all the system groups names as an array of strings.
+Retrieves a list of all group names as an array of strings.
 
 This endpoint maps to the table data on the **Defend > Vulnerabilities > Images > Registry settings** Console UI page.
 
