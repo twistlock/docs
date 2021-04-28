@@ -308,4 +308,5 @@ cd "$output_dir""/_package/main"
 cp -R "../main2/enterprise_edition" "."
 
 # Point the compute_edition directory to latest
-ln -s "${latest}" "compute_edition"
+#ln -s "${latest}" "compute_edition"
+cp -a "${latest}" "compute_edition"
