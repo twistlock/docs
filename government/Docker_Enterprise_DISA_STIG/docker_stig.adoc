@@ -10,5 +10,5 @@ The remaining 43 STIG checks are not applicable. For example, STIG ID: DKER-EE-0
 
 [%header,format=csv]
 |===
-include::stig_id_to_compute_id.csv[]
+include::Docker_Enterprise_DISA_STIG/stig_id_to_compute_id.csv[]
 |===
