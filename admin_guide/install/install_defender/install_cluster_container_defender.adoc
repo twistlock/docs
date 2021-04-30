@@ -51,6 +51,8 @@ The table shows a count of deployed Defenders and their version number.
 . Click *Add credential* button
 . Select type *GCP* and copy the content of the JSON Service Account key into the Service Account line (take it all including brackets).
 
+To deploy the Defender DaemonSet, use the following procedure.
+
 [.procedure]
 . Log into Prisma Cloud Console.
 
