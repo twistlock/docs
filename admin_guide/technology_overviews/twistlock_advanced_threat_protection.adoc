@@ -7,21 +7,15 @@ The data in ATP is used by Prisma Cloud's runtime defense system to detect suspi
 You can augment ATP by xref:../configure/custom_feeds.adoc#import-malware-signatures[importing custom malware data] and xref:../configure/custom_feeds.adoc#import-ip-reputation-lists[importing IP reputation lists].
 ATP is the combination of both the Prisma Cloud-provided data set and your own custom data set.
 
-The following hypothetical scenario illustrates how ATP protects your containers:
+The following hypothetical scenario illustrates how ATP protects your cloud workloads:
 
 . An attacker exploits a vulnerability in an app running in a container.
 
-. The attacker attempts to download malware into the container from a distribution point.
+. The attacker attempts to download malware into a workload from a distribution point.
 
-. ATP detects both the connection to the malware server and the write of the malicious file to the container file system.
+. Based on the ATP feed, Prisma Cloud runtime defense detects both the connection to the malware server and the write of the malicious file to the workload file system.
 
-. An audit is generated.
-Audits can be viewed in Console under *Monitor > Events > Container Audits*.
-+
-image::tatp_765357.png[width=850]
-
-ATP also protects hosts.
-Host audits can viewed under *Monitor > Events > Host Audits*.
+. Alerts/prevention is applied based on the runtime configuration.
 
 
 === Enabling ATP
@@ -44,3 +38,4 @@ When enabled, it creates an automatic hardening for the function in runtime, wit
 Serverless ATP is enabled by default when creating a new runtime rule.
 It's effect is similiar to the effects configured under the Processes/File System tabs.
 To disable ATP, create or modify a runtime rule, select the *General* tab, and set *Prisma Cloud advanced threat protection* to *Off*.
+=======

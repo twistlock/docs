@@ -1,7 +1,11 @@
 == API
 
-The Prisma Cloud API enables automation and integration with other systems in your environment.
-Every control in the Console UI is exposed through the RESTful API.
-You can use the API for setup, configuration, monitoring, alerting, and data extaction.
+All information for the CWPP API now moved to https://prisma.pan.dev[prisma.pan.dev], our home for developer docs.
 
-The API reference can be found https://cdn.twistlock.com/docs/api/twistlock_api.html[here].
+*API reference:*
+
+https://prisma.pan.dev/api/cloud/cwpp
+
+*API-related documentation, including the porting guide:*
+
+https://prisma.pan.dev/docs/cloud/cwpp/cwpp-gs
