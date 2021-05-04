@@ -47,6 +47,22 @@ For WildFire activation and license renewals, the console must be able to access
 
 - *Treat grayware as malware* -- Use a more restrictive approach and treat files with grayware verdict as malware.
 
+Currently Prisma Cloud Compute uses WildFire for file verdicts in the following scenarios:
+
+* Hosts runtime: 
+
+**  ELF files written to a linux host file system in runtime, which are not deployed via apackage manager.
+** Files must be smaller than 100MB (WildFire limit)
+
+* Container runtime / CI:
+** ELF files written to a linux container file system in runtime, which are not deployed via package manager. 
+** ELF files deployed to a linux container image via package manager and modified in runtime.
+** ELF files present on a linux container image which have been deployed via a package manager but modified afterwards.
+** File must be smaller than 100MB (WildFire limit).
+
+
+
+
 
 
 
