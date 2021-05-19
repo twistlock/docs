@@ -45,7 +45,7 @@ Because kernel modules have unrestricted system access, a security flaw in them 
 
 === Defender-Console communication
 
-By default, Defender establishes a connection to Console on TCP port 8084, although the port number can be customized to meet the needs of your environment.
+By default, Defender establishes a connection to Console on TCP port 443, although the port number can be customized to meet the needs of your environment.
 All traffic between Defender and Console is TLS encrypted.
 
 Defender has no privileged access to Console or the underlying host where Console is installed.
@@ -55,7 +55,7 @@ Post-auth, Defender's capabilities are limited to getting policies from Console 
 
 If Defender were to be compromised, the risk would be local to the system where it is deployed, the privilege it has on the local system, and the possibility of it sending garbage data to Console.
 Console communication channels are separated, with no ability to jump channels.
-Defender has no ability to interact with Console beyond port 8084.
+Defender has no ability to interact with Console beyond port 443.
 Both Console's API and web interfaces, served on port 8083 (HTTPS), require authentication via different channels (such as user name and password, access key, etc.), none of which Defender holds.
 
 [#_blocking_rules]
