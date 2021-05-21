@@ -1,6 +1,6 @@
 == CIS Benchmarks
 
-The CIS Benchmarks provide consensus-oriented best practices for securely configuring systems.
+The CIS benchmarks provide consensus-oriented best practices for securely configuring systems.
 Prisma Cloud provides checks that validate the recommendations in the following CIS Benchmarks:
 
 * https://www.cisecurity.org/benchmark/docker/[Docker Benchmark]
