@@ -9,6 +9,7 @@ The runtimes supported are:
 * Node.js
 * Python
 * Ruby
+* C++
 
 [.task]
 === Integrate code scanning into CI builds
