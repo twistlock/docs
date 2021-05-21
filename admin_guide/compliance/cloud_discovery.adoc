@@ -1,6 +1,6 @@
 == Cloud discovery
 
-It's difficult to ensure that all your apps running on all the different types of cloud services are being properly secured.
+It's difficult to Ensure that all your apps running on all the different types of cloud services are being properly secured.
 If you're using multiple cloud platforms, you might have many separate accounts per platform.
 You could easily have hundreds of combinations of providers, accounts, and regions where cloud native services are being deployed.
 
