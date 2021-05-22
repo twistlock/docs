@@ -76,7 +76,7 @@ For AWS, Prisma Cloud requires a service account with following minimum permissi
                 "eks:DescribeCluster",
                 "eks:ListClusters",
                 "lambda:GetFunction",
-                "lambda:ListFunctions",
+                "lambda:ListFunctions"
             ],
             "Resource": "*"
         }
