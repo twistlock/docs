@@ -47,6 +47,14 @@ The following table outlines the release particulars:
 * Fixes an issue with the missing content-encoding header when WAAS is enabled.
 
 
+=== Known issues
+
+// #26088
+* Defender containers in Defender DaemonSets still display as vulnerable after upgrade.
+This happens because the auto-upgrade mechanism updates the Defender binary only, not the entire image, and the vulnerabilities exist in the image base layer.
+To resolve the issue, redeploy all Defender DaemonSets.
+
+
 === Upcoming deprecations
 
 Starting on June 14, 2021, we'll publish https://prisma.pan.dev/api/cloud/cwpp[API documentation] for our stable endpoints only.
