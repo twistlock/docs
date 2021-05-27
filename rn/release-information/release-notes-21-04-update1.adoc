@@ -20,6 +20,10 @@ The following table outlines the release particulars:
 |b09f51f524e431e767197fd276aeafa3ba63491aad0b11e52ef4e8451e6c675a
 |===
 
+// Besides hosting the download on the Palo Alto Networks Customer Support Portal, we also support programmatic download (e.g., curl, wget) of the release directly from our CDN:
+//
+// LINK
+
 
 === Improvements, fixes, and performance enhancements
 
