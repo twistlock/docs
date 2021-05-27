@@ -57,4 +57,4 @@ Stable endpoints have always been fully supported, and we've committed to minimi
 Starting with our next release (codenamed Iverson), we'll further enhance how we support our API with versioned endpoints.
 All stable endpoints will be versioned.
 Versioned endpoints will be supported for the current release and the previous two releases (that is, Console will serve all three versions).
-When you upgrade Compute, integrations can still access the endpoints from the previous release, so you can expect integrations to remain fully functional across upgrades.
+When you upgrade Compute, integrations can still access the endpoints from previous releases, so you can expect integrations to remain fully functional after upgrades, with full support across three major release cycles.
