@@ -61,8 +61,7 @@ To resolve the issue, redeploy all Defender DaemonSets.
 
 === Upcoming deprecations
 
-Starting on June 14, 2021, we'll publish https://prisma.pan.dev/api/cloud/cwpp[API documentation] for our stable endpoints only.
-The list of stable endpoints can be reviewed https://prisma.pan.dev/docs/cloud/cwpp/stable-endpoints[here].
+Starting on June 14, 2021, we'll publish https://prisma.pan.dev/api/cloud/cwpp[API documentation] for our https://prisma.pan.dev/docs/cloud/cwpp/stable-endpoints[stable endpoints] only.
 
 Stable endpoints have always been fully supported, and we have been committed to minimizing changes to them so that your integrations don't break when upgrading to newer versions of Compute.
 
