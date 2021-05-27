@@ -5,19 +5,19 @@ The following table outlines the release particulars:
 [cols="1,4"]
 |===
 |Build
-|TBD-upcoming release
+|21.04.421
 
 |Code name
 |Hamilton, 21.04 update 1
 
 |Release date
-|Upcoming release
+|27 May 2021
 
 |Type
 |Maintenance release
 
 |SHA-256 digest
-|TBD-upcoming release
+|b09f51f524e431e767197fd276aeafa3ba63491aad0b11e52ef4e8451e6c675a
 |===
 
 
@@ -45,3 +45,16 @@ The following table outlines the release particulars:
 * Fixes an issue with filesystem monitoring on pods that use NFS volumes with root squashing enabled. With this fix, NFS volumes with root squashing enabled are skipped to avoid errors.
 //#27983
 * Fixes an issue with the missing content-encoding header when WAAS is enabled.
+
+
+=== Upcoming deprecations
+
+Starting on June 14, 2021, we'll publish https://prisma.pan.dev/api/cloud/cwpp[API documentation] for our stable endpoints only.
+The list of stable endpoints can be reviewed https://prisma.pan.dev/docs/cloud/cwpp/stable-endpoints[here].
+
+Stable endpoints have always been fully supported, and we've committed to minimizing changes to them so that your integrations don't break when upgrading to newer versions of Compute.
+
+Starting with our next release (codenamed Iverson), we'll further enhance how we support our API with versioned endpoints.
+All stable endpoints will be versioned.
+Versioned endpoints will be supported for the current release and the previous two releases (that is, Console will serve all three versions).
+When you upgrade Compute, integrations can still access the endpoints from the previous release, so you can expect integrations to remain fully functional across upgrades.
