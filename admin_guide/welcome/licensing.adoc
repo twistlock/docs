@@ -111,7 +111,9 @@ You would procure a license with 8 credits.
 
 8 million invocations / 1 million invocations per credits = 8 credits
 
-*Example*: Assume you have a web application running over 50 containers in a 5 node cluster. The containers running the images protected by WAAS rules are running on 2 out of the 5 nodes. You would procure a license with 60 credits.
+*Example*: Assume you have a web application running over 50 containers in a 5 node cluster.
+The containers running the images protected by WAAS rules are running on 2 out of the 5 nodes.
+You would procure a license with 60 credits.
 
 2 Defenders protected nodes with WAAS protected containers * 30 credits per Defender = 60 credits
 
