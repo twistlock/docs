@@ -24,8 +24,6 @@ Vulnerability and compliance rules for container images and hosts, runtime rules
 There are some things to consider when manually naming clusters:
 
 * If you specify the same name for two or more clusters, they're treated as a single cluster.
-* For GCP, if you have clusters with the same name in different projects, they're treated as a single cluster.
-Consider manually specifying a different name for each cluster.
 * Manually specifying names isn't supported in *Manage > Defenders > Manage > DaemonSet*. 
 This page lets you deploy and manage DaemonSets directly from the Prisma Cloud UI.
 For this deployment flow, cluster names are retrieved from the cloud provider or the supplied kubeconfig only.
