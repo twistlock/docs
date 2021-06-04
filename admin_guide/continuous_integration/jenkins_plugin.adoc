@@ -2,7 +2,7 @@
 
 The Jenkins plugin for Prisma Cloud enables you to scan container images and serverless functions for security vulnerabilities and compliance issues within your continuous integration pipeline.
 
-you can download the  Jenkins plugin directly from Console (*Manage > System > Utilities*).
+You can download the  Jenkins plugin directly from Console (*Manage > System > Utilities*).
 ifdef::compute_edition[]
 It's also delivered with the release tarball that you download from xref:../welcome/releases.adoc[Releases].
 endif::compute_edition[]
@@ -105,7 +105,8 @@ image::prisma_cloud_plugin_config.png[Prisma Cloud plugin config,650]
 .. In the *Address* field, enter the URL for Prisma Cloud Console.
 
 .. In the *User* and *Password* fields, enter the *CI role* user's credentials for Prisma Cloud Console.
- This is the email address and the access key of the user with the CI role ( Build and Deploy Security permission group with the option to create an access key on Prisma Cloud). 
++
+This is the email address and the access key of the user with the CI role (Build and Deploy Security permission group with the option to create an access key on Prisma Cloud). 
 
 .. Click *Test Connection* to validate that the Jenkins plugin can communicate with Prisma Cloud Console.
 
