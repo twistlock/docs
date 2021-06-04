@@ -46,32 +46,41 @@ For deploy-time parameters, the specific Docker client commands sent are also an
 
 === Surveying Prisma Cloud compliance checks
 
-As you configure your compliance policy, you'll want a deeper understanding of each check.
-Teams that address compliance issues might also need more information about failing checks, so that they can resolve the underlying issues.
+As you configure your compliance policy, you might want more details for the built-in checks.
+Teams that address compliance issues might also need more information about why checks fail, so that they can resolve the underlying issues.
 
-Most built-in checks are based on the CIS benchmarks.
+As you explore the built-in checks, consider the following points.
+
+[.section]
+==== CIS
+
+Most built-in checks are based on the xref:../compliance/cis_benchmarks.adoc[CIS benchmarks].
 For full details about what a check does, and why, refer to the CIS benchmark documentation.
-Our IDs map to the CIS benchmark IDs (in most cases).
-For example, our ID 51 maps to CIS Docker Benchmark 5.1
+Prisma Cloud check IDs map to CIS benchmark IDs.
+For example, Prisma Cloud check ID 51 maps to CIS Docker Benchmark 5.1
 
-Show screenshot that shows the origin of these compliance checks.
+[.section]
+==== Check IDs
 
-* All CRI checks are direct analogs of the Docker CIS checks, except for CRI environments.
+When creating compliance rules, there's a drop-down menu that lets you filter checks by type.
+Each type has a heading, which indicates the origin of the checks.
+Checks from the CIS benchmarks are clearly labeled.
 
-* For all other _Twistlock Labs_ checks, we’ve got documentation (Twistlock Labs - Container/Image/Istio, Twistlock Labs - Windows host, Serverless). If customers are having any problems understanding the docs for these custom checks, let me know, so I can help to clarify them.
+image::manage_compliance_dropdown.png[width=500]
 
-==== Table of compliance check prefixes.
+[.section]
+==== CRI checks
 
-Container checks
-Image checks
-CRI checks
+All CRI checks are direct analogs of the Docker CIS checks, but repurposed for CRI environments.
 
+[.section]
+==== Twistlock Labs checks
 
-Host checks
+For all other checks, including those from Twistlock Labs, we provide documentation.
 
-
-
-
+* Twistlock Labs compliance checks for xref:../compliance/prisma_cloud_compliance_checks.adoc[containers, images, Istio, and Linux hosts].
+* Twistlock Labs compliance checks for xref:../compliance/serverless.adoc[serverless functions].
+* Twistlock Labs compliance checks for xref:../compliance/windows.adoc[Windows].
 
 
 [.task]
