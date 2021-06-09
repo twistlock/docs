@@ -43,7 +43,15 @@ NOTE: The *Prevent* action for detection of file system events requires a Linux 
 
 - *Non-packaged binaries created or run by service* -- Detect binaries created by a service without a package manager. alert on file creation, and alert or prevent their execution.
 
+NOTE: Defender must be running when a file is written to detect its source. 
+
+NOTE: Currently supported only apt, yum and dnf.
+
 - *Non-packaged binaries created or run by user* -- Detect binaries created by a user without a package manager. alert on file creation, and alert or prevent their execution. Alert on file creation, and alert or prevent their execution.
+
+NOTE: Defender must be running when a file is written to detect its source. 
+
+NOTE: Currently supported only apt, yum and dnf.
 
 - *Processes running from temporary storage* -- Detect processes running from temporary storage (unexpected behavior for legitimate processes). Alert/prevent on file creation or execution.
 
