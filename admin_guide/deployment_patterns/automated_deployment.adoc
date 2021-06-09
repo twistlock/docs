@@ -1,4 +1,4 @@
-== Automated Deployment
+== Automated deployment
 
 The following is an example of Infrastructure as Code (IaC) for the automated deployment of a Console and Defenders within a Kubernetes cluster using an ansible playbook.
 This requires a docker host, Prisma Cloud Compute license and kubectl administrative access to the Kubernetes cluster.
@@ -18,7 +18,7 @@ This sample IaC deployment runs on a unix based host with the following requirem
 
 === Process
 
-image::automated_deployment.png[width=800]
+image::automated_deployment.png[width=400]
 
 === Ansible playbook
 Pull the ansible playbook from https://github.com/twistlock/sample-code/tree/master/automated-deployments/K8s-Console-Defender-deployment-ansible.yaml[here].
