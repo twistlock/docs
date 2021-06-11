@@ -46,14 +46,16 @@ Alert on file creation, and alert or prevent their execution.
 +
 NOTE: Defender must be running when a file is written to detect its source. 
 +
-NOTE: Currently supported only apt, yum, and dnf.
+NOTE: To detect binaries that have been deployed without a package manager, Prisma Cloud depends on the package manager on the host.
+Currently, apt, yum, and dnf are supported.
 
 - *Non-packaged binaries created or run by user* -- Detect binaries created by a user without a package manager.
 Alert on file creation, and alert or prevent their execution.
 +
 NOTE: Defender must be running when a file is written to detect its source. 
 +
-NOTE: Currently supported only apt, yum, and dnf.
+NOTE: To detect binaries that have been deployed without a package manager, Prisma Cloud depends on the package manager on the host.
+Currently, apt, yum, and dnf are supported.
 
 - *Processes running from temporary storage* -- Detect processes running from temporary storage (unexpected behavior for legitimate processes).
 Alert/prevent on file creation or execution.
