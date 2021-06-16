@@ -5,9 +5,8 @@ For example, you might already use labels to classify resources according to tea
 With _alert labels_, you can specify which of these key-value pairs are appended to events (audits, syslog, alerts) and reports.
 
 Labels are key-value string pairs that can be attached to objects such as images, containers, or pods.
-In Console, specify a list of labels that contain the metadata you want to append to Prisma Cloud events.
+In Console, specify a list of Docker and Kubernetes labels that contain the metadata you want to append to Prisma Cloud events.
 When an event fires, if the associated object has any of the specified labels, they are appended to the event.
-
 
 [.task]
 === Specifying labels to append to Prisma Cloud events
@@ -25,6 +24,9 @@ Specify which labels to append to Prisma Cloud events.
 
 . Click *Save*.
 
+image::alert_labels.png[width=800]
+
+image::alert_labels_audit.png[width=800]
 
 === Email alerts
 
@@ -33,8 +35,9 @@ Specify the labels that contain a comma delimited list of email addresses, and w
 
 Before setting up your email alerts, be sure you've specified a list of labels to be appended to Prisma Cloud events, where at least one label contains a comma-delimited list of email addresses.
 
-xref:../alerts/email.adoc[Configure email alerts]
+NOTE: Kubernetes labels don't support special chars such as @ which are required for email addresses. Therefore, only Docker labels can be used as dynamic addresses list for email alerts. 
 
+xref:../alerts/email.adoc[Configure email alerts]
 
 === JIRA alerts
 
