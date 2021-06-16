@@ -2,7 +2,7 @@
 
 Prisma Cloud lets you surface and display designated labels in events and reports.
 For example, you might already use labels to classify resources according to team name or cost center.
-With _alert labels_, you can specify which of these key-value pairs are appended to events (audits, syslog, alerts) and reports.
+With _alert labels_, you can specify which of these key-value pairs are appended to events (audits, incidents, syslog, alerts) and reports.
 
 Labels are key-value string pairs that can be attached to objects such as images, containers, or pods.
 In Console, specify a list of Docker and Kubernetes labels that contain the metadata you want to append to Prisma Cloud events.
