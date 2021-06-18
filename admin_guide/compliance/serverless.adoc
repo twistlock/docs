@@ -130,7 +130,7 @@ Detects functions with permissions to unused APIs that allow privilege elevation
 === Scanning serverless functions
 
 Configure Prisma Cloud to periodically scan your serverless functions.
-Function scanning is handled by the Console.
+Function scanning is handled by Console.
 
 [.procedure]
 . Open Console.
