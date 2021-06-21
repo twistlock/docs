@@ -17,7 +17,7 @@ For example, an issue would be created when all of the following conditions are 
 
 The following screenshot shows an example JIRA issue opened by Prisma Cloud.
 
-image::alerts_example_jira_issue.png[width=750]
+image::images/alerts_example_jira_issue.png[width=750]
 
 
 === Intelligent issue routing
