@@ -58,7 +58,7 @@ Compliance alerts list each failed check, and the number of resources that faile
 For detailed information about exactly which resources are non-compliant, use xref:../compliance/compliance_explorer.adoc#[Compliance Explorer].
 The following screenshot shows an example compliance email alert:
 
-image::alerts_compliance_email.png[width=700]
+image::alerts/alerts_compliance_email.png[width=700]
 
 For example:
 
