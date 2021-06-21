@@ -1,3 +1,5 @@
+:toc: macro
+
 == Kubernetes
 
 This procedure is optimized to get Prisma Cloud installed in your Kubernetes cluster quickly.
@@ -40,6 +42,8 @@ You can inspect, customize, and manage the YAML configuration files in source co
 
 Prisma Cloud Defenders are deployed as a DeamonSet, which guarantees that an instance of Defender runs on each worker node in the cluster.
 endif::prisma_cloud[]
+
+toc::[]
 
 
 // Include reusable content fragment.
