@@ -60,7 +60,9 @@ Currently Prisma Cloud Compute uses WildFire for file verdicts only in the follo
 ** File must be smaller than 100MB (WildFire limit).
 
 
+|===
 
+NOTE: Wildifre is supported on only for Linux, Windows containers/hosts are not supported by wildfire integration
 
 
 
