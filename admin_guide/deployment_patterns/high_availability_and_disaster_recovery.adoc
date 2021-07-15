@@ -1,0 +1,21 @@
+== High Availability and disaster recovery guidelines
+
+The following article describes the key guidelines for keeping your Prisma Cloud Compute deployment highly available, and creating a disaster recovery process.
+
+Prisma Cloud Compute deployment consists of two components - Console and Defenders. 
+
+* Console is the management interface. It lets you define policy and monitor your environment. 
+* Defenders are spread across your environment and protect its workloads according to the policies set in the Console.
+
+When the Console fails or stops working, your environment still has active runtime protection done by the defenders. Each defender holds the updated policies, and keeps protecting your workloads according to them.
+
+This article mainly focuses on Prisma Cloud Compute Edition deployment (self-hosted console). When leveraging Prisma Cloud Enterprise Edition (SaaS Console), high availability for the console is automatically provided by Palo Alto Networks. 
+
+=== Projects 
+
+Prisma Cloud 
+
+=== Backup & Restore using Prisma Cloud Compute
+
+Prisma Cloud 
+
