@@ -251,7 +251,8 @@ You can get a complete list of per-region Amazon ECS-optimized AMIs from https:/
 
 .. In *IAM instance profile*, select *ecsInstanceRole*.
 +
-NOTE: If this role doesn't exist, see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance_IAM_role.html[Amazon ECS Container Instance IAM Role].
+NOTE: If this role doesn't exist, create it.
+For complete details, see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance_IAM_role.html[Amazon ECS Container Instance IAM Role].
 
 .. Under *User data*, select *Text*, and paste the following code snippet, which installs the NFS utilities and mounts the EFS file system:
 +
@@ -392,7 +393,7 @@ Version of the Console image to use.
 For example, for version `20.04.177`, specify `20_04_177`.
 The image and tag will look like `console:console_20_04_177`.
 
-. Update `<CONSOLE-DNS>` to the Load Balancer's DNS name.
+. Update `<CONSOLE_SAN>` to the Load Balancer's DNS name.
 
 . Go to *Services > Containers > Elastic Container Service*.
 

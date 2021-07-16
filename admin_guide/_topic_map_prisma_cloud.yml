@@ -308,6 +308,8 @@ Topics:
   File: detect_secrets
 - Name: Cloud discovery
   File: cloud_discovery
+- Name: OSS license management
+  File: oss_license_management
 ---
 Name: Runtime defense
 Dir: runtime_defense
@@ -320,6 +322,8 @@ Topics:
   File: runtime_defense_hosts
 - Name: Runtime defense for AWS Fargate
   File: fargate
+- Name: Event Aggregation
+  File: runtime_defense_aggregation
 - Name: Custom runtime rules
   File: custom_runtime_rules
 - Name: Import and export individual rules

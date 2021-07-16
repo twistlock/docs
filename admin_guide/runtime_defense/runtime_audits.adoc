@@ -190,7 +190,7 @@ Containers
 * Avoid audits on specific known and allowed processes, by adding process names to the runtime rules processes *Allowed* list.
 
 |Container queried kubelet API at <address>
-| xref:../incident_types/kubernetes_attack.adoc[Kubernetes attacks]
+|xref:../incident_types/kubernetes_attack.adoc[Kubernetes attacks]
 |
 Containers
 
@@ -201,7 +201,7 @@ Containers
 * Avoid audits on specific known and allowed processes, by adding process names to the runtime rules processes *Allowed* list.
 
 |Container queried kubelet readonly API at <address>
-| xref:../incident_types/kubernetes_attack.adoc[Kubernetes attacks]
+|xref:../incident_types/kubernetes_attack.adoc[Kubernetes attacks]
 |
 Containers
 
@@ -212,7 +212,7 @@ Containers
 * Avoid audits on specific known and allowed processes, by adding process names to the runtime rules processes *Allowed* list.
 
 |kubelet launched inside a container
-| xref:../incident_types/kubernetes_attack.adoc[Kubernetes attacks]
+|xref:../incident_types/kubernetes_attack.adoc[Kubernetes attacks]
 |
 Containers
 
@@ -224,13 +224,13 @@ Containers
 * Avoid audits on specific known and allowed processes, by adding process names to the runtime rules processes *Allowed* list.
 
 |<process path> downloaded kubectl to container.
-| xref:../incident_types/kubernetes_attack.adoc[Kubernetes attacks]
+|xref:../incident_types/kubernetes_attack.adoc[Kubernetes attacks]
 |
 Containers
 |===
 
 [.section]
-=== Runetime detections for Network activities
+=== Runtime detections for Network activities
 
 [cols="15%, 45%a, 25%a, 5%, 15%", options="header"]
 |===
