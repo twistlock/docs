@@ -566,7 +566,7 @@ The GCP service account that you use to create the Defender resources, including
 If you try to create the Defender resources from a service account without this cluster-specific role, it will fail because the GCP *Kubernetes Engine Developer* role doesn't grant the developer sufficient permissions to create a ClusterRole (one of the Defender resources).
 You'll need to use an account with the GCP *Kubernetes Engine Admin* role to bind the Kubernetes cluster-admin role to your Kubernetes developer's service account.
 
-It’s probably best to create the ClusterRoleBinding before turning the cluster over any user (typically DevOps) tasked with managing and maintaing Prisma Cloud.
+It’s probably best to create the ClusterRoleBinding before turning the cluster over any user (typically DevOps) tasked with managing and maintaining Prisma Cloud.
 
 NOTE: Run the command in the following procedure on ANY service account that attempts to apply the Defender Daemonset YAML or Helm chart, even if that service account already has elevated permissions with the GCP *Kubernetes Engine Admin* role.
 Otherwise, you'll get an error.
