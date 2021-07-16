@@ -559,7 +559,6 @@ include::fragments/install_defender_twistcli_export_oc_3_11.adoc[leveloffset=+1]
 endif::prisma_cloud[]
 
 
-[.task]
 === Control Defender deployments with Taint
 
 You can deploy Defenders to all nodes in an OpenShift cluster (master, infra, compute).
@@ -567,15 +566,11 @@ OpenShift Container Platform automatically taints infra and master nodes, these 
 In order to run the defenders on thses nodes you will need to remove the taint. Once this is done, the defender's Daemonset will automatically be deployed on them (no need for redeployment of the Daemonset).
 Adjust the guidance in the following procedure according to your organization's deployment strategy.
 
-[.procedure]
-
-Option 1 - remove taint all nodes
-
+Option 1 - remove taint all nodes:
 
   oc adm taint nodes --all node-role.kubernetes.io/master-
 
-Option 2 - remove taint from specific nodes 
-
+Option 2 - remove taint from specific nodes:
 
   oc adm taint nodes <node-name> node-role.kubernetes.io/master-
 
