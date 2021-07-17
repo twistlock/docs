@@ -55,7 +55,6 @@ xref:../deployment_patterns/projects.adoc[Projects] solve the problem of multi-t
 
 Therefore, high availability and disaster recovery processes should be created for each tenant project, similar to the way a single console deployment would be handled. In case of using <<Prisma Cloud Compute backup & restore>> capabilities, backups should be created and restored separately for each project.
 
-#PCC Backaup Restore
 === Prisma Cloud Compute backup & restore
 
 Prisma Cloud disaster recovery automatically backs up all data and configuration files periodically.
