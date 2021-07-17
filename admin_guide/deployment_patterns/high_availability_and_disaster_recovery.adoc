@@ -11,6 +11,41 @@ When the Console fails or stops working, your environment still has active runti
 
 This article mainly focuses on Prisma Cloud Compute Edition deployment (self-hosted console). When leveraging Prisma Cloud Enterprise Edition (SaaS Console), high availability for the console is automatically provided by Palo Alto Networks. 
 
+=== Guidelines
+
+Follow the procedure below to create high availability and disaster recovery processes for your deployment:
+
+[.procedure]
+. *Inside each cluster*
++
+Whether your deployment is in the cloud or on-premise, the various orchestrators (such as Kubernetes, OpenShift, ECS, etc.) automatically support HA of the cluster and the containers running on it.
+
+.. Console - set your storage to be external to the Console container/node. In case the Console container/node fails, it comes back up by the orchestrator, connects to the external storage, and keeps using it to get its updated state.
+.. Defenders - defenders are deployed as a daemonset. In case of a node failure, the orchestrator automatically brings up another node and sets a Defender container on it, as a part of the daemonset definition.
+
+. *Between clusters*
++
+Prisma Cloud Compute supports every HA and DR solution designed for all the applications you have in the environment. In the lower layers for storage, and in the upper layers for networking and load balancing.
+
+.. *Public Clouds*
+... *Inside each region* - CSPs provide high availability using availability zones inside each region. In case of an AZ failure, most cloud providers bring the cluster back up in another AZ. 
++
+Use cross availability zones storage solutions, so when the cluster is up in another AZ, it connects to the shared storage and keeps functioning as before. For example, deploy your console across multiple AZ in AWS using EFS.
+... *Between regions* - CSPs provide solutions such as snapshots and backups that can be moved between regions, shared storage between regions, etc. You can also use Prisma Cloud Compute backup & restore capabilities for moving the data between regions.
+
+.. *Private Cloud (On premise)*
+... *Inside each site/data center* (between clusters on the same site)
+.... Use shared storage between the clusters
+.... Create a disaster recovery process using Prisma Cloud Compute backup & restore capabilities:
+..... Create a spare cluster (warm or cold) with PCC deployment
+..... Backup PCC’s data periodically to a location outside of the active cluster
+..... If the active cluster fails, bring the spare cluster up, and restore PCC’s data to it
+... *Between sites/data centers* - create a disaster recovery process for cases where one site goes down, using Prisma Cloud Compute backup & restore capabilities:
+.... Create a spare site (warm or cold) with PCC deployment
+.... Backup PCC’s data periodically to a location outside of the active site
+.... If the entire active site fails, bring the spare site up, and  restore PCC’s data from the external location to it
+
+
 === Projects 
 
 Prisma Cloud 
