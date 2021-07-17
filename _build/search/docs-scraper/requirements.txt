@@ -35,6 +35,6 @@ service-identity==17.0.0
 six==1.11.0
 slacker==0.9.60
 tldextract==2.1.0
-Twisted==17.5.0
+Twisted==20.3.0
 w3lib==1.18.0
 zope.interface==4.4.2
