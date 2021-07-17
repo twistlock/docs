@@ -1,4 +1,61 @@
-== Disaster recovery
+== High Availability and disaster recovery guidelines
+
+The following article describes the key guidelines for keeping your Prisma Cloud Compute deployment highly available, and creating a disaster recovery process.
+
+Prisma Cloud Compute deployment consists of two components - Console and Defenders. 
+
+* Console is the management interface. It lets you define policy and monitor your environment. 
+* Defenders are spread across your environment and protect its workloads according to the policies set in the Console.
+
+When the Console fails or stops working, your environment still has active runtime protection done by the defenders. Each defender holds the updated policies, and keeps protecting your workloads according to them.
+
+This article mainly focuses on Prisma Cloud Compute Edition deployment (self-hosted console). When leveraging Prisma Cloud Enterprise Edition (SaaS Console), high availability for the console is automatically provided by Palo Alto Networks. 
+
+=== Guidelines
+
+Follow the procedure below to create high availability and disaster recovery processes for your deployment:
+
+[.procedure]
+. *Inside each cluster*
++
+Whether your deployment is in the cloud or on-premise, the various orchestrators (such as Kubernetes, OpenShift, ECS, etc.) automatically support HA of the cluster and the containers running on it.
+
+.. Console - set your storage to be external to the Console container/node. In case the Console container/node fails, it comes back up by the orchestrator, connects to the external storage, and keeps using it to get its updated state.
+.. Defenders - defenders are deployed as a daemonset. In case of a node failure, the orchestrator automatically brings up another node and sets a Defender container on it, as a part of the daemonset definition.
+
+. *Between clusters*
++
+Prisma Cloud Compute supports every HA and DR solution designed for all the applications you have in the environment. In the lower layers for storage, and in the upper layers for networking and load balancing.
+
+.. *Public Clouds*
+... *Inside each region* - CSPs provide high availability using availability zones inside each region. In case of an AZ failure, most cloud providers bring the cluster back up in another AZ. 
++
+Use cross availability zones storage solutions, so when the cluster is up in another AZ, it connects to the shared storage and keeps functioning as before. For example, xref:../howto/multi_az_high_availability.adoc[deploy your console across multiple AZ in AWS using EFS].
+... *Between regions* - CSPs provide solutions such as snapshots and backups that can be moved between regions, shared storage between regions, etc. You can also use <<Prisma Cloud Compute backup & restore>> capabilities for moving the data between regions.
+
+.. *Private Cloud (On premise)*
+... *Inside each site/data center* (between clusters on the same site)
+.... Use shared storage between the clusters
+.... Create a disaster recovery process using <<Prisma Cloud Compute backup & restore>> capabilities:
+..... Create a spare cluster (warm or cold) with PCC deployment
+..... Backup PCC’s data periodically to a location outside of the active cluster
+..... If the active cluster fails, bring the spare cluster up, and restore PCC’s data to it
+
+... *Between sites/data centers* 
+.... Create a disaster recovery process for cases where one site goes down, using <<Prisma Cloud Compute backup & restore>> capabilities:
+..... Create a spare site (warm or cold) with PCC deployment
+..... Backup PCC’s data periodically to a location outside of the active site
+..... If the entire active site fails, bring the spare site up, and  restore PCC’s data from the external location to it
+
+image::ha_dr_flow_chart.png[width=800]
+
+=== Projects 
+
+xref:../deployment_patterns/projects.adoc[Projects] solve the problem of multi-tenancy. Each project consists of a Console and its Defenders. Each project is a separate, compartmentalized environment which operates independently with its own rules and configurations.
+
+Therefore, high availability and disaster recovery processes should be created for each tenant project, similar to the way a single console deployment would be handled. In case of using <<Prisma Cloud Compute backup & restore>> capabilities, backups should be created and restored separately for each project.
+
+=== Prisma Cloud Compute backup & restore
 
 Prisma Cloud disaster recovery automatically backs up all data and configuration files periodically.
 You can view all backups, make new backups, and restore specific backups from the Console UI.
@@ -12,9 +69,8 @@ When data recovery is enabled (default), Prisma Cloud archives its data files pe
 The default path to the data directory is _/var/lib/twistlock_.
 You can specify a different path to the data directory in _twistlock.cfg_ when you install Console.
 
-
 [.task]
-=== Configuring automated backups
+==== Configuring automated backups
 
 By default, automated backups are enabled.
 With automated backups enabled, Prisma Cloud takes a daily, weekly, and monthly snapshots.
@@ -65,9 +121,8 @@ The following command assumes that _twistlock.sh_ and your updated _twistlock.cf
 +
   $ sudo ./twistlock.sh console
 
-
 [.task]
-=== Making manual backups
+==== Making manual backups
 
 Prisma Cloud automatically creates and maintains daily, weekly, and monthly backups.
 These are known as system backups.
@@ -87,9 +142,8 @@ Your backup file is stored in _/var/lib/twistlock-backup_ in the storage volume 
 For a onebox installation, this would simply be the local file system of the host where Console runs.
 For a cluster, such as Kubernetes, this would be the persistent volume allocated to the Console service.
 
-
 [.task]
-=== Restoring backups from the Console UI
+==== Restoring backups from the Console UI
 
 You can restore Console from a backup file directly from within the Console UI.
 The Console UI lists all available backups.
@@ -131,7 +185,7 @@ Otherwise, those models might not be visible.
 
 
 [.task]
-=== Restoring backups from twistcli
+==== Restoring backups from twistcli
 
 You can restore Console from a backup using _twistcli_.
 Use this restore flow when Console is unresponsive and you cannot access the UI to force a restore to a known good state.
@@ -204,15 +258,6 @@ NOTE: If a Defender created any new runtime models since the backup was created,
 Otherwise, those models might not be visible.
 
 
-=== Downloading backup files
+==== Downloading backup files
 
-Prisma Cloud Compute lets you download backup files so that they can be copied to another location.
-Backup files can be downloaded from:
-
-* *Console* --
-Go to *Manage > System > Backup & Restore*, and click *Actions > Export* to download a backup.
-
-* *API* --
-Use the `GET /api/v1/backups/{id}` endpoint to download a specific backup, where `{id}` is the full name of the backup file.
-An example of a full file name is `daily-20.03.140-1583278547.tar.gz`.
-Full file names can be retrieved from Console's data folder here: `/var/lib/twistlock-backup`.
+Prisma Cloud Compute lets you download backup files so that they can be copied to another location. Backup files can be downloaded from the Console - Go to *Manage > System > Backup & Restore*, and click *Actions > Export* to download a backup.
