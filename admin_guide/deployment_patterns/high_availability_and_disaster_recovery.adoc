@@ -30,25 +30,28 @@ Prisma Cloud Compute supports every HA and DR solution designed for all the appl
 .. *Public Clouds*
 ... *Inside each region* - CSPs provide high availability using availability zones inside each region. In case of an AZ failure, most cloud providers bring the cluster back up in another AZ. 
 +
-Use cross availability zones storage solutions, so when the cluster is up in another AZ, it connects to the shared storage and keeps functioning as before. For example, deploy your console across multiple AZ in AWS using EFS.
-... *Between regions* - CSPs provide solutions such as snapshots and backups that can be moved between regions, shared storage between regions, etc. You can also use Prisma Cloud Compute backup & restore capabilities for moving the data between regions.
+Use cross availability zones storage solutions, so when the cluster is up in another AZ, it connects to the shared storage and keeps functioning as before. For example, xref:../howto/multi_az_high_availability.adoc[deploy your console across multiple AZ in AWS using EFS].
+... *Between regions* - CSPs provide solutions such as snapshots and backups that can be moved between regions, shared storage between regions, etc. You can also use xref:../backp/backup.adoc[Prisma Cloud Compute backup & restore capabilities] for moving the data between regions.
 
 .. *Private Cloud (On premise)*
 ... *Inside each site/data center* (between clusters on the same site)
 .... Use shared storage between the clusters
-.... Create a disaster recovery process using Prisma Cloud Compute backup & restore capabilities:
+.... Create a disaster recovery process using xref:../backp/backup.adoc[Prisma Cloud Compute backup & restore capabilities]:
 ..... Create a spare cluster (warm or cold) with PCC deployment
 ..... Backup PCC’s data periodically to a location outside of the active cluster
 ..... If the active cluster fails, bring the spare cluster up, and restore PCC’s data to it
-... *Between sites/data centers* - create a disaster recovery process for cases where one site goes down, using Prisma Cloud Compute backup & restore capabilities:
+... *Between sites/data centers* - create a disaster recovery process for cases where one site goes down, using xref:../backp/backup.adoc[Prisma Cloud Compute backup & restore capabilities]:
 .... Create a spare site (warm or cold) with PCC deployment
 .... Backup PCC’s data periodically to a location outside of the active site
 .... If the entire active site fails, bring the spare site up, and  restore PCC’s data from the external location to it
 
+image::ha_dr_flow_chart.png[width=800]
 
 === Projects 
 
-Prisma Cloud 
+xref:../deployment_patterns/projects.adoc[Projects] solve the problem of multi-tenancy. Each project consists of a Console and its Defenders. Each project is a separate, compartmentalized environment which operates independently with its own rules and configurations.
+
+Therefore, high availability and disaster recovery processes should be created for each tenant project, similar to the way a single console deployment would be handled. In case of using xref:../backp/backup.adoc[Prisma Cloud Compute backup & restore capabilities], backups should be created and restored separately for each project.
 
 === Backup & Restore using Prisma Cloud Compute
 
