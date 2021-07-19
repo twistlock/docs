@@ -32,7 +32,6 @@ If you deploy Defenders in a remote region, they might need to connect to Consol
 * Connecting to external systems, such as Docker Hub or Google Container Registry, for scanning.
 * Connecting to your secrets store to retrieve secrets for injection into your containers.
 
-
 === Global proxy settings
 
 A number of settings let you specify how Prisma Cloud interfaces with your proxy.
