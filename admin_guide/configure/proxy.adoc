@@ -1,4 +1,4 @@
-== Configuring Prisma Cloud's proxy settings
+== Configuring Prisma Cloud Proxy Settings
 
 In some environments, access to the Internet must go through a proxy.
 Prisma Cloud can be configured to route requests through your proxy.
