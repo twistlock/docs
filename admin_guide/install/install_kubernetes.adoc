@@ -66,7 +66,7 @@ To ensure that your installation goes smoothly, work through the following check
 * The nodes in your cluster can reach Prisma Cloud's cloud registry (registry-auth.twistlock.com).
 
 ifdef::compute_edition[]
-* Your cluster can create https://kubernetes.io/docs/concepts/storage/persistent-volumes/[PersistentVolumes] and https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/[LoadBalancers] from YAML configuration files.
+* Your cluster can create https://kubernetes.io/docs/concepts/storage/persistent-volumes/[PersistentVolumes] and https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/[LoadBalancers] from YAML configuration file.
 endif::compute_edition[]
 
 [.section]
