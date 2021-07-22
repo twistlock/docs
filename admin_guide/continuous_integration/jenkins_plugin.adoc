@@ -110,6 +110,8 @@ image::prisma_cloud_plugin_config.png[Prisma Cloud plugin config,650]
 +
 The username is the access key ID and the password is the access key secret of the user with the CI role (Build and Deploy Security permission group with the option to create an access key on Prisma Cloud). 
 
+.. Setup Proxy for the plug-in to communicate with the console. If you have a separate proxy, add a new configuration with URL and port. You can default it to inherit the global default of Jenkins or ignore proxy completley.
+
 .. Click *Test Connection* to validate that the Jenkins plugin can communicate with Prisma Cloud Console.
 
 .. Click *Save*.
