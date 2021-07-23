@@ -4,7 +4,8 @@ The following article describes the key guidelines for keeping your Prisma Cloud
 
 Prisma Cloud Compute deployment consists of two components - Console and Defenders. 
 
-* Console is the management interface. It lets you define policy and monitor your environment. 
+* Console is the management interface.
+It lets you define policy and monitor your environment. 
 * Defenders are spread across your environment and protect its workloads according to the policies set in the Console.
 
 When the Console fails or stops working, your environment still has active runtime protection done by the defenders. Each defender holds the updated policies, and keeps protecting your workloads according to them.
