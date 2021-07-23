@@ -1,4 +1,4 @@
-== Configuring Prisma Cloud Proxy Settings
+== Configuring Prisma Cloud proxy settings
 
 In some environments, access to the internet must go through a proxy and you can configure Prisma Cloud to route requests through your proxy.
 Proxy settings can either be applied to both Console and Defender containers or separately for each Defender deployment.
