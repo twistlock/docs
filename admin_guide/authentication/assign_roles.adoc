@@ -107,10 +107,12 @@ When a user from a group tries to access a resource protected by Prisma Cloud, P
 
 [NOTE]
 ====
-If a user is assigned multiple system roles, either directly or through group inheritance, then he is granted the rights of the highest role. If a user is assigned both system and custom roles, then he will be randomly granted the rights of one of the roles.
+If a user is assigned multiple system roles, either directly or through group inheritance, then the user is granted the rights of the highest role.
+If a user is assigned both system and custom roles, then the user will be randomly granted the rights of one of the roles.
 
 For example, assume Bruce is part of GroupA and GroupB in Active Directory.
-In Console, you assign the Administrator role to GroupA and the Auditor role to GroupB. When Bruce logs into Prisma Cloud, he will have Administrator rights.
+In Console, you assign the Administrator role to GroupA and the Auditor role to GroupB.
+When Bruce logs into Prisma Cloud, he will have Administrator rights.
 ====
 
 The following procedure shows you how to assign a role to an existing AD/OpenLDAP/SAML group:
