@@ -1,4 +1,4 @@
-== High Availability and disaster recovery guidelines
+== High Availability and Disaster Recovery guidelines
 
 The following article describes the key guidelines for keeping your Prisma Cloud Compute deployment highly available, and creating a disaster recovery process.
 
