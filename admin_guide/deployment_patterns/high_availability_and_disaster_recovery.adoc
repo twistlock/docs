@@ -31,7 +31,7 @@ Prisma Cloud Compute supports every HA and DR solution designed for all the appl
 .. *Public Clouds*
 ... *Inside each region* - CSPs provide high availability using availability zones inside each region. In case of an AZ failure, most cloud providers bring the cluster back up in another AZ. 
 +
-Use cross availability zones storage solutions, so when the cluster is up in another AZ, it connects to the shared storage and keeps functioning as before. For example, xref:../howto/multi_az_high_availability.adoc[deploy your console across multiple AZ in AWS using EFS].
+Use cross availability zones storage solutions, so when the cluster is up in another AZ, it connects to the shared storage and keeps functioning as before. For example, in AWS, EFS can be used as a shared storage between availability zones.
 ... *Between regions* - CSPs provide solutions such as snapshots and backups that can be moved between regions, shared storage between regions, etc. You can also use <<Prisma Cloud Compute backup & restore>> capabilities for moving the data between regions.
 
 .. *Private Cloud (On premise)*
