@@ -340,3 +340,15 @@ The shell environment variable `DOCKER_CONTENT_TRUST` should be set to `0` or un
 Prisma Cloud supports the latest versions of Chrome, Safari, and Edge.
 
 For Microsoft Edge, we only support the new Chromium-based version (80.0.361 and later).
+
+[.section]
+=== Cortex XDR 
+
+Prisma Cloud Defenders can work alongside Cortex XDR agents. 
+Currently, users need to add exceptions in the console for both agents to work together manually. In a future release, there will be out-of-the-box support for co-existence. Users can disable the Defender runtime defense when a Cortex XDR agent is present.
+
+Today to allow for both the solutions to co-exist, users can 
+
+1. Add Cortex agent as a trustable executable ( Refer to [Creating a trusted exeuctable], (https://docs.prismacloudcompute.com/docs/enterprise_edition/configure/custom_feeds.html#create-a-list-of-trusted-executables) section for details.
+
+2. Add custom runtime rules and allow for Cortex Agent process and file path, to avoid any runtime alerts.
