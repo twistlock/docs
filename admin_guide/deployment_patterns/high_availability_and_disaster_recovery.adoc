@@ -8,9 +8,9 @@ Prisma Cloud Compute deployment consists of two components - Console and Defende
 It lets you define policy and monitor your environment. 
 * Defenders are spread across your environment and protect its workloads according to the policies set in the Console.
 
-When the Console fails or stops working, your environment still has active runtime protection done by the defenders. Each defender holds the updated policies, and keeps protecting your workloads according to them.
+When the Console fails or stops working, your environment still has active runtime protection done by the Defenders. Each Defender holds the updated policies, and keeps protecting your workloads according to them.
 
-This article mainly focuses on Prisma Cloud Compute Edition deployment (self-hosted console). When leveraging Prisma Cloud Enterprise Edition (SaaS Console), high availability for the console is automatically provided by Palo Alto Networks. 
+This article mainly focuses on Prisma Cloud Compute Edition deployment (self-hosted Console). When leveraging Prisma Cloud Enterprise Edition (SaaS Console), high availability for the console is automatically provided by Palo Alto Networks. 
 
 === Guidelines
 
@@ -22,11 +22,11 @@ Follow the procedure below to create high availability and disaster recovery pro
 Whether your deployment is in the cloud or on-premise, the various orchestrators (such as Kubernetes, OpenShift, ECS, etc.) automatically support HA of the cluster and the containers running on it.
 
 .. Console - set your storage to be external to the Console container/node. In case the Console container/node fails, it comes back up by the orchestrator, connects to the external storage, and keeps using it to get its updated state.
-.. Defenders - defenders are deployed as a daemonset. In case of a node failure, the orchestrator automatically brings up another node and sets a Defender container on it, as a part of the daemonset definition.
+.. Defenders - Defenders are deployed as a daemonset. In case of a node failure, the orchestrator automatically brings up another node and sets a Defender container on it, as a part of the daemonset definition.
 
 . *Between clusters*
 +
-Prisma Cloud Compute supports every HA and DR solution designed for all the applications you have in the environment. In the lower layers for storage, and in the upper layers for networking and load balancing.
+While not explicitly tested or supported by Palo Alto Networks, in general, solutions that replicate storage between clusters to provide disaster recovery work transparently to Prisma Cloud Compute Edition.  Note that ingress into the Console (DNS mapping and IP routing) may require additional steps during the activation of the secondary sites to ensure the Console is reachable over the network.
 
 .. *Public Clouds*
 ... *Inside each region* - CSPs provide high availability using availability zones inside each region. In case of an AZ failure, most cloud providers bring the cluster back up in another AZ. 
@@ -34,7 +34,7 @@ Prisma Cloud Compute supports every HA and DR solution designed for all the appl
 Use cross availability zones storage solutions, so when the cluster is up in another AZ, it connects to the shared storage and keeps functioning as before. For example, in AWS, EFS can be used as a shared storage between availability zones.
 ... *Between regions* - CSPs provide solutions such as snapshots and backups that can be moved between regions, shared storage between regions, etc. You can also use xref:../configure/backup_and_restore.adoc[Prisma Cloud Compute backup & restore] capabilities for moving the data between regions.
 
-.. *Private Cloud (On premise)*
+.. *Private Cloud (On premises)*
 ... *Inside each site/data center* (between clusters on the same site)
 .... Use shared storage between the clusters
 .... Create a disaster recovery process using xref:../configure/backup_and_restore.adoc[Prisma Cloud Compute backup & restore] capabilities:
