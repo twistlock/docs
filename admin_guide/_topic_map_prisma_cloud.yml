@@ -159,6 +159,8 @@ Topics:
   File: configure
 - Name: Rule ordering and pattern matching
   File: rule_ordering_pattern_matching
+- Name: Backup and restore
+  File: disaster_recovery
 - Name: Custom feeds
   File: custom_feeds
 - Name: Proxy configuration

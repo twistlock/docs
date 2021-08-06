@@ -161,6 +161,8 @@ Topics:
   File: configure
 - Name: Rule ordering and pattern matching
   File: rule_ordering_pattern_matching
+- Name: Backup and restore
+  File: disaster_recovery
 - Name: Custom feeds
   File: custom_feeds
 - Name: Proxy configuration
@@ -581,7 +583,7 @@ Topics:
 - Name: Automated deployment
   File: automated_deployment
 - Name: High availability
-  File: high_availability_and_disaster_recovery
+  File: high_availability
 ---
 Name: API
 Dir: api
