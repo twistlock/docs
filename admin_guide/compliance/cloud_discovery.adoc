@@ -84,6 +84,7 @@ For AWS, Prisma Cloud requires a service account with following minimum permissi
 }
 ----
 
+Note: AWS IAM/STS is only supported for self-hosted variant of Prisma Cloud hosted on AWS.
 
 ==== Azure
 
