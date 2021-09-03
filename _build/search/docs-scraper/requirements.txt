@@ -15,7 +15,7 @@ hyperlink==17.3.1
 idna==2.6
 incremental==17.5.0
 ipaddress==1.0.18
-lxml==4.0.0
+lxml==4.6.3
 ndg-httpsclient==0.4.3
 ordereddict==1.1
 parsel==1.2.0
