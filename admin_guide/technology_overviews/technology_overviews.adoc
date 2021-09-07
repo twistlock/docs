@@ -1,3 +1,0 @@
-== Technology overviews
-
-This section describes how key Prisma Cloud components work.
